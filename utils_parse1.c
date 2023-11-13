@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cubed.h                                            :+:      :+:    :+:   */
+/*   utils_parse1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 16:58:08 by abasante         ###   ########.fr       */
+/*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
+/*   Updated: 2023/11/13 15:57:39 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUBED_H
-# define CUBED_H
+int is_cub(char *string)
+{
+	int i;
 
-#include "mlx/mlx.h"
-#include "libft/libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
+	i = 0;
+	i = ft_strlen(string) - 1;
 
-//		PARSE:
-void	extract_text(char *string);
-
-
-#endif
+	if (string[i--] != 'b')
+		return (1);
+	if (string[i--] != 'u')
+		return (1);
+	if (string[i--] != 'c')
+		return (1);
+	if (string[i--] != '.')
+		return (1);
+	return (0);
+}
