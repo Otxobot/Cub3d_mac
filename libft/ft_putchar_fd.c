@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cubed.h                                            :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 15:22:57 by abasante         ###   ########.fr       */
+/*   Created: 2022/09/14 14:55:26 by abasante          #+#    #+#             */
+/*   Updated: 2022/09/14 15:05:44 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUBED_H
-# define CUBED_H
+#include "libft.h"
+#include <unistd.h>
 
-#include "mlx/mlx.h"
-#include "libft/libft.h"
-#include <stdio.h>
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
 
-#endif
+// int main(void)
+// {
+// 	char	c;
+// 	int		fd;
+
+// 	c = 'M';
+// 	fd = 1;
+// 	ft_putchar_fd(c, fd);
+// }

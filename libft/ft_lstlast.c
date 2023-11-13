@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cubed.h                                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otxoboy <otxoboy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 15:22:57 by abasante         ###   ########.fr       */
+/*   Created: 2023/03/10 12:38:04 by otxoboy           #+#    #+#             */
+/*   Updated: 2023/03/10 12:39:42 by otxoboy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUBED_H
-# define CUBED_H
+#include "libft.h"
 
-#include "mlx/mlx.h"
-#include "libft/libft.h"
-#include <stdio.h>
-
-#endif
+t_list *ft_lstlast(t_list *lst)
+{
+    if (lst == NULL)
+        return (NULL);
+    while (lst->next != NULL)
+    {
+        lst = lst->next;
+    }
+    return (lst);
+}

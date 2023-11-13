@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cubed.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 15:22:57 by abasante         ###   ########.fr       */
+/*   Created: 2022/09/01 15:03:54 by abasante          #+#    #+#             */
+/*   Updated: 2023/11/13 14:41:22 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUBED_H
-# define CUBED_H
-
-#include "mlx/mlx.h"
-#include "libft/libft.h"
 #include <stdio.h>
+#include "libft.h"
 
-#endif
+char	*ft_strchr(const char *s, int c)
+{
+	char	*chr;
+
+	chr = (char *)s;
+	while (*chr != (char)c)
+	{
+		if (!*chr)
+			return (NULL);
+		chr++;
+	}
+	return (chr);
+}
+
+// int main(void)
+// {
+// 	char s[50] = "This is my string";
+
+// 	printf("%s", ft_strchr(s, 'n'));
+// 	return(0);
+// }

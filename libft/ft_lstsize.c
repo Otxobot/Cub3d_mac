@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cubed.h                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: otxoboy <otxoboy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 15:22:57 by abasante         ###   ########.fr       */
+/*   Created: 2023/03/10 12:33:39 by otxoboy           #+#    #+#             */
+/*   Updated: 2023/03/10 12:36:11 by otxoboy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUBED_H
-# define CUBED_H
+#include "libft.h"
 
-#include "mlx/mlx.h"
-#include "libft/libft.h"
-#include <stdio.h>
-
-#endif
+int ft_lstsize(t_list *lst)
+{
+    int i = 0;
+    
+    while (lst != NULL)
+    {
+        lst = lst->next;
+        i++;
+    }
+    return (i);
+}

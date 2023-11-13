@@ -1,24 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/09 17:06:46 by abasante         ###   ########.fr       */
+/*   Created: 2022/09/05 17:50:09 by abasante          #+#    #+#             */
+/*   Updated: 2022/09/13 12:18:56 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cubed.h"
+#include <stdio.h>
+#include "libft.h"
 
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char		*str;
+	size_t				i;
+
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < n)
+	{
+		if (str[i] == (unsigned char) c)
+			return (str + i);
+		i++;
+	}
+	return (NULL);
+}
+
+/*
 int main(void)
 {
-	void *init;
-	void *mlx_win;
+	char s[50] = "This is my string";
 
-	init = 	mlx_init();
+	int a;
 
-	mlx_win = mlx_new_window(init, 1920, 1080, "Hello World!");
-	mlx_loop(init);	
+	a = 'i';
+
+	printf("%s", ft_memchr(s, a, 30));
+
+	return(0);
 }
+*/
