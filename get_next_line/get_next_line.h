@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:18:18 by abasante          #+#    #+#             */
-/*   Updated: 2023/01/12 16:52:58 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:16:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "../libft/libft.h"
 
 
 # ifndef BUFFER_SIZE
@@ -33,11 +34,11 @@ char *ft_save(char *save);
 char *ft_read_and_save(int fd, char *save);
 
             /* FUNCTIONS FROM LIBFT */
-size_t ft_strlen(char *str);
+//size_t ft_strlen(char *str);
 
-char *ft_strchr(char *s, int c);
+//char *ft_strchr(char *s, int c);
 
-char *ft_strjoin(char *s1, char *s2);
+//char *ft_strjoin(char *s1, char *s2);
 
 void *ft_memcpy(void *dst, const void *src, size_t n);
 

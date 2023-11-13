@@ -1,5 +1,7 @@
 {
 	"files.associations": {
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"cubed.h": "c",
+		"get_next_line.h": "c"
 	}
 }

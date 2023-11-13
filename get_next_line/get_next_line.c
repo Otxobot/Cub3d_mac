@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 09:18:11 by abasante          #+#    #+#             */
-/*   Updated: 2023/01/16 12:14:01 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:18:55 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,12 @@ char	*get_next_line(int fd)
 		return (0);
 	}
 	save = ft_read_and_save(fd, save);
+	printf("gnl line:%s\n", save);
 	if (!save)
+	{
+		printf("entra al gnl\n");	
 		return (NULL);
+	}
 	line = ft_get_line(save);
 	save = ft_save(save);
 	return (line);

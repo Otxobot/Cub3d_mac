@@ -6,9 +6,11 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 15:57:39 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:21:48 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "cubed.h"
 
 int is_cub(char *string)
 {
