@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:56:43 by abasante          #+#    #+#             */
-/*   Updated: 2022/09/14 17:12:20 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:30:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,28 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, char const *s2)
 {
-	unsigned int	y1;
-	unsigned int	y2;
-	unsigned int	i;
-	unsigned int	x;
-	char			*str1;
+	int		t_len;
+	char	*s3;
+	size_t	n;
+	size_t	m;
 
-	if (!s1 || !s2)
-		return (0);
-	y1 = ft_strlen(s1);
-	y2 = ft_strlen(s2);
-	i = 0;
-	x = -1;
-	str1 = malloc(sizeof(char) * (y1 + y2 + 1));
-	if (!str1)
-		return (0);
-	while (s1[i])
-	{
-		str1[i] = s1[i];
-		i++;
-	}
-	while (s2[++x])
-		str1[i++] = s2[x];
-	str1[i] = '\0';
-	return (str1);
+	if (!s1)
+		return (ft_strdup(s2));
+	n = 0;
+	m = 0;
+	t_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	s3 = malloc(t_len * sizeof(char));
+	if (!s3)
+		return (NULL);
+	while (s1[m] != '\0')
+		s3[n++] = s1[m++];
+	m = 0;
+	while (s2[m] != '\0')
+		s3[n++] = s2[m++];
+	s3[n] = '\0';
+	return (s3);
 }
 
 // int main(void)

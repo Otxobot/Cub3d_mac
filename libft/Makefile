@@ -34,6 +34,7 @@ SRC = ft_atoi.c\
 		ft_strtrim.c\
 		ft_itoa.c\
 		ft_split.c\
+		get_next_line.c \
 
 SRC_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \

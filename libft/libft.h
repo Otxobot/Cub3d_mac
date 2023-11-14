@@ -6,13 +6,21 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:43:41 by abasante          #+#    #+#             */
-/*   Updated: 2022/09/27 10:32:29 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:12:02 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct      s_list
 {
@@ -54,5 +62,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strtrim(const char *s1, char const *set);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+char	*get_next_line(int fd);
+char	**ft_double_free(char **s);
 
 #endif

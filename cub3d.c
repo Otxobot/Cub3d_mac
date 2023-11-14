@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/13 16:23:33 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:13:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ int main(int ac, char **av)
 	else if (ac == 2)
 	{
 		if (is_cub(av[1]))
-			return (printf("no es un archivo cub\n"), 1);
+			return (printf("No es un archivo cub\n"), 1);
 		extract_text(av[1]);
 	}
 }
+
+// t_info *info = malloc(sizeof(t_info));
+// 	if (!info)
+// 		return (NULL);
