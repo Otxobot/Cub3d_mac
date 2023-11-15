@@ -38,7 +38,13 @@ int main(int ac, char **av)
 		if (is_cub(av[1]))
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
-		check_if_all_elements(elements_without_empty_lines);
+		if (check_if_all_elements(elements_without_empty_lines))
+		{
+			printf("Exited the program without finding everything\n");
+			return (1);
+		}
+		printf("Exited the program finding everything\n");
+		return (0);
 		//categorize_elements(elements_without_empty_lines, info);
 	}
 }

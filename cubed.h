@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <string.h>
 
 typedef struct s_info 
 {
@@ -29,10 +30,25 @@ typedef struct s_info
 	int		c_color;
 }			t_info;
 
+typedef struct s_elem{
+    char    NO[3];
+    char    SO[3];
+    char    WE[3];
+    char    EA[3];
+    char    F[2];
+    char    C[2];
+}				t_elem;
+
 //		PARSE:
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
 char	**no_empty_lines(char *file_path, char **lines_ws, char *line);
+int		check_if_all_elements(char **elements);
+//		checks
+int		check_for_NO(char *string);
+int		check_for_SO(char *string);
+
+t_elem	init_elements_id();
 
 #endif

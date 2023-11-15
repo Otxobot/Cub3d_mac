@@ -21,11 +21,11 @@ SRC = cub3d.c \
 
 INCLUDES = -I./libft
 
-LIBS = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L./libft -lft #-Lmlx -lmlx  -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
 all: $(NAME)
 
