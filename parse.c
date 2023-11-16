@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 14:21:35 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:37:32 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,6 @@ char **extract_elements(char *file_path)
 	return (lines_ws);
 }
 
-// int check_for_NO(char *string)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (string[i] && string[i] == ' ')
-// 		i++;
-// 	if (string[i + 1] == 'O' && string[i + 2] == 32)
-// 	{
-// 		printf("%c%c\n", string[i], string[i + 1]);
-// 		return (0);
-// 	}
-// 	return (1);
-// }
-
-
 int check_for_NOSOWEEAFC(char *string)
 {
 	int i;
@@ -117,20 +101,9 @@ int	check_if_all_elements(char **elements)
 		if (!check_for_NOSOWEEAFC(elements[i]))
 		{
 			printf("didn't find one of the elements\n");
-			return (1);
+			return (FALSE);
 		}
 		i++;
 	}
-	// if (check_for_NO(elements[i]))
-	// {
-	// 	printf("didn't find NO\n");
-	// 	return (1);
-	// }
-	// i++;
-	// if (check_for_SO(elements[i]))
-	// {
-	// 	printf("didn't find SO\n");
-	// 	return (1);
-	// }
-	return (0);
+	return (TRUE);
 }

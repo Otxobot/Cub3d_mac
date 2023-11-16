@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 13:09:02 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:28:22 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av)
 		if (is_cub(av[1]))
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
-		if (check_if_all_elements(elements_without_empty_lines))
+		if (!check_if_all_elements(elements_without_empty_lines))
 		{
 			printf("Exited the program without finding everything\n");
 			return (1);
