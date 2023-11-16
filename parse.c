@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 14:06:52 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:21:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,35 +92,17 @@ int check_for_NOSOWEEAFC(char *string)
 	while (string[i] && string[i] == ' ')
 		i++;
 	if ((string[i] == 'N' && string[i + 1] == 'O') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	else if ((string[i] == 'S' && string[i + 1] == 'O') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	else if ((string[i] == 'W' && string[i + 1] == 'E') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	else if ((string[i] == 'E' && string[i + 1] == 'A') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	else if (string[i] == 'F' && (string[i + 1] == ' ' || string[i + 1] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	else if (string[i] == 'C' && (string[i + 1] == ' ' || string[i + 1] == '	'))
-	{
-		printf("%c%c\n", string[i], string[i + 1]);
 		return (TRUE);
-	}
 	return (FALSE);
 }
 
