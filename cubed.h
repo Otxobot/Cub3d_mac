@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 18:58:27 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:34:11 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_info
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	int		f_color;
-	int		c_color;
+	char	*f_color;
+	char	*c_color;
 }			t_info;
 
 //=============PARSE:======================
@@ -46,6 +46,10 @@ int		check_for_NOSOWEEAFC(char *string);
 //------------categorizing elements:-------
 int		categorize_elements(char **elements, t_info *info);
 int		check_for_correct_path(char *element, t_info *info);
+int		check_for_correct_RGB(char *element, t_info *info);
+
+//-----------------utils:------------------------
 void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info);
+void	put_each_RGB_in_place_in_struct(char identifier_RGB, char *RGB, t_info *info);
 
 #endif

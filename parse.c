@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 19:03:20 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:34:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char **extract_elements(char *file_path)
 		else
 			a++;
 	}
-	lines_ws = malloc(sizeof(char *) * ( a + 1));
+	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
 	no_empty_lines(file_path, lines_ws, line);
 	free(line);
@@ -111,22 +111,49 @@ int	categorize_elements(char **elements, t_info *info)
 		}
 		else
 		{
-			printf("info->no_texture:%s\n", info->no_texture);
-			printf("info->so_texture:%s\n", info->so_texture);
-			printf("info->we_texture:%s\n", info->we_texture);
-			printf("info->ea_texture:%s\n", info->ea_texture);
-			//check_for_correct_RGB(elements[i], info);
-			printf("One of the RGBS is incorrect!\nThey are both incorrect because I still havent done the func\n");
-			return (FALSE);
+			if (!check_for_correct_RGB(elements[i], info))
+			{
+				printf("One of the RGBS is incorrect!\n");
+				return (FALSE);
+			}
+			i++;
 		}
 	}
+	printf("info->no_texture:%s\n", info->no_texture);
+	printf("info->so_texture:%s\n", info->so_texture);
+	printf("info->we_texture:%s\n", info->we_texture);
+	printf("info->ea_texture:%s\n", info->ea_texture);
+	printf("%s\n", info->f_color);
+	printf("%s\n", info->c_color);
 	return (TRUE);
 }
 
-// int	check_for_correct_RGB(char *element, t_info *info)
-// {
-	
-// }
+int	check_for_correct_RGB(char *element, t_info *info)
+{
+	int 	i;
+	int		start;
+	int		end;
+	char	identifier_RGB;
+	char	*RGB;
+
+	i = 0;
+	while (element[i])
+	{
+		while (element[i] != 'F' && element[i] != 'C')
+			i++;
+		identifier_RGB = element[i];
+		while (element[i] && (!ft_isdigit(element[i])))
+			i++;
+		start = i;
+		while (element[i] && (ft_isdigit(element[i]) || element[i] == ','))
+			i++;
+		end = i;
+		RGB = ft_substr(element, start, end - start);
+		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
+		return (TRUE);
+	}
+	return (FALSE);
+}
 
 int check_for_correct_path(char *element, t_info *info)
 {
@@ -136,7 +163,6 @@ int check_for_correct_path(char *element, t_info *info)
 	char	*path_to_save_in_struct;
 	char	identifier;
 
-	start = 0;
 	i = 0;
 	len = 0;
 	while (element[i])
