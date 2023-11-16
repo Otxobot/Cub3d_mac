@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 15:47:56 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:08:28 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ int	categorize_elements(char **elements, t_info *info)
 	i = 0;
 	while (elements[i])
 	{
-		if (i < 4)
+		if (i <= 4)
 		{
-			if (!check_for_correct_path(elements[i], info))
+			if (!check_for_correct_path(elements[i], info, i))
 			{
 				printf("One of the textures is incorrect!\n");
 				return (FALSE);
@@ -111,6 +111,10 @@ int	categorize_elements(char **elements, t_info *info)
 		}
 		else
 		{
+			printf("info->no_texture:%s\n", info->no_texture);
+			printf("info->so_texture:%s\n", info->so_texture);
+			printf("info->we_texture:%s\n", info->we_texture);
+			printf("info->ea_texture:%s\n", info->ea_texture);
 			printf("One of the RGBS is incorrect!\nThey are both incorrect because I still havent done the func\n");
 			return (FALSE);
 		}
@@ -123,18 +127,16 @@ int	categorize_elements(char **elements, t_info *info)
 	
 // }
 
-int check_for_correct_path(char *element, t_info *info)
+int check_for_correct_path(char *element, t_info *info, int vez)
 {
 	int		i;
 	int 	start;
 	size_t	len;
-	int		vez;
 	char	*path_to_save_in_struct;
 
 	start = 0;
 	i = 0;
 	len = 0;
-	vez = 0;
 	while (element[i])
 	{
 		while (element[i] && element[i] != '.')
@@ -152,7 +154,14 @@ int check_for_correct_path(char *element, t_info *info)
 	return (FALSE);
 }
 
-void	put_each_route_in_place_in_struct(char *path_to_save_in_struct, t_info *info)
+void	put_each_route_in_place_in_struct(char *path_to_save_in_struct, t_info *info, int vez)
 {
-		
+	if (vez == 0)
+		info->no_texture = path_to_save_in_struct;
+	else if (vez == 1)
+		info->so_texture = path_to_save_in_struct;
+	else if (vez == 2)
+		info->we_texture = path_to_save_in_struct;
+	else if (vez == 3)
+		info->ea_texture = path_to_save_in_struct;
 }
