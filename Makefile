@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/11/14 11:24:40 by abasante         ###   ########.fr        #
+#    Updated: 2023/11/16 18:53:25 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBS = -L./libft -lft #-Lmlx -lmlx  -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME)
 

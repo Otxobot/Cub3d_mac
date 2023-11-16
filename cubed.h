@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 15:55:31 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:58:27 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_for_NOSOWEEAFC(char *string);
 
 //------------categorizing elements:-------
 int		categorize_elements(char **elements, t_info *info);
-int		check_for_correct_path(char *element, t_info *info, int vez);
-void	put_each_route_in_place_in_struct(char *path_to_save_in_struct, t_info *info, int vez);
+int		check_for_correct_path(char *element, t_info *info);
+void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info);
 
 #endif

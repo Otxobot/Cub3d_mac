@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 14:48:23 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 19:01:37 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,16 @@ int check_for_NOSOWEEAFC(char *string)
 	else if (string[i] == 'C' && (string[i + 1] == ' ' || string[i + 1] == '	'))
 		return (TRUE);
 	return (FALSE);
+}
+
+void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info)
+{
+	if (identifier == 'N')
+		info->no_texture = path_to_save_in_struct;
+	else if (identifier == 'S')
+		info->so_texture = path_to_save_in_struct;
+	else if (identifier == 'W')
+		info->we_texture = path_to_save_in_struct;
+	else if (identifier == 'E')
+		info->ea_texture = path_to_save_in_struct;
 }
