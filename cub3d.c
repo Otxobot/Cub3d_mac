@@ -25,11 +25,7 @@ int main(int ac, char **av)
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
-		{
-			printf("Exited the program without finding everything\n");
 			return (1);
-		}
-		printf("Exited the program finding everything\nNow going to categorize elements,\ninside of the t_info struct\n");
 		categorize_elements(elements_without_empty_lines, &info);
 		return (0);
 	}
