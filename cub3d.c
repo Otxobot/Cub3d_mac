@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 14:28:22 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:08:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 int main(int ac, char **av)
 {
-	t_info *info;
+	t_info info;
 	char	**elements_without_empty_lines;
 
-	info = malloc(sizeof(t_info));
-	if (!info)
-		return (1);
 	if (ac < 2)
 		return (printf("Se te ha olvidad el archivo .cub!\n"), 1);
 	else if (ac == 2)
@@ -32,8 +29,8 @@ int main(int ac, char **av)
 			printf("Exited the program without finding everything\n");
 			return (1);
 		}
-		printf("Exited the program finding everything\n");
+		printf("Exited the program finding everything\nNow going to categorize elements,\ninside of the t_info struct\n");
+		categorize_elements(elements_without_empty_lines, &info);
 		return (0);
-		//categorize_elements(elements_without_empty_lines, info);
 	}
 }

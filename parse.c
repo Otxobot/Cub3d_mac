@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 14:37:32 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:47:56 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,31 +68,11 @@ char **extract_elements(char *file_path)
 	return (lines_ws);
 }
 
-int check_for_NOSOWEEAFC(char *string)
-{
-	int i;
-
-	i = 0;
-	while (string[i] && string[i] == ' ')
-		i++;
-	if ((string[i] == 'N' && string[i + 1] == 'O') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-		return (TRUE);
-	else if ((string[i] == 'S' && string[i + 1] == 'O') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-		return (TRUE);
-	else if ((string[i] == 'W' && string[i + 1] == 'E') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-		return (TRUE);
-	else if ((string[i] == 'E' && string[i + 1] == 'A') && (string[i + 2] == ' ' || string[i + 2] == '	'))
-		return (TRUE);
-	else if (string[i] == 'F' && (string[i + 1] == ' ' || string[i + 1] == '	'))
-		return (TRUE);
-	else if (string[i] == 'C' && (string[i + 1] == ' ' || string[i + 1] == '	'))
-		return (TRUE);
-	return (FALSE);
-}
-
 int	check_if_all_elements(char **elements)
 {
-	//I have to check and see if there is NO, SO, WE, EA, F and C in each line.
+	/*I have to check and see if there is NO, SO, WE, EA, F and C in each line. 
+	For now i think it is good, it is still to be seen if these two functions won't cause any problems
+	or errors in the future. I'll leave this here to see.*/
 	int i;
 
 	i = 0;
@@ -106,4 +86,73 @@ int	check_if_all_elements(char **elements)
 		i++;
 	}
 	return (TRUE);
+}
+
+
+int	categorize_elements(char **elements, t_info *info)
+{
+	/*In this function I have to check the route of each texture to see first if it is correct 
+	and put them in their char * in the structure,
+	After that I will make a function that first checks to see if the RGB numbers are correct and then also puts them
+	into their respective integer inside of the struct.*/
+	int i;
+
+	i = 0;
+	while (elements[i])
+	{
+		if (i < 4)
+		{
+			if (!check_for_correct_path(elements[i], info))
+			{
+				printf("One of the textures is incorrect!\n");
+				return (FALSE);
+			}
+			i++;
+		}
+		else
+		{
+			printf("One of the RGBS is incorrect!\nThey are both incorrect because I still havent done the func\n");
+			return (FALSE);
+		}
+	}
+	return (TRUE);
+}
+
+// int	check_for_correct_RGB(char *element, t_info *info)
+// {
+	
+// }
+
+int check_for_correct_path(char *element, t_info *info)
+{
+	int		i;
+	int 	start;
+	size_t	len;
+	int		vez;
+	char	*path_to_save_in_struct;
+
+	start = 0;
+	i = 0;
+	len = 0;
+	vez = 0;
+	while (element[i])
+	{
+		while (element[i] && element[i] != '.')
+			i++;
+		start = i;
+		while (ft_isprint(element[i]) && element[i] != 32 && element[i] != 9)
+		{
+			i++;
+			len++;
+		}
+		path_to_save_in_struct = ft_substr(element, start, len);
+		put_each_route_in_place_in_struct(path_to_save_in_struct, info, vez);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+void	put_each_route_in_place_in_struct(char *path_to_save_in_struct, t_info *info)
+{
+		
 }

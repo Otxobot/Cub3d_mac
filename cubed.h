@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 13:15:14 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:18:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,18 @@ typedef struct s_info
 	int		c_color;
 }			t_info;
 
-//		PARSE:
+//=============PARSE:======================
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
 char	**no_empty_lines(char *file_path, char **lines_ws, char *line);
+
+//------------checks:----------------------
 int		check_if_all_elements(char **elements);
-//		checks
 int		check_for_NOSOWEEAFC(char *string);
+
+//------------categorizing elements:-------
+int	categorize_elements(char **elements, t_info *info);
+int check_for_correct_path(char *element, t_info *info);
 
 #endif
