@@ -1,8 +1,8 @@
-NO      ./ruta_a_la_textura_norte            
-     SO ./ruta_a_la_textura_sur
+EA ./ruta_a_la_textura_EA 
+WE ./ruta_a_la_textura_WE   
+SO ./ruta_a_la_textura_SO
+NO ./ruta_a_la_textura_NO         
 
-    WE      asdsf./ruta_a_la_textura_oeste         
-EA       ./ruta_a_la_textura_este 
 
 F 220,100,0
 

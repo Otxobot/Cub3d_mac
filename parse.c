@@ -119,10 +119,10 @@ int	categorize_elements(char **elements, t_info *info)
 			i++;
 		}
 	}
-	printf("info->no_texture:%s\n", info->no_texture);
-	printf("info->so_texture:%s\n", info->so_texture);
-	printf("info->we_texture:%s\n", info->we_texture);
-	printf("info->ea_texture:%s\n", info->ea_texture);
+	printf("info->NO_texture:%s\n", info->no_texture);
+	printf("info->SO_texture:%s\n", info->so_texture);
+	printf("info->WE_texture:%s\n", info->we_texture);
+	printf("info->EA_texture:%s\n", info->ea_texture);
 	printf("%s\n", info->f_color);
 	printf("%s\n", info->c_color);
 	return (TRUE);
@@ -133,10 +133,12 @@ int	check_for_correct_RGB(char *element, t_info *info)
 	int 	i;
 	int		start;
 	int		end;
+	int		coma;
 	char	identifier_RGB;
 	char	*RGB;
 
 	i = 0;
+	coma = 0;
 	while (element[i])
 	{
 		while (element[i] != 'F' && element[i] != 'C')
@@ -145,8 +147,12 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		while (element[i] && (!ft_isdigit(element[i])))
 			i++;
 		start = i;
-		while (element[i] && (ft_isdigit(element[i]) || element[i] == ','))
+		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
+		{
+			if (element[i] == ',')
+				coma += 1;
 			i++;
+		}
 		end = i;
 		RGB = ft_substr(element, start, end - start);
 		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
