@@ -147,6 +147,8 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		while (element[i] && (!ft_isdigit(element[i])))
 			i++;
 		start = i;
+		if(!check_if_numbers_are_correct_size(&element[start]))
+			return (FALSE);
 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
 		{
 			if (element[i] == ',')

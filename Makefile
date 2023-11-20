@@ -16,6 +16,7 @@ CC = gcc
 
 SRC = cub3d.c \
 	utils_parse1.c \
+	utils_parse2.c \
 	parse.c \
 	libft/get_next_line.c \
 

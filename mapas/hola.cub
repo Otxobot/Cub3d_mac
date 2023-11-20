@@ -1,9 +1,9 @@
 EA ./ruta_a_la_textura_EA 
 WE ./ruta_a_la_textura_WE   
 SO ./ruta_a_la_textura_SO
-NO ./ruta_a_la_textura_NO         
+NO ./ruta_a_la_textura_NO 
 
 
-F 220,100,0
+F 204,810,654
 
- C      2251321,30,01239678678
+ C      222,300,213

@@ -51,5 +51,6 @@ int		check_for_correct_RGB(char *element, t_info *info);
 //-----------------utils:------------------------
 void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info);
 void	put_each_RGB_in_place_in_struct(char identifier_RGB, char *RGB, t_info *info);
+int		check_if_numbers_are_correct_size(char *start);
 
 #endif
