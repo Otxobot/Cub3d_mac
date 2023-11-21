@@ -15,9 +15,10 @@ NAME = cubed
 CC = gcc
 
 SRC = cub3d.c \
-	utils_parse1.c \
-	utils_parse2.c \
-	parse.c \
+	utils_parse1_elem.c \
+	utils_parse2_elem.c \
+	parse_elements.c \
+	parse_map.c \
 	libft/get_next_line.c \
 
 INCLUDES = -I./libft

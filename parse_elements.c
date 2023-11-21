@@ -119,18 +119,13 @@ int	categorize_elements(char **elements, t_info *info)
 			i++;
 		}
 	}
-	// printf("info->NO_texture:%s\n", info->no_texture);
-	// printf("info->SO_texture:%s\n", info->so_texture);
-	// printf("info->WE_texture:%s\n", info->we_texture);
-	// printf("info->EA_texture:%s\n", info->ea_texture);
-	// printf("%s\n", info->f_color);
-	// printf("%s\n", info->c_color);
 	return (TRUE);
 }
 
 int	check_for_correct_RGB(char *element, t_info *info)
 {
 	int 	i;
+	int		check_for_letters;
 	int		start;
 	int		end;
 	int		coma;
@@ -139,14 +134,27 @@ int	check_for_correct_RGB(char *element, t_info *info)
 
 	i = 0;
 	coma = 0;
+	check_for_letters = 0;
 	while (element[i])
 	{
 		while (element[i] != 'F' && element[i] != 'C')
+		{
+			check_for_letters++;
 			i++;
+		}
 		identifier_RGB = element[i];
 		while (element[i] && (!ft_isdigit(element[i])))
+		{
+			check_for_letters++;
 			i++;
+		}
 		start = i;
+		while (element[check_for_letters])
+		{
+			if (ft_isalpha(element[check_for_letters]))
+				return (FALSE);
+			check_for_letters++;
+		}
 		if(!check_if_numbers_are_correct_size(&element[start]))
 			return (FALSE);
 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
@@ -180,6 +188,8 @@ int check_for_correct_path(char *element, t_info *info)
 		identifier = element[i];
 		while (element[i] && element[i] != '.')
 			i++;
+		if (element[i] != '.' && element[i + 1] != '/')
+			return (FALSE);
 		start = i;
 		while (ft_isprint(element[i]) && element[i] != 32 && element[i] != 9)
 		{
@@ -187,6 +197,9 @@ int check_for_correct_path(char *element, t_info *info)
 			len++;
 		}
 		path_to_save_in_struct = ft_substr(element, start, len);
+		if (path_to_save_in_struct[2] == 32 || path_to_save_in_struct[2] == 9 \
+		|| path_to_save_in_struct[2] == '\0')
+			return (FALSE);
 		put_each_route_in_place_in_struct(identifier, path_to_save_in_struct, info);
 		return (TRUE);
 	}

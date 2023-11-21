@@ -26,9 +26,17 @@ int main(int ac, char **av)
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
 			return (1);
-		categorize_elements(elements_without_empty_lines, &info);
-		printf("%s\n", info.no_texture);
-		printf("%s\n", info.so_texture);
+		if (!categorize_elements(elements_without_empty_lines, &info))
+			return (1);
+		printf("========================================\n");
+		printf("info->NO_texture:%s\n", info.no_texture);
+		printf("info->SO_texture:%s\n", info.so_texture);
+		printf("info->WE_texture:%s\n", info.we_texture);
+		printf("info->EA_texture:%s\n", info.ea_texture);
+		printf("F:%s\n", info.f_color);
+		printf("C:%s\n", info.c_color);
+		printf("========================================\n");
+		//parse_map();
 		return (0);
 	}
 }
