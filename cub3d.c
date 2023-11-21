@@ -27,6 +27,8 @@ int main(int ac, char **av)
 		if (!check_if_all_elements(elements_without_empty_lines))
 			return (1);
 		categorize_elements(elements_without_empty_lines, &info);
+		printf("%s\n", info.no_texture);
+		printf("%s\n", info.so_texture);
 		return (0);
 	}
 }

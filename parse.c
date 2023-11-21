@@ -119,12 +119,12 @@ int	categorize_elements(char **elements, t_info *info)
 			i++;
 		}
 	}
-	printf("info->NO_texture:%s\n", info->no_texture);
-	printf("info->SO_texture:%s\n", info->so_texture);
-	printf("info->WE_texture:%s\n", info->we_texture);
-	printf("info->EA_texture:%s\n", info->ea_texture);
-	printf("%s\n", info->f_color);
-	printf("%s\n", info->c_color);
+	// printf("info->NO_texture:%s\n", info->no_texture);
+	// printf("info->SO_texture:%s\n", info->so_texture);
+	// printf("info->WE_texture:%s\n", info->we_texture);
+	// printf("info->EA_texture:%s\n", info->ea_texture);
+	// printf("%s\n", info->f_color);
+	// printf("%s\n", info->c_color);
 	return (TRUE);
 }
 
