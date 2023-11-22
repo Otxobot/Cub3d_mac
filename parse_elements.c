@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 19:34:47 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:00:59 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 			nada++;
 		else
 			lines_ws[i++] = line;
+		free (line);
 	}
 	lines_ws[i] = NULL;
 	return(lines_ws);
@@ -60,11 +61,11 @@ char **extract_elements(char *file_path)
 			nada++;
 		else
 			a++;
+		free(line);
 	}
 	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
 	no_empty_lines(file_path, lines_ws, line);
-	free(line);
 	return (lines_ws);
 }
 
@@ -81,6 +82,7 @@ int	check_if_all_elements(char **elements)
 		if (!check_for_NOSOWEEAFC(elements[i]))
 		{
 			printf("didn't find one of the elements\n");
+			ft_double_free (elements);
 			return (FALSE);
 		}
 		i++;
@@ -105,6 +107,7 @@ int	categorize_elements(char **elements, t_info *info)
 			if (!check_for_correct_path(elements[i], info))
 			{
 				printf("One of the textures is incorrect!\n");
+				ft_double_free (elements);
 				return (FALSE);
 			}
 			i++;
@@ -114,6 +117,7 @@ int	categorize_elements(char **elements, t_info *info)
 			if (!check_for_correct_RGB(elements[i], info))
 			{
 				printf("One of the RGBS is incorrect!\n");
+				ft_double_free (elements);
 				return (FALSE);
 			}
 			i++;
@@ -166,6 +170,7 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		end = i;
 		RGB = ft_substr(element, start, end - start);
 		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
+		free (RGB);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -201,6 +206,7 @@ int check_for_correct_path(char *element, t_info *info)
 		|| path_to_save_in_struct[2] == '\0')
 			return (FALSE);
 		put_each_route_in_place_in_struct(identifier, path_to_save_in_struct, info);
+		free (path_to_save_in_struct);
 		return (TRUE);
 	}
 	return (FALSE);

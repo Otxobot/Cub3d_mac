@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 15:08:26 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 13:57:28 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,25 @@ int main(int ac, char **av)
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
+		{
+			ft_double_free(elements_without_empty_lines);
 			return (1);
+		}
 		if (!categorize_elements(elements_without_empty_lines, &info))
+		{
+			ft_double_free(elements_without_empty_lines);
 			return (1);
+		}
 		printf("========================================\n");
-		printf("info->NO_texture:%s\n", info.no_texture);
-		printf("info->SO_texture:%s\n", info.so_texture);
-		printf("info->WE_texture:%s\n", info.we_texture);
-		printf("info->EA_texture:%s\n", info.ea_texture);
-		printf("F:%s\n", info.f_color);
-		printf("C:%s\n", info.c_color);
+		// printf("info->NO_texture:%s\n", info.no_texture);
+		// printf("info->SO_texture:%s\n", info.so_texture);
+		// printf("info->WE_texture:%s\n", info.we_texture);
+		// printf("info->EA_texture:%s\n", info.ea_texture);
+		// printf("F:%s\n", info.f_color);
+		// printf("C:%s\n", info.c_color);
 		printf("========================================\n");
 		//parse_map();
+		ft_double_free (elements_without_empty_lines);
 		return (0);
 	}
 }
