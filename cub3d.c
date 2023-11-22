@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 17:36:22 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:14:33 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,9 @@ int main(int ac, char **av)
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
 		{
-			printf("doesn't go through here\n");
+
 			return (1);
 		}
-		printf("passes through here\n");
-		// printf("1:%s\n", elements_without_empty_lines[0]);
-		// printf("2:%s\n", elements_without_empty_lines[1]);
-		// printf("3:%s\n", elements_without_empty_lines[2]);
-		// printf("4:%s\n", elements_without_empty_lines[3]);
-		// printf("5:%s\n", elements_without_empty_lines[4]);
-		// printf("6:%s\n", elements_without_empty_lines[5]);
-		// printf("7:%s\n", elements_without_empty_lines[6]);
 		if (!categorize_elements(elements_without_empty_lines, &info))
 		{
 			return (1);
@@ -50,7 +42,7 @@ int main(int ac, char **av)
 		printf("C:%s\n", info.c_color);
 		printf("========================================\n");
 		//parse_map();
-		//free_info_struct(info);
+		free_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
 		return (0);
 	}
