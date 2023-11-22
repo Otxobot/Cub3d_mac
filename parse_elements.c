@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 17:36:54 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:25:59 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	check_if_all_elements(char **elements)
 	return (TRUE);
 }
 
-
 int	categorize_elements(char **elements, t_info *info)
 {
 	/*In this function I have to check the route of each texture to see first if it is correct 
@@ -104,7 +103,6 @@ int	categorize_elements(char **elements, t_info *info)
 	while (elements[i])
 	{
 		identifier = check_identifier(elements[i]);
-		printf("identifier->%c\n", identifier);
 		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
 			check_for_correct_path(elements[i], info);
 		else if (identifier == 'F'  || identifier == 'C')
@@ -114,54 +112,72 @@ int	categorize_elements(char **elements, t_info *info)
 	return (TRUE);
 }
 
-int	check_for_correct_RGB(char *element, t_info *info)
+int check_for_correct_RGB(char *element, t_info *info)
 {
-	int 	i;
-	int		check_for_letters;
-	int		start;
-	int		end;
-	int		coma;
-	char	identifier_RGB;
-	char	*RGB;
+	/*The correct approach would probably be to split with comas, then eliminate characters, then eliminate spaces
+	and then get each number that is a string and convert it to a int. 
+	
+	This way I can then check to see if it is max 255, and it will be easier to manage later.*/
+	
+	printf("-->%s\n", element);
+	char	**num;
+	num = ft_split (element, ',');
 
-	i = 0;
-	coma = 0;
-	check_for_letters = 0;
-	while (element[i])
-	{
-		while (element[i] != 'F' && element[i] != 'C')
-		{
-			check_for_letters++;
-			i++;
-		}
-		identifier_RGB = element[i];
-		while (element[i] && (!ft_isdigit(element[i])))
-		{
-			check_for_letters++;
-			i++;
-		}
-		start = i;
-		while (element[check_for_letters])
-		{
-			if (ft_isalpha(element[check_for_letters]))
-				return (FALSE);
-			check_for_letters++;
-		}
-		if(!check_if_numbers_are_correct_size1(&element[start]))
-			return (FALSE);
-		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
-		{
-			if (element[i] == ',')
-				coma += 1;
-			i++;
-		}
-		end = i;
-		RGB = ft_substr(element, start, end - start);
-		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
-		return (TRUE);
-	}
-	return (FALSE);
+	printf("num1:%s\n", num[0]);
+	printf("num2:%s\n", num[1]);
+	printf("num3:%s\n", num[2]);
+	info = NULL;
+	return (TRUE);
 }
+
+// int	check_for_correct_RGB(char *element, t_info *info)
+// {
+// 	int 	i;
+// 	int		check_for_letters;
+// 	int		start;
+// 	int		end;
+// 	int		coma;
+// 	char	identifier_RGB;
+// 	char	*RGB;
+
+// 	i = 0;
+// 	coma = 0;
+// 	check_for_letters = 0;
+// 	while (element[i])
+// 	{
+// 		while (element[i] != 'F' && element[i] != 'C')
+// 		{
+// 			check_for_letters++;
+// 			i++;
+// 		}
+// 		identifier_RGB = element[i];
+// 		while (element[i] && (!ft_isdigit(element[i])))
+// 		{
+// 			check_for_letters++;
+// 			i++;
+// 		}
+// 		start = i;
+// 		while (element[check_for_letters])
+// 		{
+// 			if (ft_isalpha(element[check_for_letters]))
+// 				return (FALSE);
+// 			check_for_letters++;
+// 		}
+// 		if(!check_if_numbers_are_correct_size1(&element[start]))
+// 			return (FALSE);
+// 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
+// 		{
+// 			if (element[i] == ',')
+// 				coma += 1;
+// 			i++;
+// 		}
+// 		end = i;
+// 		RGB = ft_substr(element, start, end - start);
+// 		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
+// 		return (TRUE);
+// 	}
+// 	return (FALSE);
+// }
 
 int check_for_correct_path(char *element, t_info *info)
 {

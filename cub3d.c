@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 18:14:33 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:18:31 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ int main(int ac, char **av)
 		{
 			return (1);
 		}
-		printf("========================================\n");
-		printf("info->NO_texture:%s\n", info.no_texture);
-		printf("info->SO_texture:%s\n", info.so_texture);
-		printf("info->WE_texture:%s\n", info.we_texture);
-		printf("info->EA_texture:%s\n", info.ea_texture);
-		printf("F:%s\n", info.f_color);
-		printf("C:%s\n", info.c_color);
-		printf("========================================\n");
+		// printf("========================================\n");
+		// printf("info->NO_texture:%s\n", info.no_texture);
+		// printf("info->SO_texture:%s\n", info.so_texture);
+		// printf("info->WE_texture:%s\n", info.we_texture);
+		// printf("info->EA_texture:%s\n", info.ea_texture);
+		// printf("F:%s\n", info.f_color);
+		// printf("C:%s\n", info.c_color);
+		// printf("========================================\n");
 		//parse_map();
-		free_info_struct(info);
+		//free_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
 		return (0);
 	}
