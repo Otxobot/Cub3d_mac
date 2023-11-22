@@ -48,3 +48,26 @@ int check_if_numbers_are_correct_size1(char *start)
     
 }
 
+char check_identifier(char *element)
+{
+    int i;
+
+    i = 0;
+    while (element[i] && (element[i] != 'E' && element[i] != 'N' && element[i] != 'S' && element[i] != 'W' &&\
+    element[i] != 'F' && element[i] != 'C'))
+        i++;
+    if (element[i] == 'E')
+        return ('E');
+    else if (element[i] == 'N')
+        return ('N');
+    else if (element[i] == 'S')
+        return ('S');
+    else if (element[i] == 'W')
+        return ('W');
+    else if (element[i] == 'F')
+        return ('F');
+    else if (element[i] == 'C')
+        return ('C');
+    else
+        return ('a');
+}

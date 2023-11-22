@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 15:34:49 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:36:54 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,35 +97,19 @@ int	categorize_elements(char **elements, t_info *info)
 	into their respective integer inside of the struct.*/
 	int i;
 	int	j;
+	char	identifier;
 
 	i = 0;
 	j = 0;
 	while (elements[i])
 	{
-		while (elements[i][j] != 'N' && elements[i][j] != 'S' && elements[i][j] != 'W' && elements[i][j] != 'E')
-		{
-			
-		}
-		if (i < 4)
-		{
-			if (!check_for_correct_path(elements[i], info))
-			{
-				printf("One of the textures is incorrect!\n");
-				ft_double_free (elements);
-				return (FALSE);
-			}
-			i++;
-		}
-		else
-		{
-			if (!check_for_correct_RGB(elements[i], info))
-			{
-				printf("One of the RGBS is incorrect!\n");
-				ft_double_free (elements);
-				return (FALSE);
-			}
-			i++;
-		}
+		identifier = check_identifier(elements[i]);
+		printf("identifier->%c\n", identifier);
+		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
+			check_for_correct_path(elements[i], info);
+		else if (identifier == 'F'  || identifier == 'C')
+			check_for_correct_RGB(elements[i], info);
+		i++;
 	}
 	return (TRUE);
 }
@@ -161,11 +145,8 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		{
 			if (ft_isalpha(element[check_for_letters]))
 				return (FALSE);
-			if (element[check_for_letters] == 32 || element[check_for_letters] == 9)
-				
 			check_for_letters++;
 		}
-		printf("%s\n", &element[start]);
 		if(!check_if_numbers_are_correct_size1(&element[start]))
 			return (FALSE);
 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)

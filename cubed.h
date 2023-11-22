@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 14:36:24 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:52:59 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_st
 void	put_each_RGB_in_place_in_struct(char identifier_RGB, char *RGB, t_info *info);
 int		check_if_numbers_are_correct_size1(char *start);
 int		check_if_numbers_are_correct_size2 (char *start);
+char	check_identifier(char *element);
 
 //----------------free:-----------------------
 void	free_info_struct(t_info info);
