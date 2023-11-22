@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 18:52:19 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:05:20 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,17 +121,21 @@ int check_for_correct_RGB(char *element, t_info *info)
 	int i;
 
 	i = 0;
-	printf("-->%s\n", element);
 	char *set = "FC 	";
 	char *letse;
 	char **nums;
 	
 	letse = ft_strtrim(element, set);
-	printf("letse:%s\n", letse);
 	nums = ft_split (letse, ',');
 	printf("num1:%s\n", nums[0]);
 	printf("num2:%s\n", nums[1]);
 	printf("num3:%s\n", nums[2]);
+	int a1 = ft_atoi(nums[0]);
+	int a2 = ft_atoi(nums[1]);
+	int a3 = ft_atoi(nums[2]);
+	printf("%d\n", a1);
+	printf("%d\n", a2);
+	printf("%d\n", a3);
 	info = NULL;
 	return (TRUE);
 }
