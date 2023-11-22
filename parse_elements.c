@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 18:25:59 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 18:52:19 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,20 @@ int check_for_correct_RGB(char *element, t_info *info)
 	and then get each number that is a string and convert it to a int. 
 	
 	This way I can then check to see if it is max 255, and it will be easier to manage later.*/
-	
-	printf("-->%s\n", element);
-	char	**num;
-	num = ft_split (element, ',');
+	int i;
 
-	printf("num1:%s\n", num[0]);
-	printf("num2:%s\n", num[1]);
-	printf("num3:%s\n", num[2]);
+	i = 0;
+	printf("-->%s\n", element);
+	char *set = "FC 	";
+	char *letse;
+	char **nums;
+	
+	letse = ft_strtrim(element, set);
+	printf("letse:%s\n", letse);
+	nums = ft_split (letse, ',');
+	printf("num1:%s\n", nums[0]);
+	printf("num2:%s\n", nums[1]);
+	printf("num3:%s\n", nums[2]);
 	info = NULL;
 	return (TRUE);
 }
