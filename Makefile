@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/11/22 14:26:14 by abasante         ###   ########.fr        #
+#    Updated: 2023/11/22 18:26:44 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ clean:
 fclean: clean
 	@make fclean -C libft
 	@rm -rf $(NAME)
+	@rm -rf cubed.dSYM
 
 re: fclean all
 
