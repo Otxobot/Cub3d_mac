@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 14:00:59 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:34:49 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 			nada++;
 		else
 			lines_ws[i++] = line;
-		free (line);
 	}
 	lines_ws[i] = NULL;
 	return(lines_ws);
@@ -61,7 +60,6 @@ char **extract_elements(char *file_path)
 			nada++;
 		else
 			a++;
-		free(line);
 	}
 	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
@@ -98,10 +96,16 @@ int	categorize_elements(char **elements, t_info *info)
 	After that I will make a function that first checks to see if the RGB numbers are correct and then also puts them
 	into their respective integer inside of the struct.*/
 	int i;
+	int	j;
 
 	i = 0;
+	j = 0;
 	while (elements[i])
 	{
+		while (elements[i][j] != 'N' && elements[i][j] != 'S' && elements[i][j] != 'W' && elements[i][j] != 'E')
+		{
+			
+		}
 		if (i < 4)
 		{
 			if (!check_for_correct_path(elements[i], info))
@@ -157,9 +161,12 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		{
 			if (ft_isalpha(element[check_for_letters]))
 				return (FALSE);
+			if (element[check_for_letters] == 32 || element[check_for_letters] == 9)
+				
 			check_for_letters++;
 		}
-		if(!check_if_numbers_are_correct_size(&element[start]))
+		printf("%s\n", &element[start]);
+		if(!check_if_numbers_are_correct_size1(&element[start]))
 			return (FALSE);
 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
 		{
@@ -170,7 +177,6 @@ int	check_for_correct_RGB(char *element, t_info *info)
 		end = i;
 		RGB = ft_substr(element, start, end - start);
 		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
-		free (RGB);
 		return (TRUE);
 	}
 	return (FALSE);
@@ -206,7 +212,6 @@ int check_for_correct_path(char *element, t_info *info)
 		|| path_to_save_in_struct[2] == '\0')
 			return (FALSE);
 		put_each_route_in_place_in_struct(identifier, path_to_save_in_struct, info);
-		free (path_to_save_in_struct);
 		return (TRUE);
 	}
 	return (FALSE);
