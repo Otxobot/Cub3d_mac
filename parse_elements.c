@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 19:05:20 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:21:32 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,13 @@ int	categorize_elements(char **elements, t_info *info)
 		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
 			check_for_correct_path(elements[i], info);
 		else if (identifier == 'F'  || identifier == 'C')
-			check_for_correct_RGB(elements[i], info);
+		{
+			if (!check_for_correct_RGB(elements[i], info))
+			{
+				printf("One of RGBs is incorrect!\n");
+				return (FALSE);
+			}
+		}
 		i++;
 	}
 	return (TRUE);
@@ -118,6 +124,8 @@ int check_for_correct_RGB(char *element, t_info *info)
 	and then get each number that is a string and convert it to a int. 
 	
 	This way I can then check to see if it is max 255, and it will be easier to manage later.*/
+
+	//SI METES ALGO VACIO PETA, ARREGLA ESO Y YA ESTARIA CREO
 	int i;
 
 	i = 0;
@@ -126,6 +134,12 @@ int check_for_correct_RGB(char *element, t_info *info)
 	char **nums;
 	
 	letse = ft_strtrim(element, set);
+	while (letse[i])
+	{
+		if (ft_isalpha(letse[i]))
+			return (FALSE);
+		i++;
+	}
 	nums = ft_split (letse, ',');
 	printf("num1:%s\n", nums[0]);
 	printf("num2:%s\n", nums[1]);
@@ -133,11 +147,15 @@ int check_for_correct_RGB(char *element, t_info *info)
 	int a1 = ft_atoi(nums[0]);
 	int a2 = ft_atoi(nums[1]);
 	int a3 = ft_atoi(nums[2]);
+	if (a1 > 255 || a2 > 255 || a3 > 255)
+		return (FALSE);
 	printf("%d\n", a1);
 	printf("%d\n", a2);
 	printf("%d\n", a3);
 	info = NULL;
-	return (TRUE);
+	free (letse);
+	ft_double_free(nums);
+	return (TRUE); 
 }
 
 // int	check_for_correct_RGB(char *element, t_info *info)

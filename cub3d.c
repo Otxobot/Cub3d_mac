@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 18:18:31 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:12:40 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main(int ac, char **av)
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
 		{
-
 			return (1);
 		}
 		if (!categorize_elements(elements_without_empty_lines, &info))
