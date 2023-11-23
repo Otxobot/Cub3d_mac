@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 18:01:47 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:12:03 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int main(int ac, char **av)
 		// printf("C3:%d\n", info.c_color[2]);
 		// printf("========================================\n");
 		//parse_map();
-		//free_info_struct(info);
+		//free_things_inside_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
 		printf("Exiting the program successfully\n");
 		return (0);
