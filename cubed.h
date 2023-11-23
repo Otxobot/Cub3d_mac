@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 17:13:34 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:57:37 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		check_if_numbers_are_correct_size1(char *start);
 int		check_if_numbers_are_correct_size2 (char *start);
 char	check_identifier(char *element);
 int		RGB_atois(char identifier, char **nums, t_info *info);
-
+int		termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
 void	free_info_struct(t_info info);
 

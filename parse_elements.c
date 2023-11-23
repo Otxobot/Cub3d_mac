@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 17:30:31 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:01:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,13 @@ int	categorize_elements(char **elements, t_info *info)
 	{
 		identifier = check_identifier(elements[i]);
 		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
-			check_for_correct_path(elements[i], info);
+		{
+			if (!check_for_correct_path(elements[i], info))
+			{
+				printf("Error\nOne of the paths is incorrect!\n");
+				return (FALSE);
+			}
+		}
 		else if (identifier == 'F'  || identifier == 'C')
 		{
 			if (!check_for_correct_RGB(elements[i], info, identifier))
@@ -171,6 +177,8 @@ int check_for_correct_path(char *element, t_info *info)
 			len++;
 		}
 		path_to_save_in_struct = ft_substr(element, start, len);
+		if (!termina_con_xpm(path_to_save_in_struct))
+			return (FALSE);
 		if (path_to_save_in_struct[2] == 32 || path_to_save_in_struct[2] == 9 \
 		|| path_to_save_in_struct[2] == '\0')
 			return (FALSE);
@@ -179,4 +187,3 @@ int check_for_correct_path(char *element, t_info *info)
 	}
 	return (FALSE);
 }
-

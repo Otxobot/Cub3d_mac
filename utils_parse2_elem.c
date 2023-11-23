@@ -96,3 +96,29 @@ int    RGB_atois(char identifier, char **nums, t_info *info)
 	}
     return (TRUE);
 }
+
+int	termina_con_xpm(const char *cadena)
+{
+	int			longitud_cadena;
+	const char	*subcadena = ".xpm";
+	int			longitud_subcadena;
+	const char	*puntero_cadena = cadena;
+	longitud_subcadena = 4;
+	longitud_cadena = 0;
+	while (*puntero_cadena != '\0')
+	{
+		longitud_cadena++;
+		puntero_cadena++;
+	}
+	if (longitud_cadena < longitud_subcadena)
+		return (0);
+	puntero_cadena = cadena + longitud_cadena - longitud_subcadena;
+	while (*puntero_cadena == *subcadena)
+	{
+		if (*puntero_cadena == '\0')
+			return (1);
+		puntero_cadena++;
+		subcadena++;
+	}
+	return (0);
+}

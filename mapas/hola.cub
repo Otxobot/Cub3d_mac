@@ -1,4 +1,4 @@
-EA  				./ruta_a_la_textura_EA
+EA  				./ruta_a_la_textura_EA.xpm
 
 
 
@@ -7,9 +7,9 @@ C   		255,  123 , 12
 
 
 
-WE ./ruta_a_la_textura_WE
+WE ./ruta_a_la_textura_WE.xpm
 
 
-NO ./ruta_a_la_textura_NO 
-SO ./ruta_a_la_textura_SO
+NO ./ruta_a_la_textura_NO.xpm 
+SO ./ruta_a_la_textura_SO.xpm
 
