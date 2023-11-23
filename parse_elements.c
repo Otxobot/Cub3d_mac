@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 15:57:20 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:30:31 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	check_if_all_elements(char **elements)
 	{
 		if (!check_for_NOSOWEEAFC(elements[i]))
 		{
-			printf("didn't find one of the elements\n");
+			printf("Error\nDidn't find one of the elements\n");
 			ft_double_free (elements);
 			return (FALSE);
 		}
@@ -109,7 +109,7 @@ int	categorize_elements(char **elements, t_info *info)
 		{
 			if (!check_for_correct_RGB(elements[i], info, identifier))
 			{
-				printf("One of RGBs is incorrect!\n");
+				printf("Error\nOne of RGBs is incorrect!\n");
 				return (FALSE);
 			}
 		}
@@ -136,34 +136,13 @@ int check_for_correct_RGB(char *element, t_info *info, char identifier)
 		i++;
 	}
 	nums = ft_split(letse, ',');
-	printf("num1:%s\n", nums[0]);
-	printf("num2:%s\n", nums[1]);
-	printf("num3:%s\n", nums[2]);
 	if (nums[0] == NULL || nums[1] == NULL || nums[2] == NULL)
 		return (FALSE);
-	int a1 = ft_atoi(nums[0]);
-	int a2 = ft_atoi(nums[1]);
-	int a3 = ft_atoi(nums[2]);
-	printf("int1:%d\n", a1);
-	printf("int2:%d\n", a2);
-	printf("int3:%d\n", a3);
-	if (a1 > 255 || a2 > 255 || a3 > 255)
+	if (!RGB_atois(identifier, nums, info))
 		return (FALSE);
-	if (identifier == 'F')
-	{
-		info->f_color[0] = a1;
-		info->f_color[1] = a2;
-		info->f_color[2] = a3;
-	}
-	else if (identifier == 'C')
-	{
-		info->c_color[0] = a1;
-		info->c_color[1] = a2;
-		info->c_color[2] = a3;
-	}
 	free (letse);
 	ft_double_free(nums);
-	return (TRUE); 
+	return (TRUE);
 }
 
 int check_for_correct_path(char *element, t_info *info)

@@ -71,3 +71,29 @@ char check_identifier(char *element)
     else
         return ('a');
 }
+
+int    RGB_atois(char identifier, char **nums, t_info *info)
+{
+    int a1;
+	int a2;
+	int a3;
+
+    a1 = ft_atoi(nums[0]);
+    a2 = ft_atoi(nums[1]);
+    a3 = ft_atoi(nums[2]);
+	if (a1 > 255 || a2 > 255 || a3 > 255)
+		return (FALSE);
+	if (identifier == 'F')
+	{
+		info->f_color[0] = a1;
+		info->f_color[1] = a2;
+		info->f_color[2] = a3;
+	}
+	else if (identifier == 'C')
+	{
+		info->c_color[0] = a1;
+		info->c_color[1] = a2;
+		info->c_color[2] = a3;
+	}
+    return (TRUE);
+}
