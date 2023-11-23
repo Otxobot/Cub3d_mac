@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 15:03:42 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:12:33 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ int main(int ac, char **av)
 		{
 			return (1);
 		}
-		// printf("========================================\n");
-		// printf("info->NO_texture:%s\n", info.no_texture);
-		// printf("info->SO_texture:%s\n", info.so_texture);
-		// printf("info->WE_texture:%s\n", info.we_texture);
-		// printf("info->EA_texture:%s\n", info.ea_texture);
-		// printf("Color rgb in F:\n");
-		// printf("F:%d\n", info.f_color[0]);
-		// printf("F:%d\n", info.f_color[1]);
-		// printf("F:%d\n", info.f_color[2]);
-		// printf("Color rgb in C:\n");
-		// printf("C:%d\n", info.c_color[0]);
-		// printf("C:%d\n", info.c_color[1]);
-		// printf("C:%d\n", info.c_color[2]);
-		// printf("========================================\n");
+		printf("========================================\n");
+		printf("info->NO_texture:%s\n", info.no_texture);
+		printf("info->SO_texture:%s\n", info.so_texture);
+		printf("info->WE_texture:%s\n", info.we_texture);
+		printf("info->EA_texture:%s\n", info.ea_texture);
+		printf("Color rgb in F:\n");
+		printf("F:%d\n", info.f_color[0]);
+		printf("F:%d\n", info.f_color[1]);
+		printf("F:%d\n", info.f_color[2]);
+		printf("Color rgb in C:\n");
+		printf("C:%d\n", info.c_color[0]);
+		printf("C:%d\n", info.c_color[1]);
+		printf("C:%d\n", info.c_color[2]);
+		printf("========================================\n");
 		//parse_map();
 		//free_info_struct(info);
 		ft_double_free (elements_without_empty_lines);

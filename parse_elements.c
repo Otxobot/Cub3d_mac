@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 15:00:42 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:57:20 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int	categorize_elements(char **elements, t_info *info)
 				printf("One of RGBs is incorrect!\n");
 				return (FALSE);
 			}
-			
 		}
 		i++;
 	}
@@ -137,11 +136,19 @@ int check_for_correct_RGB(char *element, t_info *info, char identifier)
 		i++;
 	}
 	nums = ft_split(letse, ',');
+	printf("num1:%s\n", nums[0]);
+	printf("num2:%s\n", nums[1]);
+	printf("num3:%s\n", nums[2]);
 	if (nums[0] == NULL || nums[1] == NULL || nums[2] == NULL)
 		return (FALSE);
 	int a1 = ft_atoi(nums[0]);
 	int a2 = ft_atoi(nums[1]);
 	int a3 = ft_atoi(nums[2]);
+	printf("int1:%d\n", a1);
+	printf("int2:%d\n", a2);
+	printf("int3:%d\n", a3);
+	if (a1 > 255 || a2 > 255 || a3 > 255)
+		return (FALSE);
 	if (identifier == 'F')
 	{
 		info->f_color[0] = a1;
@@ -154,9 +161,6 @@ int check_for_correct_RGB(char *element, t_info *info, char identifier)
 		info->c_color[1] = a2;
 		info->c_color[2] = a3;
 	}
-	if (a1 > 255 || a2 > 255 || a3 > 255)
-		return (FALSE);
-	//put_each_RGB_in_place_in_struct(identifier, real_ints, info);
 	free (letse);
 	ft_double_free(nums);
 	return (TRUE); 
