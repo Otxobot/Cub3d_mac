@@ -2,7 +2,7 @@ EA  				./ruta_a_la_textura_EA
 
 
 
-C   			   0,255,253
+C   		0,   255,   253
 
 
 WE ./ruta_a_la_textura_WE
@@ -12,4 +12,4 @@ NO ./ruta_a_la_textura_NO
 SO ./ruta_a_la_textura_SO
 
 
-F 		164, 135,1
+F 		16,     13,    23

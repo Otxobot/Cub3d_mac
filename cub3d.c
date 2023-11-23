@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 19:12:40 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:03:42 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,19 @@ int main(int ac, char **av)
 		// printf("info->SO_texture:%s\n", info.so_texture);
 		// printf("info->WE_texture:%s\n", info.we_texture);
 		// printf("info->EA_texture:%s\n", info.ea_texture);
-		// printf("F:%s\n", info.f_color);
-		// printf("C:%s\n", info.c_color);
+		// printf("Color rgb in F:\n");
+		// printf("F:%d\n", info.f_color[0]);
+		// printf("F:%d\n", info.f_color[1]);
+		// printf("F:%d\n", info.f_color[2]);
+		// printf("Color rgb in C:\n");
+		// printf("C:%d\n", info.c_color[0]);
+		// printf("C:%d\n", info.c_color[1]);
+		// printf("C:%d\n", info.c_color[2]);
 		// printf("========================================\n");
 		//parse_map();
 		//free_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
+		printf("Exiting the program successfully\n");
 		return (0);
 	}
 }

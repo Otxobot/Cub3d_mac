@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse1.c                                     :+:      :+:    :+:   */
+/*   utils_parse1_elem.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/16 19:28:38 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:53:06 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,18 @@ void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_st
 		info->ea_texture = path_to_save_in_struct;
 }
 
-void	put_each_RGB_in_place_in_struct(char identifier_RGB, char *RGB, t_info *info)
+void	put_each_RGB_in_place_in_struct(char identifier_RGB, int *real_ints, t_info *info)
 {
 	if (identifier_RGB == 'F')
-		info->f_color = RGB;
+	{
+		info->f_color[0] = real_ints[0];
+		info->f_color[1] = real_ints[1];
+		info->f_color[2] = real_ints[2];
+	}
 	else if (identifier_RGB == 'C')
-		info->c_color = RGB;
+	{
+		info->c_color[0] = real_ints[0];
+		info->c_color[1] = real_ints[1];
+		info->c_color[2] = real_ints[2];
+	}
 }

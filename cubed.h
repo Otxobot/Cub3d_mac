@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 16:52:59 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:00:13 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_info
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
-	char	*f_color;
-	char	*c_color;
+	int		f_color[3];
+	int		c_color[3];
 }			t_info;
 
 //=============PARSE_ELEMENTS:======================
@@ -46,11 +46,11 @@ int		check_for_NOSOWEEAFC(char *string);
 //------------categorizing elements:-------
 int		categorize_elements(char **elements, t_info *info);
 int		check_for_correct_path(char *element, t_info *info);
-int		check_for_correct_RGB(char *element, t_info *info);
+int		check_for_correct_RGB(char *element, t_info *info, char identifier);
 
 //-----------------utils:------------------------
 void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info);
-void	put_each_RGB_in_place_in_struct(char identifier_RGB, char *RGB, t_info *info);
+void	put_each_RGB_in_place_in_struct(char identifier_RGB, int *real_ints, t_info *info);
 int		check_if_numbers_are_correct_size1(char *start);
 int		check_if_numbers_are_correct_size2 (char *start);
 char	check_identifier(char *element);

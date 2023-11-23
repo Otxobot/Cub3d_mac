@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/22 19:21:32 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:00:42 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,32 +107,28 @@ int	categorize_elements(char **elements, t_info *info)
 			check_for_correct_path(elements[i], info);
 		else if (identifier == 'F'  || identifier == 'C')
 		{
-			if (!check_for_correct_RGB(elements[i], info))
+			if (!check_for_correct_RGB(elements[i], info, identifier))
 			{
 				printf("One of RGBs is incorrect!\n");
 				return (FALSE);
 			}
+			
 		}
 		i++;
 	}
 	return (TRUE);
 }
 
-int check_for_correct_RGB(char *element, t_info *info)
+int check_for_correct_RGB(char *element, t_info *info, char identifier)
 {
-	/*The correct approach would probably be to split with comas, then eliminate characters, then eliminate spaces
-	and then get each number that is a string and convert it to a int. 
-	
-	This way I can then check to see if it is max 255, and it will be easier to manage later.*/
-
-	//SI METES ALGO VACIO PETA, ARREGLA ESO Y YA ESTARIA CREO
 	int i;
-
-	i = 0;
 	char *set = "FC 	";
 	char *letse;
 	char **nums;
+	int  *real_ints;
 	
+	real_ints = malloc(sizeof(int) * 4);
+	i = 0;
 	letse = ft_strtrim(element, set);
 	while (letse[i])
 	{
@@ -140,72 +136,31 @@ int check_for_correct_RGB(char *element, t_info *info)
 			return (FALSE);
 		i++;
 	}
-	nums = ft_split (letse, ',');
-	printf("num1:%s\n", nums[0]);
-	printf("num2:%s\n", nums[1]);
-	printf("num3:%s\n", nums[2]);
+	nums = ft_split(letse, ',');
+	if (nums[0] == NULL || nums[1] == NULL || nums[2] == NULL)
+		return (FALSE);
 	int a1 = ft_atoi(nums[0]);
 	int a2 = ft_atoi(nums[1]);
 	int a3 = ft_atoi(nums[2]);
+	if (identifier == 'F')
+	{
+		info->f_color[0] = a1;
+		info->f_color[1] = a2;
+		info->f_color[2] = a3;
+	}
+	else if (identifier == 'C')
+	{
+		info->c_color[0] = a1;
+		info->c_color[1] = a2;
+		info->c_color[2] = a3;
+	}
 	if (a1 > 255 || a2 > 255 || a3 > 255)
 		return (FALSE);
-	printf("%d\n", a1);
-	printf("%d\n", a2);
-	printf("%d\n", a3);
-	info = NULL;
+	//put_each_RGB_in_place_in_struct(identifier, real_ints, info);
 	free (letse);
 	ft_double_free(nums);
 	return (TRUE); 
 }
-
-// int	check_for_correct_RGB(char *element, t_info *info)
-// {
-// 	int 	i;
-// 	int		check_for_letters;
-// 	int		start;
-// 	int		end;
-// 	int		coma;
-// 	char	identifier_RGB;
-// 	char	*RGB;
-
-// 	i = 0;
-// 	coma = 0;
-// 	check_for_letters = 0;
-// 	while (element[i])
-// 	{
-// 		while (element[i] != 'F' && element[i] != 'C')
-// 		{
-// 			check_for_letters++;
-// 			i++;
-// 		}
-// 		identifier_RGB = element[i];
-// 		while (element[i] && (!ft_isdigit(element[i])))
-// 		{
-// 			check_for_letters++;
-// 			i++;
-// 		}
-// 		start = i;
-// 		while (element[check_for_letters])
-// 		{
-// 			if (ft_isalpha(element[check_for_letters]))
-// 				return (FALSE);
-// 			check_for_letters++;
-// 		}
-// 		if(!check_if_numbers_are_correct_size1(&element[start]))
-// 			return (FALSE);
-// 		while (element[i] && (ft_isdigit(element[i]) || element[i] == ',') && coma <= 2)
-// 		{
-// 			if (element[i] == ',')
-// 				coma += 1;
-// 			i++;
-// 		}
-// 		end = i;
-// 		RGB = ft_substr(element, start, end - start);
-// 		put_each_RGB_in_place_in_struct(identifier_RGB, RGB, info);
-// 		return (TRUE);
-// 	}
-// 	return (FALSE);
-// }
 
 int check_for_correct_path(char *element, t_info *info)
 {
