@@ -95,11 +95,9 @@ int	categorize_elements(char **elements, t_info *info)
 	After that I will make a function that first checks to see if the RGB numbers are correct and then also puts them
 	into their respective integer inside of the struct.*/
 	int i;
-	int	j;
 	char	identifier;
 
 	i = 0;
-	j = 0;
 	while (elements[i])
 	{
 		identifier = check_identifier(elements[i]);
@@ -130,9 +128,9 @@ int check_for_correct_RGB(char *element, t_info *info, char identifier)
 	char *set = "FC 	";
 	char *letse;
 	char **nums;
-	int  *real_ints;
+	//int  *real_ints;
 	
-	real_ints = malloc(sizeof(int) * 4);
+	//real_ints = malloc(sizeof(int) * 4);
 	i = 0;
 	letse = ft_strtrim(element, set);
 	while (letse[i])
