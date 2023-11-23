@@ -45,7 +45,6 @@ int check_if_numbers_are_correct_size1(char *start)
     if (!check_if_numbers_are_correct_size2 (&start[i]))
         return (FALSE);
     return (TRUE);
-    
 }
 
 char check_identifier(char *element)
