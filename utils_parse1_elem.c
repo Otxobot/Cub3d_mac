@@ -76,18 +76,3 @@ void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_st
 		info->ea_texture = path_to_save_in_struct;
 }
 
-// void	put_each_RGB_in_place_in_struct(char identifier_RGB, int *real_ints, t_info *info)
-// { CREO QUE NO VOY A USAR ESTA FUNCION
-// 	if (identifier_RGB == 'F')
-// 	{
-// 		info->f_color[0] = real_ints[0];
-// 		info->f_color[1] = real_ints[1];
-// 		info->f_color[2] = real_ints[2];
-// 	}
-// 	else if (identifier_RGB == 'C')
-// 	{
-// 		info->c_color[0] = real_ints[0];
-// 		info->c_color[1] = real_ints[1];
-// 		info->c_color[2] = real_ints[2];
-// 	}
-// }

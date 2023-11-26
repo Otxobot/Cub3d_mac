@@ -12,14 +12,6 @@
 
 #include "cubed.h"
 
-/*
-Esta funcion tiene que coger el .cub y meter toda la informacion que hay dentro y compartimentarlo de manera correcta.
-Primero van las texturas de norte, sur, oeste y este. NO, SO, WE, EA son los identificadores que van antes de cada elemento.
-Segundo van dos colres RGB, el que va a estar en la parte del cielo y la que va a estar en la parte del suelo, dividido por el horizonte.
-Van a ser F (suelo) y C (techo). 
-Y finalmente va a ir el mapa, que por ahora es el mas dificil y el cual dejare para el final. 
-*/
-
 char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 {
 	int fd1;
@@ -69,9 +61,6 @@ char **extract_elements(char *file_path)
 
 int	check_if_all_elements(char **elements)
 {
-	/*I have to check and see if there is NO, SO, WE, EA, F and C in each line. 
-	For now i think it is good, it is still to be seen if these two functions won't cause any problems
-	or errors in the future. I'll leave this here to see.*/
 	int i;
 
 	i = 0;
@@ -90,32 +79,23 @@ int	check_if_all_elements(char **elements)
 
 int	categorize_elements(char **elements, t_info *info)
 {
-	/*In this function I have to check the route of each texture to see first if it is correct 
-	and put them in their char * in the structure,
-	After that I will make a function that first checks to see if the RGB numbers are correct and then also puts them
-	into their respective integer inside of the struct.*/
 	int i;
 	char	identifier;
 
 	i = 0;
+	check_if_map_is_last(elements);
 	while (elements[i])
 	{
 		identifier = check_identifier(elements[i]);
 		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
 		{
 			if (!check_for_correct_path(elements[i], info))
-			{
-				printf("Error\nOne of the paths is incorrect!\n");
-				return (FALSE);
-			}
+				return (printf("Error\nOne of the paths is incorrect!\n"), FALSE);
 		}
 		else if (identifier == 'F'  || identifier == 'C')
 		{
 			if (!check_for_correct_RGB(elements[i], info, identifier))
-			{
-				printf("Error\nOne of RGBs is incorrect!\n");
-				return (FALSE);
-			}
+				return (printf("Error\nOne of RGBs is incorrect!\n"), FALSE);
 		}
 		i++;
 	}
@@ -128,9 +108,7 @@ int check_for_correct_RGB(char *element, t_info *info, char identifier)
 	char *set = "FC 	";
 	char *letse;
 	char **nums;
-	//int  *real_ints;
-	
-	//real_ints = malloc(sizeof(int) * 4);
+
 	i = 0;
 	letse = ft_strtrim(element, set);
 	while (letse[i])
