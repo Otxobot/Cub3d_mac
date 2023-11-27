@@ -56,11 +56,11 @@ int		check_if_numbers_are_correct_size2 (char *start);
 char	check_identifier(char *element);
 int		RGB_atois(char identifier, char **nums, t_info *info);
 int		termina_con_xpm(const char *cadena);
-int		check_for_map(char *string);
 //----------------free:-----------------------
 void	free_things_inside_info_struct(t_info info);
 
 //============PARSE_MAP:=============================
+int		check_for_map(char **elements_with_map);
 
 
 #endif

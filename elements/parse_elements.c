@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cubed.h"
+#include "../cubed.h"
 
 char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 {
@@ -63,7 +63,6 @@ int	check_if_all_elements(char **elements)
 {
 	int i;
 	int	all_elements_done;
-	int line = 0;
 
 	all_elements_done = 0;
 	i = 0;

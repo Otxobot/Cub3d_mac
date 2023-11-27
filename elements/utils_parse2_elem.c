@@ -1,4 +1,4 @@
-#include "cubed.h"
+#include "../cubed.h"
 
 int check_if_numbers_are_correct_size2(char *start)
 {
