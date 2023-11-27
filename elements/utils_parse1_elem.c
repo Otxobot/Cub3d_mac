@@ -47,7 +47,7 @@ int check_for_NOSOWEEAFC(char *string)
 	int i;
 
 	i = 0;
-	while (string[i] && string[i] == ' ')
+	while (string[i] && (string[i] == ' ' || string[i] == '	'))
 		i++;
 	if ((string[i] == 'N' && string[i + 1] == 'O') && (string[i + 2] == ' ' || string[i + 2] == '	'))
 		return (TRUE);

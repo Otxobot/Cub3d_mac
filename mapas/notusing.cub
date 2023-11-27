@@ -1,11 +1,3 @@
-EA ./ruta_a_la_textura_EA.xpm
-WE ./ruta_a_la_textura_WE.xpm
-NO ./ruta_a_la_textura_NO.xpm
-SO ./ruta_a_la_textura_SO.xpm
-
-F 123, 123, 12
-C 255, 123, 12 
-
         1111111111111111111111111
         1000000000110000000000001
         1011000001110000000000001

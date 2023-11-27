@@ -62,16 +62,22 @@ char **extract_elements(char *file_path)
 int	check_if_all_elements(char **elements)
 {
 	int i;
+	int	all_elements_done;
+	int line = 0;
 
+	all_elements_done = 0;
 	i = 0;
 	while (elements[i])
 	{
+		if (all_elements_done == 6)
+			break;
 		if (!check_for_NOSOWEEAFC(elements[i]))
 		{
 			printf("Error\nDidn't find one of the elements\n");
 			ft_double_free (elements);
 			return (FALSE);
 		}
+		all_elements_done++;
 		i++;
 	}
 	return (TRUE);
@@ -81,11 +87,14 @@ int	categorize_elements(char **elements, t_info *info)
 {
 	int i;
 	char	identifier;
+	int		all_elements_done;
 
 	i = 0;
-	check_if_map_is_last(elements);
+	all_elements_done = 0;
 	while (elements[i])
 	{
+		if (all_elements_done == 6)
+			break;
 		identifier = check_identifier(elements[i]);
 		if (identifier == 'N' || identifier == 'E' || identifier == 'S' || identifier == 'W')
 		{
@@ -98,6 +107,7 @@ int	categorize_elements(char **elements, t_info *info)
 				return (printf("Error\nOne of RGBs is incorrect!\n"), FALSE);
 		}
 		i++;
+		all_elements_done++;
 	}
 	return (TRUE);
 }

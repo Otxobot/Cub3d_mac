@@ -26,6 +26,8 @@ int main(int ac, char **av)
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
 			return (1);
+		// if (!check_for_map(elements_without_empty_lines))
+		// 	return (1);
 		if (!categorize_elements(elements_without_empty_lines, &info))
 			return (1);
 		//parse_map();
