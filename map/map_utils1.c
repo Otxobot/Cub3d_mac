@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/28 14:20:42 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:41:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,27 @@ int check_characters(char **map)
 		a++;
 	}
 	return (TRUE);
+}
+
+int check_how_many_tabs(char **map)
+{
+	int tab_count;
+	int a;
+	int b;
+
+	tab_count = 0;
+	a = 0;
+	b = 0;
+	while (map[a])
+	{
+		b = 0;
+		while (map[a][b])
+		{
+			if (map[a][b] == 9)
+				tab_count++;
+			b++;	
+		}
+		a++;
+	}
+	return (tab_count);
 }
