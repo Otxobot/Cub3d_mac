@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 19:12:03 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:01:34 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int main(int ac, char **av)
 			return (1);
 		if (!categorize_elements(elements_without_empty_lines, &info))
 			return (1);
-		if (!check_for_map(elements_without_empty_lines))
+		if (!parse_map(elements_without_empty_lines))
+		{
+			printf("map parse went bad: !!!unsuccessfull!\n");
 			return (1);
-		//parse_map();
+		}
 		//free_things_inside_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
 		printf("Exiting the program successfully!\n");

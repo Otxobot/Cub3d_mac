@@ -1,38 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
+/*   Updated: 2023/11/28 14:16:27 by abasante         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../cubed.h"
 
-int check_for_map(char **elements_with_map)
-{
 	/*CREO que las funciones de antes no permiten que entre elementos pasase un trozo de mapa,
 	por eso empiezo con un bucle de i < 6 para saltar los elementos y empezar a mirar el mapa
 	lo digo con bastante certeza pero bueno, lo dejo aqui por que esta por ver aun.*/
-	int i;
-	int j;
-	int a;
-	int ph;
+
+int parse_map(char **elements_with_map_maybe)
+{
 	char **map;
-	
-	j = 0;
-	i = 0;
-	a = 0;
-	while (i < 6)
-		i++;
-	ph = i;
-	while (elements_with_map[i])
+
+	map = check_for_map(elements_with_map_maybe);
+	if (map[0] == NULL)
 	{
-		j++;
-		i++;
+		printf("There is no map\n");
+		ft_double_free (map);
+		return (FALSE);
 	}
-	map = malloc(sizeof(char *) * (j + 1));
-	while (elements_with_map[ph])
+	else
 	{
-		map[a] = elements_with_map[ph];
-		a++;
-		ph++;
+		printf("we have a map\nvamos a ver si esta bien...\n");
+		if (!check_if_map_correct(map))
+			return (FALSE);
+		return (TRUE);
 	}
-	map[a] = NULL;
-	int b = 0;
-	while (map[b])
-		printf("map:%s\n", map[b++]);
+}
+
+int check_if_map_correct(char **map)
+{
+	if (!check_characters(map))
+		return (FALSE);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 19:11:36 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:16:13 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,12 @@ int		termina_con_xpm(const char *cadena);
 void	free_things_inside_info_struct(t_info info);
 
 //============PARSE_MAP:=============================
-int		check_for_map(char **elements_with_map);
+int		parse_map(char **elements_with_map_maybe);
+int		check_if_map_correct(char **map);
+
+//-----------map_utils1:---------------------------
+char	**check_for_map(char **elements_with_map);
+int		check_characters(char **map);
 
 
 #endif

@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/11/22 18:26:44 by abasante         ###   ########.fr        #
+#    Updated: 2023/11/28 13:36:13 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC = cub3d.c \
 	elements/utils_parse2_elem.c \
 	elements/parse_elements.c \
 	map/parse_map.c \
+	map/map_utils1.c \
 	libft/get_next_line.c \
 	free.c \
 
