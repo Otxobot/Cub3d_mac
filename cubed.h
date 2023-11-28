@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/28 15:39:38 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:21:07 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		check_if_map_correct(char **map);
 char	**check_for_map(char **elements_with_map);
 int		check_characters(char **map);
 int		check_how_many_tabs(char **map);
+char	**replace_tabs_with_spaces(char **map_with_tabs);
+int		check_how_many_tabs_in_a_line(char *line);
 
 
 #endif

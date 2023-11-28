@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/28 15:45:33 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:12:05 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,21 @@ int parse_map(char **elements_with_map_maybe)
 int check_if_map_correct(char **map)
 {
 	int		tab_count;
-	char	**map_witout_tabs;	
+	char	**map_without_tabs;
 
 	tab_count = 0;
 	if (!check_characters(map))
 		return (FALSE);
 	tab_count = check_how_many_tabs(map);
-	printf("tab_count:%d\n", tab_count);
 	if (tab_count > 0)
-		map_witout_tabs = replace_tabs_with_spaces(map);
+	{
+		map_without_tabs = replace_tabs_with_spaces(map);
+		int a = 0;
+		int b = 0;
+		while (map_without_tabs[a] && map_without_tabs[a][b] != '	')
+			printf("%s", map_without_tabs[a++]);
+	}
+	else
+		printf("THIS MAP HAS NO TABS ALREADY\n");
 	return (TRUE);
 }
