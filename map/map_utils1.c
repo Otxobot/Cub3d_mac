@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/28 18:10:42 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:34:18 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ char **replace_tabs_with_spaces(char **map_with_tabs)
 	while (map_with_tabs[i])
 	{
 		tabs_in_line = check_how_many_tabs_in_a_line(map_with_tabs[i]);
-		printf("TABS IN LINE:%d\n", tabs_in_line);
 		if (tabs_in_line > 0)
 		{
 			map_without_tabs[a] = malloc(sizeof(char) * (ft_strlen(map_with_tabs[i]) + (tabs_in_line*3) + 1));
