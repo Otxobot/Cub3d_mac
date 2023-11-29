@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 17:28:17 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:48:03 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ char **check_for_map(char **elements_with_map)
 		i++;
 	}
 	map = malloc(sizeof(char *) * (j + 1));
-	int h = 0;
 	while (elements_with_map[ph])
 	{
-		printf("%d->%s", h++, elements_with_map[ph]);
 		if (empty_line(elements_with_map[ph]))
 		{
 			if (see_if_there_is_no_more_map(&elements_with_map[ph]))
@@ -102,7 +100,6 @@ int check_how_many_tabs(char **map)
 
 	tab_count = 0;
 	a = 0;
-	b = 0;
 	while (map[a])
 	{
 		b = 0;

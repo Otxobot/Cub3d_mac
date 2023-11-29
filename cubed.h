@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 16:57:35 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:34:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 #define TRUE 1
 #define FALSE 0
+#define TAB_SIZE 4
 
 typedef struct s_info 
 {

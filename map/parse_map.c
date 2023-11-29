@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 17:22:28 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:47:18 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,9 @@ int check_if_map_correct(char **map)
 	if (!check_characters(map))
 		return (FALSE);
 	tab_count = check_how_many_tabs(map);
-	// int a = 0;
-	// while (map[a])
-	// 	printf("%s", map[a++]);
 	if (tab_count > 0)
 		map_without_tabs = replace_tabs_with_spaces(map);
 	else
 		printf("THIS MAP HAS NO TABS ALREADY\n");
 	return (TRUE);
 }
-
-
-//int 
