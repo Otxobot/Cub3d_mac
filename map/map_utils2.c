@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 19:26:10 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:48:46 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int check_if_walls_closed(char **map)
 
 	int i;	//row
 	int j;	//column
-	
+
 	i = 0;
 	while (map[i])
 	{
@@ -44,7 +44,7 @@ int check_if_walls_closed(char **map)
 		{
 			if (map[i][j] == '0')
 			{
-				if (map[i][j + 1] == ' ' || map[i][j + 1] == '\t' || map[i][j - 1] == ' ' || map[i][j - 1] == '\t' || map[i + 1][j] == ' ' || map[i + 1][j] == '\t' || map[i - 1][j] == ' ' || map[i - 1][j] == '\t')
+				if (map[i][j] && (map[i][j + 1] == ' ' || map[i][j + 1] == '\t' || map[i][j - 1] == ' ' || map[i][j - 1] == '\t' || map[i + 1][j] == ' ' || map[i + 1][j] == '\t' || map[i - 1][j] == ' ' || map[i - 1][j] == '\t'))
 					return (FALSE);
 			}
 			j++;
