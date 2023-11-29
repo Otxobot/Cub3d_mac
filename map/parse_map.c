@@ -6,15 +6,15 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 17:47:18 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:50:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-	/*CREO que las funciones de antes no permiten que entre elementos pasase un trozo de mapa,
-	por eso empiezo con un bucle de i < 6 para saltar los elementos y empezar a mirar el mapa
-	lo digo con bastante certeza pero bueno, lo dejo aqui por que esta por ver aun.*/
+/*CREO que las funciones de antes no permiten que entre elementos pasase un trozo de mapa,
+por eso empiezo con un bucle de i < 6 para saltar los elementos y empezar a mirar el mapa
+lo digo con bastante certeza pero bueno, lo dejo aqui por que esta por ver aun.*/
 
 int parse_map(char **elements_with_map_maybe)
 {
@@ -22,18 +22,13 @@ int parse_map(char **elements_with_map_maybe)
 
 	map = check_for_map(elements_with_map_maybe);
 	if (map == NULL)
-	{
-		printf("Error\nThere is no map\n");
 		return (FALSE);
-	}
 	else
 	{
-		//check_if_map_correct checks to see if there are any tabs and replaces them with 4 spaces,
-		// and also checks to see if the characters are only the ones that should be there.
 		if (!check_if_map_correct(map))
 			return (FALSE);
-		// else if()
-		// 	return (FALSE);
+		else if(!check_if_walls_closed(map))
+			return (FALSE);
 		return (TRUE);
 	}
 }
