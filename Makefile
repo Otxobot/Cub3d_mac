@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/11/28 19:24:04 by abasante         ###   ########.fr        #
+#    Updated: 2023/11/29 16:53:43 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = cub3d.c \
 	elements/parse_elements.c \
 	map/parse_map.c \
 	map/map_utils1.c \
+	map/map_utils2.c \
 	libft/get_next_line.c \
 	free.c \
 
@@ -29,7 +30,7 @@ LIBS = -L./libft -lft #-Lmlx -lmlx  -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME)
 

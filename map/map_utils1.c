@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/28 18:34:18 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:28:17 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ char **check_for_map(char **elements_with_map)
 	a = 0;
 	while (i < 6)
 		i++;
+	while (empty_line(elements_with_map[i]))
+		i++;
 	ph = i;
 	while (elements_with_map[i])
 	{
@@ -32,9 +34,25 @@ char **check_for_map(char **elements_with_map)
 		i++;
 	}
 	map = malloc(sizeof(char *) * (j + 1));
+	int h = 0;
 	while (elements_with_map[ph])
 	{
-		map[a] = elements_with_map[ph];
+		printf("%d->%s", h++, elements_with_map[ph]);
+		if (empty_line(elements_with_map[ph]))
+		{
+			if (see_if_there_is_no_more_map(&elements_with_map[ph]))
+			{
+				printf("There is no more map, so the map is correct\n");
+				break;
+			}
+			else
+			{
+				printf("Error\nThere is more map after empty lines\n");
+				map[a] = NULL;
+				return (ft_double_free(map));
+			}
+		}
+		map[a] = ft_strdup(elements_with_map[ph]);
 		a++;
 		ph++;
 	}
@@ -46,9 +64,11 @@ int check_characters(char **map)
 {
 	int a;
 	int b;
+	int player_is_there;
 
 	a = 0;
 	b = 0;
+	player_is_there = 0;
 	while (map[a])
 	{
 		b = 0;
@@ -58,12 +78,19 @@ int check_characters(char **map)
 			|| map[a][b] == 'N' || map[a][b] == 'S' \
 			|| map[a][b] == 'E' || map[a][b] == 'W' \
 			|| map[a][b] == 32 || map[a][b] == 9 || map[a][b] == '\n')
+			{
+				if (map[a][b] == 'N' || map[a][b] == 'S' || \
+				map[a][b] == 'E' || map[a][b] == 'W')
+					player_is_there = 1;
 				b++;
+			}
 			else
 				return (FALSE);
 		}
 		a++;
 	}
+	if (player_is_there == 0)
+		return (FALSE);
 	return (TRUE);
 }
 

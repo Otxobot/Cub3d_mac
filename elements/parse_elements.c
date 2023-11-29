@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/23 19:01:47 by abasante         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:34:22 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,22 @@ char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 {
 	int fd1;
 	int i;
+	int elements;
 	int nada;
 
 	nada = 0;
 	fd1 = open(file_path, O_RDONLY);
 	i = 0;
+	elements = 0;
 	while ((line = get_next_line(fd1)) != NULL)
 	{
-		if (empty_line(line))
+		if (check_for_NOSOWEEAFC(line))
+			elements++;
+		if (elements != 6)
+		{
+			nada++;
+		}
+		if (elements != 6 && empty_line(line))
 			nada++;
 		else
 			lines_ws[i++] = line;
@@ -37,6 +45,7 @@ char **extract_elements(char *file_path)
 	int fd;
 	int a;
 	int nada;
+	int elements;
 	char **lines_ws;
 	char *line;
 
@@ -45,17 +54,25 @@ char **extract_elements(char *file_path)
 		return (NULL);
 	a = 0;
 	nada = 0;
+	elements = 0;
 	lines_ws = NULL;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (empty_line(line))
+		if (check_for_NOSOWEEAFC(line))
+			elements++;
+		if (elements != 6)
+		{
+			if (empty_line(line))
+				nada++;
+		}
+		if (elements != 6 && empty_line(line))
 			nada++;
 		else
 			a++;
 	}
 	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
-	no_empty_lines(file_path, lines_ws, line);
+	lines_ws = no_empty_lines(file_path, lines_ws, line);
 	return (lines_ws);
 }
 
