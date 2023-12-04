@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 19:27:32 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:14:31 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	free_things_inside_info_struct(t_info info);
 
 //============PARSE_MAP:=============================
 int		parse_map(char **elements_with_map_maybe);
-int		check_if_map_correct(char **map);
+char 	**check_if_map_correct(char **map);
 
 //-----------map_utils1:---------------------------
 char	**check_for_map(char **elements_with_map);
@@ -75,6 +75,7 @@ int		check_how_many_tabs_in_a_line(char *line);
 //-----------map_utils2:---------------------------
 int		see_if_there_is_no_more_map(char **string);
 int		check_if_walls_closed(char **map);
+void	flood_fill(int x, int y, int prevC, int newC, char **map);
 
 
 #endif
