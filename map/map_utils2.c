@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/04 14:52:21 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:22:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int see_if_there_is_no_more_map(char **string)
 
 int check_if_walls_closed(char **map)
 {
-	int i;	//row
-	int j;	//column
+	int i;
+	int j;
 
 	i = 0;
 	j = 0;
@@ -51,33 +51,24 @@ int check_if_walls_closed(char **map)
 		}
 		i++;
 	}
-	printf("===============CHECKING IF WALLS ARE CLOSED:===============\n");
 	return (TRUE);
 }
 
-// void	 flood_fill(char **map)
-// {
-// 	printf("entro al flood_fill\n");
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	j = 0;
-	
-	
-// }
-
 void	flood_fill(int x, int y, char **map)
 {
-    // Si la posición está fuera de los límites del mapa, retorna
-    if (map[x][y] != '0' || map[x + 1][y] == ' ' || map[x][y + 1] == ' ' || map[x][y + 1] == '\n')
+	int h;
+	int w;
+
+	h = 0;
+	w = 0;
+	if (map[x][y] != '0' || map[x][y + 1] == '\n')
 	{
-        return;
+		return;
 	}
     if(map[x][y] != 'F')
 		map[x][y] = 'F';
 
-    // Llama a la función para las posiciones arriba, abajo, a la izquierda y a la derecha
+    w = ft_strlen(map[x]);
     flood_fill(x+1, y, map);
     flood_fill(x-1, y, map);
     flood_fill(x, y+1, map);
