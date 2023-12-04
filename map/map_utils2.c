@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/04 13:14:16 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:52:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ int check_if_walls_closed(char **map)
 		}
 		if (map[i][j] == '0')
 		{
-			flood_fill(i, j, '0', '0', map);
+			flood_fill(i, j, map);
+			int a = 0;
+			while (map[a])
+				printf("%s", map[a++]);
 			break;
 		}
 		i++;
@@ -64,22 +67,19 @@ int check_if_walls_closed(char **map)
 	
 // }
 
-void	flood_fill(int x, int y, int prevC, int newC, char **map)
+void	flood_fill(int x, int y, char **map)
 {
     // Si la posición está fuera de los límites del mapa, retorna
-    if(x < 0 || x == '\n' || y < 0 || y == ' ')
+    if (map[x][y] != '0' || map[x + 1][y] == ' ' || map[x][y + 1] == ' ' || map[x][y + 1] == '\n')
+	{
         return;
-
-    // Si el valor en la posición no es el valor objetivo, retorna
-    if(map[x][y] != prevC)
-        return;
-
-    // Cambia el valor en la posición al valor de reemplazo
-    map[x][y] = newC;
+	}
+    if(map[x][y] != 'F')
+		map[x][y] = 'F';
 
     // Llama a la función para las posiciones arriba, abajo, a la izquierda y a la derecha
-    flood_fill(x+1, y, prevC, newC, map);
-    flood_fill(x-1, y, prevC, newC, map);
-    flood_fill(x, y+1, prevC, newC, map);
-    flood_fill(x, y-1, prevC, newC, map);
+    flood_fill(x+1, y, map);
+    flood_fill(x-1, y, map);
+    flood_fill(x, y+1, map);
+    flood_fill(x, y-1, map);
 }
