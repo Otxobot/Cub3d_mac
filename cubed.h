@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 15:23:29 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:44:09 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_info
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
-char	**no_empty_lines(char *file_path, char **lines_ws, char *line);
+char	**no_empty_lines(char *file_path, char **lines_ws);
 
 //------------checks:----------------------
 int		check_if_all_elements(char **elements);

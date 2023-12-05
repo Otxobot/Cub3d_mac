@@ -6,18 +6,19 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 17:40:12 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:51:25 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-char **no_empty_lines(char *file_path, char **lines_ws, char *line)
+char **no_empty_lines(char *file_path, char **lines_ws)
 {
 	int fd1;
 	int i;
 	int elements;
 	int nada;
+	char *line;
 
 	nada = 0;
 	fd1 = open(file_path, O_RDONLY);
@@ -36,8 +37,8 @@ char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 		else
 		{
 			lines_ws[i++] = line;
+			//free (line);
 		}
-		free (line);
 	}
 	lines_ws[i] = NULL;
 	return(lines_ws);
@@ -76,7 +77,7 @@ char **extract_elements(char *file_path)
 	}
 	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
-	lines_ws = no_empty_lines(file_path, lines_ws, line);
+	lines_ws = no_empty_lines(file_path, lines_ws);
 	return (lines_ws);
 }
 
