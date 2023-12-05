@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/04 14:33:19 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:03:27 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int		check_how_many_tabs_in_a_line(char *line);
 int		see_if_there_is_no_more_map(char **string);
 int		check_if_walls_closed(char **map);
 void	flood_fill(int x, int y, char **map);
-
+int		calc_longest_line(char **map);
 
 #endif

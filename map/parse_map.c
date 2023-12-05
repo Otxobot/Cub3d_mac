@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 10:10:32 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:43:11 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int parse_map(char **elements_with_map_maybe)
 		map_without_tabs = check_if_map_correct(map);
 		if (map_without_tabs == NULL)
 		{
-			printf("we will keep using map\n");
 			if (!check_if_walls_closed(map))
 				return (FALSE);
 		}
