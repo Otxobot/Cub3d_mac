@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 17:48:03 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:25:54 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ char **check_for_map(char **elements_with_map)
 		{
 			if (see_if_there_is_no_more_map(&elements_with_map[ph]))
 			{
-				printf("There is no more map, so the map is correct\n");
 				break;
 			}
 			else
 			{
-				printf("Error\nThere is more map after empty lines\n");
 				map[a] = NULL;
 				return (ft_double_free(map));
 			}
@@ -75,7 +73,7 @@ int check_characters(char **map)
 			if (map[a][b] == '1' || map[a][b] == '0' \
 			|| map[a][b] == 'N' || map[a][b] == 'S' \
 			|| map[a][b] == 'E' || map[a][b] == 'W' \
-			|| map[a][b] == 32 || map[a][b] == 9 || map[a][b] == '\n')
+			|| map[a][b] == '	' || map[a][b] == ' ' || map[a][b] == '\n')
 			{
 				if (map[a][b] == 'N' || map[a][b] == 'S' || \
 				map[a][b] == 'E' || map[a][b] == 'W')
