@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:07:32 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 13:38:27 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:37:27 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int check_if_walls_closed(char **map)
 	int		i;
 	int		j;
 	int		longest_line_size;
+	int		amount_of_lines;
 	char	**map_for_flood_fill;
 
 	longest_line_size = calc_longest_line(map);
-	map_for_flood_fill = create_map_for_flood_fill(map, longest_line_size);
 	printf("longest_line_size:%d\n", longest_line_size);
+	amount_of_lines = calc_amount_of_lines(map);
+	printf("amoutn_of_lines:%d\n", amount_of_lines);
+	map_for_flood_fill = create_map_for_flood_fill(map, longest_line_size, amount_of_lines);
 	i = 0;
 	j = 0;
 	while (map[i])
@@ -39,9 +42,9 @@ int check_if_walls_closed(char **map)
 		if (map[i][j] == '0')
 		{
 			flood_fill(i, j, map);
-			int a = 0;
-			while (map[a])
-				printf("%s", map[a++]);
+			// int a = 0;
+			// while (map[a])
+			// 	printf("%s", map[a++]);
 			break;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 16:34:22 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:40:12 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ char **no_empty_lines(char *file_path, char **lines_ws, char *line)
 		if (elements != 6 && empty_line(line))
 			nada++;
 		else
+		{
 			lines_ws[i++] = line;
+		}
+		free (line);
 	}
 	lines_ws[i] = NULL;
 	return(lines_ws);
@@ -69,6 +72,7 @@ char **extract_elements(char *file_path)
 			nada++;
 		else
 			a++;
+		free (line);
 	}
 	lines_ws = malloc(sizeof(char *) * (a + 1));
 	close(fd);
@@ -185,6 +189,7 @@ int check_for_correct_path(char *element, t_info *info)
 		|| path_to_save_in_struct[2] == '\0')
 			return (FALSE);
 		put_each_route_in_place_in_struct(identifier, path_to_save_in_struct, info);
+		free (path_to_save_in_struct);
 		return (TRUE);
 	}
 	return (FALSE);
