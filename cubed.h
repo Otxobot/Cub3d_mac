@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/04 14:33:19 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:23:07 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ typedef struct s_info
 	int		f_color[3];
 	int		c_color[3];
 }			t_info;
+
+typedef struct s_main
+{
+	void		*mlx;
+	void		*window;
+}	t_main;
 
 //=============PARSE_ELEMENTS:======================
 char	**extract_elements(char *file_path);

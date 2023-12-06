@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/04 17:15:37 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:06:14 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	flood_fill(int x, int y, char **map)
 	}
     if(map[x][y] != 'F')
 		map[x][y] = 'F';
-
     w = ft_strlen(map[x]);
     flood_fill(x+1, y, map);
     flood_fill(x-1, y, map);
