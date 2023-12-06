@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/06 13:24:38 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:16:32 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,31 @@ int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	return (0);
+}
+
+int obtener_color(int red, int green, int blue)
+{
+    return (red << 16) | (green << 8) | blue;
+}
+
+void paint_fc(t_main *datos, t_info info)
+{
+    int i, j;
+
+    j = 0;
+    while (j < SCREENHEIGHT)
+    {
+        i = 0;
+        while (i < SCREENWIDTH)
+        {
+            if (j < SCREENHEIGHT / 2)
+                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(info.c_color[0], info.c_color[1], info.c_color[2]));
+            else
+                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(info.f_color[0], info.f_color[1], info.f_color[2]));
+            i++;
+        }
+        j++;
+    }
 }
 
 int main(int ac, char **av)
@@ -44,7 +69,8 @@ int main(int ac, char **av)
 			return (printf("Error\nmap parse incorrect"), 1);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
-		//mlx_hook(datos.window, 17, 0, handle_destroy, &datos);
+		paint_fc(&datos, info);
+		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 
