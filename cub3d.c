@@ -6,11 +6,14 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/06 13:02:58 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:24:38 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubed.h"
+
+#define SCREENWIDTH 640
+#define SCREENHEIGHT 480
 
 int	handle_destroy(t_main *datos)
 {
@@ -39,10 +42,9 @@ int main(int ac, char **av)
 			return (printf("Error\ncategorize elements\n"), 1);
 		if (!parse_map(elements_without_empty_lines))
 			return (printf("Error\nmap parse incorrect"), 1);
-
 		datos.mlx = mlx_init();
-		datos.window = mlx_new_window(datos.mlx, 640, 480, "cub3d");
-		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
+		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
+		//mlx_hook(datos.window, 17, 0, handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 

@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/06 12:52:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:21:29 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_main
 {
 	void		*mlx;
 	void		*window;
+	struct s_info	info;
 }	t_main;
 
 //=============PARSE_ELEMENTS:======================
