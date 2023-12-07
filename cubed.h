@@ -81,4 +81,8 @@ int		calc_longest_line(char **map);
 int		calc_amount_of_lines(char **map);
 char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_of_lines);
 
+
+//-----------map_utils3:---------------------------
+char **allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill);
+
 #endif

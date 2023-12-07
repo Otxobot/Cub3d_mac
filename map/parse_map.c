@@ -22,14 +22,10 @@ int parse_map(char **elements_with_map_maybe)
 	char **map_without_tabs;
 
 	map = check_for_map(elements_with_map_maybe);
-	int a = 0;
-	while (map[a])
-		printf("%s", map[a++]);
-	printf("============================================================\n");
-	if (!check_characters(map))
-		return (free(map), FALSE);
 	if (map == NULL)
 		return (FALSE);
+	if (!check_characters(map))
+		return (free(map), FALSE);
 	else
 	{
 		map_without_tabs = check_if_map_correct(map);

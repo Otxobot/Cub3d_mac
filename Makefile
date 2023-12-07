@@ -21,6 +21,7 @@ SRC = cub3d.c \
 	map/parse_map.c \
 	map/map_utils1.c \
 	map/map_utils2.c \
+	map/map_utils3.c \
 	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
@@ -31,7 +32,7 @@ LIBS = -L./libft -lft #-Lmlx -lmlx  -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
 all: $(NAME)
 

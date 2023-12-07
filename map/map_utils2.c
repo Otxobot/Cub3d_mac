@@ -55,26 +55,14 @@ int calc_amount_of_lines(char **map)
 
 char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_of_lines)
 {
-	int i;
-	int j;
-	char **map_for_flood_fill;
+	int a = 0;
+	while (map[a])
+		printf("%s", map[a++]);
 
-	map_for_flood_fill = malloc(sizeof(char *) * (amount_of_lines + 2));
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		map_for_flood_fill[i] = malloc(sizeof(char) * (longest_line_size + 3));
-		ft_memset(map_for_flood_fill[i], '$', longest_line_size + 3);
-		map_for_flood_fill[i][longest_line_size + 2] = '\0';
-		i++;
-	}
-	map_for_flood_fill[i] = NULL;
-	i = 0;
-	while (map_for_flood_fill[i] != NULL )
-	{
-		printf("%s\n", map_for_flood_fill[i++]);
-	}
+	char **map_for_flood_fill;
+	map_for_flood_fill = NULL;
+
+	map_for_flood_fill = allocate_and_initialize(longest_line_size, amount_of_lines, map_for_flood_fill);
 	// i = 0;
 	// j = 0;
 	// ii = 0;

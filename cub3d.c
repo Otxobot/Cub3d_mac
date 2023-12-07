@@ -25,11 +25,11 @@ int main(int ac, char **av)
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
 		if (!check_if_all_elements(elements_without_empty_lines))
-			return (printf("Error\ncheck_if_all_elements"), 1);
+			return (printf("Error\ncheck_if_all_elements\n"), 1);
 		if (!categorize_elements(elements_without_empty_lines, &info))
 			return (printf("Error\ncategorize elements\n"), 1);
 		if (!parse_map(elements_without_empty_lines))
-			return (printf("Error\nmap parse incorrect"), 1);
+			return (printf("Error\nmap parse incorrect\n"), 1);
 		//free_things_inside_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
 		printf("Exiting the program successfully!\n");
