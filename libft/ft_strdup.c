@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 11:36:50 by abasante          #+#    #+#             */
-/*   Updated: 2022/09/19 18:00:07 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:02:28 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strdup(const char *s1)
 		s1_new[cont] = s1[cont];
 		cont++;
 	}
-	s1_new[cont] = s1[cont];
+	s1_new[cont] = '\0';
 	return (s1_new);
 }
 

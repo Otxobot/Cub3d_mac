@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:07:32 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/07 10:15:03 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:15:08 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int check_if_walls_closed(char **map)
 	
 	Also the spaces that aren't spaces yet, 
 	i want to make a good rectangle out of the map so that it is easier to do flood fill.*/
-	int		i;
-	int		j;
 	int		longest_line_size;
 	int		amount_of_lines;
 	char	**map_for_flood_fill;
@@ -29,7 +27,10 @@ int check_if_walls_closed(char **map)
 	printf("longest_line_size:%d\n", longest_line_size);
 	amount_of_lines = calc_amount_of_lines(map);
 	printf("amount_of_lines:%d\n", amount_of_lines);
-	map_for_flood_fill = create_map_for_flood_fill(map, longest_line_size, amount_of_lines);
+		map_for_flood_fill = create_map_for_flood_fill(map, longest_line_size, amount_of_lines);
+	int		i;
+	int		j;
+
 	i = 0;
 	j = 0;
 	while (map[i])
