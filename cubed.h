@@ -84,5 +84,6 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 
 //-----------map_utils3:---------------------------
 char **allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill);
+void sorround_border(char **map_for_flood_fill, int longest_line_size, int amount_of_lines);
 
 #endif

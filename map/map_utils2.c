@@ -59,58 +59,15 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 	while (map[a])
 		printf("%s", map[a++]);
 
-	int j;
-	int i;
-	// int ii;
-	// int jj;
-	i = 0;
 	char **map_for_flood_fill;
 	map_for_flood_fill = NULL;
 
 	map_for_flood_fill = allocate_and_initialize(longest_line_size, amount_of_lines, map_for_flood_fill);
-
-	while (map_for_flood_fill[i])
-		printf("%s\n", map_for_flood_fill[i++]);
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i][j])
-	{
-		if (map_for_flood_fill[i][j] == '\n')
-			j++;
-		else
-			map_for_flood_fill[i][j++] = '*';
-	}
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i])
-	{
-		if (map_for_flood_fill[i][0])
-			map_for_flood_fill[i][0] = '*';
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i])
-	{
-		j = 0;
-		while (map_for_flood_fill[i][j])
-		{
-			if (j == longest_line_size + 1)
-				map_for_flood_fill[i][j] = '*';
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i][j])
-	{
-		map_for_flood_fill[amount_of_lines + 1][j] = '*';
-		j++;
-	}
+	sorround_border(map_for_flood_fill, longest_line_size, amount_of_lines);
 	printf("==========================================\n");
+	int i;
 	i = 0;
 	while (map_for_flood_fill[i])
-		printf("%s\n", map_for_flood_fill[i++]);
+		printf("->%s\n", map_for_flood_fill[i++]);
 	return (map_for_flood_fill);
 }
