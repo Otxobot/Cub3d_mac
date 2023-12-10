@@ -101,6 +101,13 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 		}
 		i++;
 	}
+	i = 0;
+	j = 0;
+	while (map_for_flood_fill[i][j])
+	{
+		map_for_flood_fill[amount_of_lines + 1][j] = '*';
+		j++;
+	}
 	printf("==========================================\n");
 	i = 0;
 	while (map_for_flood_fill[i])
