@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/07 13:17:51 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 09:07:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 	int i;
 	i = 0;
 	while (map_for_flood_fill[i])
-		printf("->%s\n", map_for_flood_fill[i++]);
+		printf("%s\n", map_for_flood_fill[i++]);
 	return (map_for_flood_fill);
 }

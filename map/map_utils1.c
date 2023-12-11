@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 12:42:43 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 09:19:38 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ char **check_for_map(char **elements_with_map)
 	{
 		if (empty_line(elements_with_map[ph]))
 		{
+			printf("->%s", elements_with_map[ph]);
 			if (see_if_there_is_no_more_map(&elements_with_map[ph]))
 			{
 				break;
 			}
 			else
 			{
+				printf("deberia entrar aqui\n");
 				map[a] = NULL;
 				return (ft_double_free(map));
 			}

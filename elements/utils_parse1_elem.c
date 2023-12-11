@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/29 15:41:03 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 09:19:48 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	empty_line(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] == 32 || line[i] == 9 || line[i] == '\n')
+	while (line[i] && (line[i] == 32 || line[i] == 9 || line[i] == '\n'))
 		i++;
 	if (line[i] == '\0')
 		return (1);
