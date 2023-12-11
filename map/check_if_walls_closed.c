@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:07:32 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/07 13:15:08 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:09:54 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int check_if_walls_closed(char **map)
 	char	**map_for_flood_fill;
 
 	longest_line_size = calc_longest_line(map);
-	printf("longest_line_size:%d\n", longest_line_size);
 	amount_of_lines = calc_amount_of_lines(map);
-	printf("amount_of_lines:%d\n", amount_of_lines);
 	map_for_flood_fill = create_map_for_flood_fill(map, longest_line_size, amount_of_lines);
 	int		i;
 	int		j;
@@ -36,29 +34,27 @@ int check_if_walls_closed(char **map)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j] && (map[i][j] != '$'))
-		{
+		while (map_for_flood_fill[i][j] && ((map_for_flood_fill[i][j] != 'S') && \
+		(map_for_flood_fill[i][j] != 'N') && (map_for_flood_fill[i][j] != 'W') && (map_for_flood_fill[i][j] != 'E')))
 			j++;
-		}
-		if (map_for_flood_fill[i][j] == '$')
-		{
+		if (((map_for_flood_fill[i][j] == 'S') || \
+		(map_for_flood_fill[i][j] == 'N') || (map_for_flood_fill[i][j] == 'W') || (map_for_flood_fill[i][j] == 'E')))
 			flood_fill(i, j, map_for_flood_fill);
-			// int a = 0;
-			// while (map[a])
-			// 	printf("%s", map[a++]);
-			break;
-		}
 		i++;
 	}
+	if (!check_if_closed(map_for_flood_fill))
+		return (FALSE);
+	int a = 0;
+	while (map_for_flood_fill[a])
+		printf("%s\n", map_for_flood_fill[a++]);
 	return (TRUE);
 }
 
 void	flood_fill(int x, int y, char **map)
 {
-	if (map[x][y] != '0' || map[x + 1][y] == '*' || map[x][y + 1] == '*' || map[x - 1][y] == '*' || map[x][y - 1] == '*')
-	{
+	if ((map[x][y] != '0' && map[x][y] != 'S' && map[x][y] != 'W' && map[x][y] != 'N' && map[x][y] != 'E') || \
+	map[x + 1][y] == '*' || map[x][y + 1] == '*' || map[x - 1][y] == '*' || map[x][y - 1] == '*' || map[x][y] == '1')
 		return;
-	}
     if(map[x][y] != 'F')
 		map[x][y] = 'F';
 

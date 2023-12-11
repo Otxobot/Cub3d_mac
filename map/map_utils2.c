@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 16:53:22 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 09:07:47 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:04:36 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 
 	map_for_flood_fill = allocate_and_initialize(longest_line_size, amount_of_lines, map_for_flood_fill);
 	sorround_border(map_for_flood_fill, longest_line_size, amount_of_lines);
-	printf("==========================================\n");
+	map_inside_mffl(map, map_for_flood_fill);
 	int i;
 	i = 0;
 	while (map_for_flood_fill[i])

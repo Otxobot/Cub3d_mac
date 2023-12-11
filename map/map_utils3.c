@@ -8,9 +8,9 @@ char **allocate_and_initialize(int longest_line_size, int amount_of_lines, char 
 	i = 0;
 	while (i < amount_of_lines + 2)
 	{
-		map_for_flood_fill[i] = malloc(sizeof(char) * (longest_line_size + 3));
-		ft_memset(map_for_flood_fill[i], '$', longest_line_size + 3);
-		map_for_flood_fill[i][longest_line_size + 2] = '\0';
+		map_for_flood_fill[i] = malloc(sizeof(char) * (longest_line_size + 2));
+		ft_memset(map_for_flood_fill[i], '*', longest_line_size + 2);
+		map_for_flood_fill[i][longest_line_size + 1] = '\0';
 		i++;
 	}
 	map_for_flood_fill[i] = NULL;
@@ -59,4 +59,28 @@ void sorround_border(char **map_for_flood_fill, int longest_line_size, int amoun
 		map_for_flood_fill[amount_of_lines + 1][j] = '*';
 		j++;
 	}
+}
+
+void map_inside_mffl(char **map, char **map_for_flood_fill)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] != ' ' && map[x][y] != '\n')
+				map_for_flood_fill[x + 1][y + 1] = map[x][y];
+			y++;
+		}
+		x++;
+	}
+}
+
+int check_if_closed(char **map)
+{
+	
 }
