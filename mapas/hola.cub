@@ -7,9 +7,16 @@
 EA      ./ruta_a_la_textura_EA.xpm
 
 
-F 123, 123, 12
+F 0, 155,          148
 
 WE       ./ruta_a_la_textura_WE.xpm
+
+NO ./ruta_a_la_textura_NO.xpm
+SO 					./ruta_a_la_textura_SO.xpm
+
+
+
+C 120, 40, 140
 
 
 
