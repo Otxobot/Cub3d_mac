@@ -6,16 +6,24 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 12:08:39 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:15:53 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubed.h"
 
+#define SCREENWIDTH 640
+#define SCREENHEIGHT 480
+
 int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	return (0);
+}
+
+int obtener_color(int red, int green, int blue)
+{
+    return (red << 16) | (green << 8) | blue;
 }
 
 int main(int ac, char **av)
@@ -39,10 +47,10 @@ int main(int ac, char **av)
 			return (printf("Error\ncategorize elements\n"), 1);
 		if (!parse_map(elements_without_empty_lines))
 			return (printf("Error\nmap parse incorrect"), 1);
-
 		datos.mlx = mlx_init();
-		datos.window = mlx_new_window(datos.mlx, 500, 500, "cub3d");
-		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
+		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
+		//mlx_clear_window(datos.mlx, datos.window);
+		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 
