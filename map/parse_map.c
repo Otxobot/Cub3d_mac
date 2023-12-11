@@ -6,15 +6,11 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/07 13:16:29 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:33:15 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
-
-/*CREO que las funciones de antes no permiten que entre elementos pasase un trozo de mapa,
-por eso empiezo con un bucle de i < 6 para saltar los elementos y empezar a mirar el mapa
-lo digo con bastante certeza pero bueno, lo dejo aqui por que esta por ver aun.*/
 
 int parse_map(char **elements_with_map_maybe)
 {
@@ -33,14 +29,15 @@ int parse_map(char **elements_with_map_maybe)
 		{
 			if (!check_if_walls_closed(map))
 				return (free(map), FALSE);
+			return (TRUE);
 		}
 		else
 		{
 			if (!check_if_walls_closed(map_without_tabs))
 				return (free(map_without_tabs), FALSE);
+			return (TRUE);
 		}
-		ft_double_free (map);
-		return (TRUE);
+		return (ft_double_free (map), TRUE);
 	}
 }
 
