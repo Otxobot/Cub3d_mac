@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:07:32 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 11:09:54 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:36:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int check_if_walls_closed(char **map)
 			flood_fill(i, j, map_for_flood_fill);
 		i++;
 	}
-	if (!check_if_closed(map_for_flood_fill))
+	if (!check_if_closed(map_for_flood_fill, longest_line_size, amount_of_lines))
 		return (FALSE);
 	int a = 0;
 	while (map_for_flood_fill[a])
