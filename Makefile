@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/11 11:16:10 by mikferna         ###   ########.fr        #
+#    Updated: 2023/12/11 11:17:35 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRC = cub3d.c \
 	map/parse_map.c \
 	map/map_utils1.c \
 	map/map_utils2.c \
+	map/map_utils3.c \
+	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
 

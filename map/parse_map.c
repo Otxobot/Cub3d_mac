@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 10:10:32 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:16:29 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ int parse_map(char **elements_with_map_maybe)
 	char **map_without_tabs;
 
 	map = check_for_map(elements_with_map_maybe);
-	if (!check_characters(map))
-		return (FALSE);
 	if (map == NULL)
 		return (FALSE);
+	if (!check_characters(map))
+		return (free(map), FALSE);
 	else
 	{
 		map_without_tabs = check_if_map_correct(map);
 		if (map_without_tabs == NULL)
 		{
-			printf("we will keep using map\n");
 			if (!check_if_walls_closed(map))
-				return (FALSE);
+				return (free(map), FALSE);
 		}
 		else
 		{
 			if (!check_if_walls_closed(map_without_tabs))
-				return (FALSE);
+				return (free(map_without_tabs), FALSE);
 		}
+		ft_double_free (map);
 		return (TRUE);
 	}
 }
@@ -57,8 +57,23 @@ char  **check_if_map_correct(char **map)
 		return (map_without_tabs);
 	}
 	else
-	{
-		printf("THIS MAP HAS NO TABS ALREADY\n");
 		return (NULL);
+}
+
+char **set_null_terminator(char **map)
+{
+	int a = 0;
+	int b = 0;
+	while (map[a])
+	{
+		b = 0;
+		while (map[a][b])
+		{
+			if (map[a][b] == '\n')
+				map[a][b] = '\0';
+			b++;
+		}
+		a++;
 	}
+	return (map);
 }

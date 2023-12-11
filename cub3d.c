@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 11:15:53 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:17:21 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int main(int ac, char **av)
 		if (is_cub(av[1]))
 			return (printf("No es un archivo cub\n"), 1);
 		elements_without_empty_lines = extract_elements(av[1]);
+		if (elements_without_empty_lines[0] == NULL)
+			return (printf("Esta vacio\n"), 1);
 		if (!check_if_all_elements(elements_without_empty_lines))
-			return (printf("Error\ncheck_if_all_elements"), 1);
+			return (printf("Error\ncheck_if_all_elements\n"), 1);
 		if (!categorize_elements(elements_without_empty_lines, &info))
 			return (printf("Error\ncategorize elements\n"), 1);
 		if (!parse_map(elements_without_empty_lines))

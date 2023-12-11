@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 11:16:01 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:17:30 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_main
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
-char	**no_empty_lines(char *file_path, char **lines_ws, char *line);
+char	**no_empty_lines(char *file_path, char **lines_ws);
 
 //------------checks:----------------------
 int		check_if_all_elements(char **elements);
@@ -71,6 +71,7 @@ void	free_things_inside_info_struct(t_info info);
 //============PARSE_MAP:=============================
 int		parse_map(char **elements_with_map_maybe);
 char 	**check_if_map_correct(char **map);
+char	**set_null_terminator(char **map);
 
 //-----------map_utils1:---------------------------
 char	**check_for_map(char **elements_with_map);
@@ -83,6 +84,15 @@ int		check_how_many_tabs_in_a_line(char *line);
 int		see_if_there_is_no_more_map(char **string);
 int		check_if_walls_closed(char **map);
 void	flood_fill(int x, int y, char **map);
+int		calc_longest_line(char **map);
+int		calc_amount_of_lines(char **map);
+char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_of_lines);
 
+
+//-----------map_utils3:---------------------------
+char	**allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill);
+void	sorround_border(char **map_for_flood_fill, int longest_line_size, int amount_of_lines);
+void	map_inside_mffl(char **map, char **map_for_flood_fill);
+int 	check_if_closed(char **map);	
 
 #endif
