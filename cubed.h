@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 11:17:30 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:58:51 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ typedef struct s_main
 {
 	void		*mlx;
 	void		*window;
+	void		*image;
+	char		*addr;
+	int			bits_per_pixel;
+	int				size;
+	int				endian;
 	struct s_info	info;
 }	t_main;
 
