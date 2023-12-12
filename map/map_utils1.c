@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 09:32:42 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:52:36 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int check_characters(char **map)
 			{
 				if (map[a][b] == 'N' || map[a][b] == 'S' || \
 				map[a][b] == 'E' || map[a][b] == 'W')
-					player_is_there = 1;
+					player_is_there += 1;
 				b++;
 			}
 			else
@@ -83,7 +83,7 @@ int check_characters(char **map)
 		}
 		a++;
 	}
-	if (player_is_there == 0)
+	if (player_is_there > 1 || player_is_there < 1)
 		return (FALSE);
 	return (TRUE);
 }
