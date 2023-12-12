@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:57:26 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 09:28:19 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:14:40 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ int check_for_NOSOWEEAFC_no_repeats(char *string)
 void	put_each_route_in_place_in_struct(char identifier, char *path_to_save_in_struct, t_info *info)
 {
 	if (identifier == 'N')
-		info->no_texture = path_to_save_in_struct;
+		info->no_texture = ft_strdup(path_to_save_in_struct);
 	else if (identifier == 'S')
-		info->so_texture = path_to_save_in_struct;
+		info->so_texture = ft_strdup(path_to_save_in_struct);
 	else if (identifier == 'W')
-		info->we_texture = path_to_save_in_struct;
+		info->we_texture = ft_strdup(path_to_save_in_struct);
 	else if (identifier == 'E')
-		info->ea_texture = path_to_save_in_struct;
+		info->ea_texture = ft_strdup(path_to_save_in_struct);
 }
 

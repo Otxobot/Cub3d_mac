@@ -1,40 +1,17 @@
+SO ./texture/xpm/backrooms/default/wall.xpm
+NO ./texture/xpm/backrooms/default/ceiling.xpm
+WE ./texture/xpm/backrooms/default/floor.xpm
+EA ./texture/xpm/backrooms/default/wall.xpm
 
-
-
-
-
-
-EA      ./ruta_a_la_textura_EA.xpm
-
-
-F 0, 155,          148
-
-WE       ./ruta_a_la_textura_WE.xpm
-
-NO ./ruta_a_la_textura_NO.xpm
-SO 					./ruta_a_la_textura_SO.xpm
-
-
-
-C 120, 40, 140
-
-
-
-
-NO ./ruta_a_la_textura_NO.xpm
-SO 	./ruta_a_la_textura_SO.xpm
-
-
-
-C 254, 123, 12
+C 235,234,211
+F 191,186,58
 
         
-1111111111111111111111111
-1000000000000000000000001
-1000000000000000000000001
-1000000000000000000000001
-1000000000000000000000001
-1000000000000000000000001
-1111111111111111111111111
-10000000000000000000000S1
-1111111111111111111111111
+11111111111111111111
+10000000000000000001
+10000000000000000001
+1000000000000000001
+1000000000000000001
+1000000000000000001
+10000000000000000001
+11111111111111111111
