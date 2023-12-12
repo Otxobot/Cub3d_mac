@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/11 14:33:15 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:18:11 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int parse_map(char **elements_with_map_maybe)
 				return (free(map_without_tabs), FALSE);
 			return (TRUE);
 		}
-		return (ft_double_free (map), TRUE);
+		return (ft_double_free(map), TRUE);
 	}
 }
 
