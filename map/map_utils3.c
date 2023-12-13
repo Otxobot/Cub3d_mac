@@ -80,7 +80,28 @@ void map_inside_mffl(char **map, char **map_for_flood_fill)
 	}
 }
 
-int check_if_closed(char **map)
+int check_if_closed(char **map, int longest_line_size, int amount_of_lines)
 {
-	
+    int i = 0;
+    int j = 0;
+
+    while (map[i])
+    {
+        j = 0;
+        while (map[i][j])
+        {
+            if (map[i][j] == '*' &&
+                ((i + 1 < amount_of_lines && map[i + 1][j] && map[i + 1][j] != '*' && map[i + 1][j] != '1') ||
+                 (i - 1 >= 0 && map[i - 1][j] && map[i - 1][j] != '*' && map[i - 1][j] != '1') ||
+                 (j + 1 < longest_line_size && map[i][j + 1] && map[i][j + 1] != '*' && map[i][j + 1] != '1') ||
+                 (j - 1 >= 0 && map[i][j - 1] && map[i][j - 1] != '*' && map[i][j - 1] != '1')))
+            {
+                printf("entra aqui at i=%d, j=%d\n", i, j);
+                return 0; // Return 0 for FALSE
+            }
+            j++;
+        }
+        i++;
+    }
+    return 1; // Return 1 for TRUE
 }

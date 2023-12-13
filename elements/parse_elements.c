@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/05 17:51:25 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/12 10:01:37 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ int check_for_correct_path(char *element, t_info *info)
 		identifier = element[i];
 		while (element[i] && element[i] != '.')
 			i++;
-		if (element[i] != '.' && element[i + 1] != '/')
+		if (element[i] && element[i] != '.' && element[i + 1] != '/')
 			return (FALSE);
 		start = i;
 		while (ft_isprint(element[i]) && element[i] != 32 && element[i] != 9)
