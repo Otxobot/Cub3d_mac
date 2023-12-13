@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/13 12:43:43 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:00:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@
 
 typedef struct s_info 
 {
-	char			*no_texture;
-	char			*so_texture;
-	char			*we_texture;
-	char			*ea_texture;
-	int				f_color[3];
-	int				c_color[3];
-	char			player;
-	char			**map;
+	char	*no_texture;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	int		f_color[3];
+	int		c_color[3];
+	char	player;
+	char	**map;
 }			t_info;
 
 typedef struct s_main
@@ -78,9 +78,10 @@ int		termina_con_xpm(const char *cadena);
 void	free_things_inside_info_struct(t_info info);
 
 //============PARSE_MAP:=============================
-int		parse_map(char **elements_with_map_maybe);
+int		parse_map(char **elements_with_map_maybe, t_info *info);
 char 	**check_if_map_correct(char **map);
 char	**set_null_terminator(char **map);
+void	player_and_map_in_info(char **map, t_info *info);
 
 //-----------map_utils1:---------------------------
 char	**check_for_map(char **elements_with_map);
