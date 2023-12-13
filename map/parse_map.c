@@ -12,7 +12,7 @@
 
 #include "../cubed.h"
 
-int parse_map(char **elements_with_map_maybe)
+int parse_map(char **elements_with_map_maybe, t_info *info)
 {
 	char **map;
 	char **map_without_tabs;
@@ -21,21 +21,21 @@ int parse_map(char **elements_with_map_maybe)
 	if (map == NULL)
 		return (FALSE);
 	if (!check_characters(map))
-		return (free(map), FALSE);
+		return (ft_double_free(map), FALSE);
 	else
 	{
 		map_without_tabs = check_if_map_correct(map);
 		if (map_without_tabs == NULL)
 		{
 			if (!check_if_walls_closed(map))
-				return (free(map), FALSE);
-			return (TRUE);
+				return (ft_double_free(map), FALSE);
+			return (player_and_map_in_info(map, info), TRUE);
 		}
 		else
 		{
 			if (!check_if_walls_closed(map_without_tabs))
-				return (free(map_without_tabs), FALSE);
-			return (TRUE);
+				return (ft_double_free(map_without_tabs), FALSE);
+			return (player_and_map_in_info(map_without_tabs, info), TRUE);
 		}
 		return (ft_double_free(map), TRUE);
 	}
@@ -51,26 +51,53 @@ char  **check_if_map_correct(char **map)
 	if (tab_count > 0)
 	{
 		map_without_tabs = replace_tabs_with_spaces(map);
+		ft_double_free(map);
 		return (map_without_tabs);
 	}
 	else
 		return (NULL);
 }
 
-char **set_null_terminator(char **map)
+void	player_and_map_in_info(char **map, t_info *info)
 {
-	int a = 0;
-	int b = 0;
-	while (map[a])
+	int 		i;
+	int 		j;
+	char	player;
+
+	i = 0;
+	j = 0;
+	info->map = map;
+	while (map[i])
 	{
-		b = 0;
-		while (map[a][b])
+		j = 0;
+		while (map[i][j])
 		{
-			if (map[a][b] == '\n')
-				map[a][b] = '\0';
-			b++;
+			if (map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'N')
+			{
+				player = map[i][j];
+				break;
+			}
+			j++;
 		}
-		a++;
+		i++;
 	}
-	return (map);
+	info->player = player;
 }
+
+// char **set_null_terminator(char **map)
+// {
+// 	int a = 0;
+// 	int b = 0;
+// 	while (map[a])
+// 	{
+// 		b = 0;
+// 		while (map[a][b])
+// 		{
+// 			if (map[a][b] == '\n')
+// 				map[a][b] = '\0';
+// 			b++;
+// 		}
+// 		a++;
+// 	}
+// 	return (map);
+// }
