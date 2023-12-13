@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 16:01:42 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:43:43 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,28 @@
 #define TRUE 1
 #define FALSE 0
 #define TAB_SIZE 4
+#define SCREENWIDTH 1080
+#define SCREENHEIGHT 640
 
 typedef struct s_info 
 {
-	char	*no_texture;
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
-	int		f_color[3];
-	int		c_color[3];
+	char			*no_texture;
+	char			*so_texture;
+	char			*we_texture;
+	char			*ea_texture;
+	int				f_color[3];
+	int				c_color[3];
+	char			player;
+	char			**map;
 }			t_info;
 
 typedef struct s_main
 {
-	void		*mlx;
-	void		*window;
-	void		*image;
-	char		*addr;
-	int			bits_per_pixel;
+	void			*mlx;
+	void			*window;
+	void			*image;
+	char			*addr;
+	int				bits_per_pixel;
 	int				size;
 	int				endian;
 	struct s_info	info;

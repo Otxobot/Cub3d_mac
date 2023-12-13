@@ -6,14 +6,11 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 16:01:47 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:43:24 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubed.h"
-
-#define SCREENWIDTH 640
-#define SCREENHEIGHT 480
 
 int	handle_destroy(t_main *datos)
 {
@@ -29,7 +26,7 @@ int obtener_color(int red, int green, int blue)
 int main(int ac, char **av)
 {
 	t_info info;
-	//t_main	datos;
+	t_main	datos;
 
 	char	**elements_without_empty_lines;
 
@@ -56,7 +53,7 @@ int main(int ac, char **av)
 		//mlx_clear_window(datos.mlx, datos.window);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
-		//mlx_loop(datos.mlx);
+		mlx_loop(datos.mlx);
 
 		free_things_inside_info_struct(info);
 		ft_double_free (elements_without_empty_lines);
@@ -66,17 +63,17 @@ int main(int ac, char **av)
 }
 
 //JUST IN CASE I HAVE TO USE IT AGAIN->
-										// printf("========================================\n");
-										// printf("info->NO_texture:%s\n", info.no_texture);
-										// printf("info->SO_texture:%s\n", info.so_texture);
-										// printf("info->WE_texture:%s\n", info.we_texture);
-										// printf("info->EA_texture:%s\n", info.ea_texture);
-										// printf("Color rgb in F:\n");
-										// printf("F1:%d\n", info.f_color[0]);
-										// printf("F2:%d\n", info.f_color[1]);
-										// printf("F3:%d\n", info.f_color[2]);
-										// printf("Color rgb in C:\n");
-										// printf("C1:%d\n", info.c_color[0]);
-										// printf("C2:%d\n", info.c_color[1]);
-										// printf("C3:%d\n", info.c_color[2]);
-										// printf("========================================\n");
+// printf("========================================\n");
+// printf("info->NO_texture:%s\n", info.no_texture);
+// printf("info->SO_texture:%s\n", info.so_texture);
+// printf("info->WE_texture:%s\n", info.we_texture);
+// printf("info->EA_texture:%s\n", info.ea_texture);
+// printf("Color rgb in F:\n");
+// printf("F1:%d\n", info.f_color[0]);
+// printf("F2:%d\n", info.f_color[1]);
+// printf("F3:%d\n", info.f_color[2]);
+// printf("Color rgb in C:\n");
+// printf("C1:%d\n", info.c_color[0]);
+// printf("C2:%d\n", info.c_color[1]);
+// printf("C3:%d\n", info.c_color[2]);
+// printf("========================================\n");
