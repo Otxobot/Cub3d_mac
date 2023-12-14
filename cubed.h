@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 11:27:39 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:06:37 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_main
 }	t_main;
 
 //=============PARSE_ELEMENTS:======================
+int		parse(char **elements_without_empty_lines, t_main *datos, char *argument);
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
