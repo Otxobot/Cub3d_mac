@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_values.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:31 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/14 13:01:59 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:51:13 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	p_ori(t_main *datos)
 {
+	printf("->%c\n", datos->info.player);
 	if (datos->info.player == 'N')
 		datos->pa = 1 * (M_PI / 2);
 	else if (datos->info.player == 'S')
@@ -43,4 +44,5 @@ void	init_values(t_main *datos)
 		}
 	}
 	p_ori(datos);
+	printf("->%f\n", datos->pa);
 }
