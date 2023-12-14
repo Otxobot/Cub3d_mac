@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 14:37:08 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:42:06 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int key_hook(int keycode, t_main *datos)
 		datos->pa -= 0.3;
 	else if (keycode == 124)
 		datos->pa += 0.3;
-	else if (keycode == 0)
+	else if (keycode == 1)
 	{
         datos->px -= cos(datos->pa) * 0.25;
         datos->py -= sin(datos->pa) * 0.25;
@@ -55,7 +55,7 @@ int key_hook(int keycode, t_main *datos)
         datos->px += sin(datos->pa) * 0.25;
         datos->py -= cos(datos->pa) * 0.25;
     }
-	else if (keycode == 1)
+	else if (keycode == 0)
 	{
         datos->px -= sin(datos->pa) * 0.25;
         datos->py += cos(datos->pa) * 0.25;
