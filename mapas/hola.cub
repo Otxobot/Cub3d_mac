@@ -3,8 +3,8 @@ NO ./texture/xpm/backrooms/default/ceiling.xpm
 WE ./texture/xpm/backrooms/default/floor.xpm
 EA ./texture/xpm/backrooms/default/wall.xpm
 
-C 235,234,211
-F 191,186,58
+C 255,255,0
+F 255,0,0
 
         1
 11111111111111111111

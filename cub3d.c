@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 11:26:59 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:28:14 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	handle_destroy(t_main *datos)
 	return (0);
 }
 
-// int obtener_color(int red, int green, int blue)
-// {
-//     return (red << 16) | (green << 8) | blue;
-// }
+int obtener_color(int red, int green, int blue)
+{
+    return (red << 16) | (green << 8) | blue;
+}
 
 void paint_fc(t_main *datos)
 {
