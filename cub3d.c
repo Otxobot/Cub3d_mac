@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/13 13:00:43 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:16:00 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,28 @@ int obtener_color(int red, int green, int blue)
     return (red << 16) | (green << 8) | blue;
 }
 
+void paint_fc(t_main *datos)
+{
+    int i, j;
+
+    j = 0;
+    while (j < SCREENHEIGHT)
+    {
+        i = 0;
+        while (i < SCREENWIDTH)
+        {
+            if (j < SCREENHEIGHT / 2)
+                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(datos->info.c_color[0], datos->info.c_color[1], datos->info.c_color[2]));
+            else
+                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(datos->info.f_color[0], datos->info.f_color[1], datos->info.f_color[2]));
+            i++;
+        }
+        j++;
+    }
+}
+
 int main(int ac, char **av)
 {
-	t_info info;
 	t_main	datos;
 
 	char	**elements_without_empty_lines;
@@ -42,20 +61,21 @@ int main(int ac, char **av)
 			return (printf("Esta vacio\n"), 1);
 		if (!check_if_all_elements(elements_without_empty_lines))
 			return (printf("Error\ncheck_if_all_elements\n"), 1);
-		if (!categorize_elements(elements_without_empty_lines, &info))
+		if (!categorize_elements(elements_without_empty_lines, &datos.info))
 			return (printf("Error\ncategorize elements\n"), 1);
-		if (!parse_map(elements_without_empty_lines))
+		if (!parse_map(elements_without_empty_lines, &datos.info))
 			return (printf("Error\nmap parse incorrect"), 1);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
+		paint_fc(&datos);
 		//mlx_clear_window(datos.mlx, datos.window);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 
-		free_things_inside_info_struct(info);
+		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
 		printf("Exiting the program successfully!\n");
 		return (0);
