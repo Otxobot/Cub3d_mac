@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 15:13:51 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:46:46 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int key_hook(int keycode, t_main *datos)
     }
 	else if (keycode == 13)//W
 	{
-        datos->px += sin(datos->pa) * 0.25;
-        datos->py -= cos(datos->pa) * 0.25;
+        datos->px -= sin(datos->pa) * 0.25;
+        datos->py += cos(datos->pa) * 0.25;
     }
 	else if (keycode == 1) //S
 	{
@@ -76,6 +76,7 @@ int main(int ac, char **av)
 	{
 		if (parse(elements_without_empty_lines, &datos, av[1]))
 			return (1);
+		init_values(&datos);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
