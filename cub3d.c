@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 16:13:53 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:19:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,7 @@ int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	return (0);
-}
-
-void mover_segun_angulo(double angulo, double velocidad, t_main *datos) {
-    double cambio_x = velocidad * cos(angulo * (M_PI / 180.0)); // Calcula el cambio en x
-    double cambio_y = velocidad * sin(angulo * (M_PI / 180.0)); // Calcula el cambio en y
-
-    datos->px += cambio_x; // Aplica el cambio en x
-    datos->py += cambio_y; // Aplica el cambio en y
-
-    printf("Posición actual: (%.2f, %.2f)\n", datos->px, datos->py);
-}
+} 
 
 int key_hook(int keycode, t_main *datos)
 {
