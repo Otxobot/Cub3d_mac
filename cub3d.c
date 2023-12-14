@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 16:56:09 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:00:38 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	return (0);
-<<<<<<< HEAD
-} 
-=======
 }
->>>>>>> maik
 
 int key_hook(int keycode, t_main *datos)
 {
@@ -75,7 +71,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		raycast(&datos); 
+		load_screen(&datos); 
 		//mlx_clear_window(datos.mlx, datos.window);
 		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/14 11:39:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:00:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void paint_fc(t_main *datos)
 		j++;
 	}
 }
-void	raycast(t_main *datos)
+void	load_screen(t_main *datos)
 {
 	int	i;
 
