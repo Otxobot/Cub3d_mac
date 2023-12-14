@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/11 11:17:35 by mikferna         ###   ########.fr        #
+#    Updated: 2023/12/14 11:01:44 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cubed
+NAME = cub3d
 
 CC = gcc
 
@@ -28,7 +28,7 @@ SRC = cub3d.c \
 
 INCLUDES = -I./libft
 
-LIBS = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
