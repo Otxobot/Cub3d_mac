@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/14 12:46:45 by abasante         ###   ########.fr        #
+#    Updated: 2023/12/14 14:44:30 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = cub3d.c \
 	free.c \
 	parse.c \
 	load_screen/load_screen1.c \
+	init_values.c \
 
 INCLUDES = -I./libft
 

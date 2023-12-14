@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 13:06:37 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:44:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
+#include <math.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -47,6 +48,9 @@ typedef struct s_main
 	int				bits_per_pixel;
 	int				size;
 	int				endian;
+	double			pa;
+	double			px;
+	double			py;
 	struct s_info	info;
 }	t_main;
 
@@ -110,5 +114,9 @@ int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);
 int		obtener_color(int red, int green, int blue);
 void	paint_fc(t_main *datos);
 void	raycast(t_main *datos);
+
+//-----------init_values:---------------------------
+void	p_ori(t_main *datos);
+void	init_values(t_main *datos);
 
 #endif
