@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/14 11:01:38 by mikferna         ###   ########.fr        #
+#    Updated: 2023/12/14 11:35:44 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = cub3d.c \
 	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
+	load_screen/load_screen1.c \
 
 INCLUDES = -I./libft
 
