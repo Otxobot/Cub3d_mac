@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/13 13:00:57 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 11:27:39 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,11 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 char	**allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill);
 void	sorround_border(char **map_for_flood_fill, int longest_line_size, int amount_of_lines);
 void	map_inside_mffl(char **map, char **map_for_flood_fill);
-int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);	
+int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);
+
+//-----------load_screen1:---------------------------
+int		obtener_color(int red, int green, int blue);
+void	paint_fc(t_main *datos);
+void	raycast(t_main *datos);
 
 #endif

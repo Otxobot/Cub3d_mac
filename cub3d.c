@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 11:28:14 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:41:23 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,6 @@ int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	return (0);
-}
-
-int obtener_color(int red, int green, int blue)
-{
-    return (red << 16) | (green << 8) | blue;
-}
-
-void paint_fc(t_main *datos)
-{
-    int i, j;
-
-    j = 0;
-    while (j < SCREENHEIGHT)
-    {
-        i = 0;
-        while (i < SCREENWIDTH)
-        {
-            if (j < SCREENHEIGHT / 2)
-                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(datos->info.c_color[0], datos->info.c_color[1], datos->info.c_color[2]));
-            else
-                mlx_pixel_put(datos->mlx, datos->window, i, j, obtener_color(datos->info.f_color[0], datos->info.f_color[1], datos->info.f_color[2]));
-            i++;
-        }
-        j++;
-    }
 }
 
 int main(int ac, char **av)
@@ -69,7 +44,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		paint_fc(&datos);
+		raycast(&datos);
 		//mlx_clear_window(datos.mlx, datos.window);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
