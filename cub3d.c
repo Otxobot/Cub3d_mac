@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 15:46:46 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:13:53 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ int key_hook(int keycode, t_main *datos)
 		datos->pa -= 0.3;
 	else if (keycode == 124)//right arrow key
 		datos->pa += 0.3;
-	else if (keycode == 0)//A
-	{
-        datos->px -= cos(datos->pa) * 0.25;
-        datos->py -= sin(datos->pa) * 0.25;
-    }
 	else if (keycode == 2)//D
 	{
-        datos->px += cos(datos->pa) * 0.25;
-        datos->py += sin(datos->pa) * 0.25;
+        datos->px -= cos(datos->pa + 1.57079632679) * 0.25;
+        datos->py -= sin(datos->pa + 1.57079632679) * 0.25;
+    }
+	else if (keycode == 0)//A
+	{
+        datos->px += cos(datos->pa + 1.57079632679) * 0.25;
+        datos->py += sin(datos->pa + 1.57079632679) * 0.25;
     }
 	else if (keycode == 13)//W
 	{
-        datos->px -= sin(datos->pa) * 0.25;
-        datos->py += cos(datos->pa) * 0.25;
+        datos->px -= sin(datos->pa + 1.57079632679) * 0.25;
+        datos->py += cos(datos->pa + 1.57079632679) * 0.25;
     }
 	else if (keycode == 1) //S
 	{
-        datos->px -= sin(datos->pa) * 0.25;
-        datos->py += cos(datos->pa) * 0.25;
+        datos->px += sin(datos->pa + 1.57079632679) * 0.25;
+        datos->py -= cos(datos->pa + 1.57079632679) * 0.25;
     }
 	printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
 	return (0);
