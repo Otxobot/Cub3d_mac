@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 15:54:35 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:33:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,39 @@ int	handle_destroy(t_main *datos)
 	return (0);
 }
 
-void mover_segun_angulo(double angulo, double velocidad, t_main *datos) {
-    double cambio_x = velocidad * cos(angulo * (M_PI / 180.0)); // Calcula el cambio en x
-    double cambio_y = velocidad * sin(angulo * (M_PI / 180.0)); // Calcula el cambio en y
-
-    datos->px += cambio_x; // Aplica el cambio en x
-    datos->py += cambio_y; // Aplica el cambio en y
-
-    printf("Posición actual: (%.2f, %.2f)\n", datos->px, datos->py);
-}
-
 int key_hook(int keycode, t_main *datos)
 {
-
 	if (keycode == 53)
 	{
 		mlx_destroy_window(datos->mlx, datos->window);
 		return (0);
 	}
 	else if (keycode == 123)//left arrow key
-		datos->pa -= 0.3;
+		datos->pa -= 0.10472;
 	else if (keycode == 124)//right arrow key
-		datos->pa += 0.3;
-	else if (keycode == 0)//A
-	{
-        datos->px -= cos(datos->pa) * 0.25;
-        datos->py -= sin(datos->pa) * 0.25;
-    }
+		datos->pa += 0.10472;
 	else if (keycode == 2)//D
 	{
-        datos->px += cos(datos->pa) * 0.25;
-        datos->py += sin(datos->pa) * 0.25;
+        datos->px -= cos(datos->pa + 1.5708) * 0.25;
+        datos->py -= sin(datos->pa + 1.5708) * 0.25;
+    }
+	else if (keycode == 0)//A
+	{
+        datos->px += cos(datos->pa + 1.5708) * 0.25;
+        datos->py += sin(datos->pa + 1.5708) * 0.25;
     }
 	else if (keycode == 13)//W
 	{
-        datos->px -= sin(datos->pa) * 0.25;
-        datos->py += cos(datos->pa) * 0.25;
+        datos->px -= sin(datos->pa + 1.5708) * 0.25;
+        datos->py += cos(datos->pa + 1.5708) * 0.25;
     }
 	else if (keycode == 1) //S
-        datos->py += cos(datos->pa) * 0.25;
+    {
+        datos->px += sin(datos->pa + 1.5708) * 0.25;
+        datos->py -= cos(datos->pa + 1.5708) * 0.25;
+    }
 	printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
+	printf("->%.2f\n", datos->pa * (180/M_PI));
 	return (0);
 }
 
