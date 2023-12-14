@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 14:44:17 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:13:51 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,26 @@ int key_hook(int keycode, t_main *datos)
 		mlx_destroy_window(datos->mlx, datos->window);
 		return (0);
 	}
-	else if (keycode == 123)
+	else if (keycode == 123)//left arrow key
 		datos->pa -= 0.3;
-	else if (keycode == 124)
+	else if (keycode == 124)//right arrow key
 		datos->pa += 0.3;
-	else if (keycode == 0)
+	else if (keycode == 0)//A
 	{
         datos->px -= cos(datos->pa) * 0.25;
         datos->py -= sin(datos->pa) * 0.25;
     }
-	else if (keycode == 2)
+	else if (keycode == 2)//D
 	{
         datos->px += cos(datos->pa) * 0.25;
         datos->py += sin(datos->pa) * 0.25;
     }
-	else if (keycode == 13)
+	else if (keycode == 13)//W
 	{
         datos->px += sin(datos->pa) * 0.25;
         datos->py -= cos(datos->pa) * 0.25;
     }
-	else if (keycode == 1)
+	else if (keycode == 1) //S
 	{
         datos->px -= sin(datos->pa) * 0.25;
         datos->py += cos(datos->pa) * 0.25;
@@ -80,7 +80,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		raycast(&datos);
+		raycast(&datos); 
 		//mlx_clear_window(datos.mlx, datos.window);
 		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
