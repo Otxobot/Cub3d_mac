@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 15:58:51 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:00:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #define TRUE 1
 #define FALSE 0
 #define TAB_SIZE 4
+#define SCREENWIDTH 1080
+#define SCREENHEIGHT 640
 
 typedef struct s_info 
 {
@@ -38,11 +40,11 @@ typedef struct s_info
 
 typedef struct s_main
 {
-	void		*mlx;
-	void		*window;
-	void		*image;
-	char		*addr;
-	int			bits_per_pixel;
+	void			*mlx;
+	void			*window;
+	void			*image;
+	char			*addr;
+	int				bits_per_pixel;
 	int				size;
 	int				endian;
 	struct s_info	info;
