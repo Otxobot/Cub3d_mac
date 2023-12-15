@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/15 09:57:58 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:48:14 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	load_screen(t_main *datos)
 	paint_fc(datos);
 	while (i < SCREENWIDTH)
 	{
-		datos->pa = max_and_min_angles(datos->pa);
-		printf("->%f\n", datos->pa);
 		i++;
 	}
 }
