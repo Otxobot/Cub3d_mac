@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 17:00:31 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:59:04 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);
 int		obtener_color(int red, int green, int blue);
 void	paint_fc(t_main *datos);
 void	load_screen(t_main *datos);
+double	max_and_min_angles(double player_angle);
 
 //-----------init_values:---------------------------
 void	p_ori(t_main *datos);

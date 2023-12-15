@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/14 17:00:21 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/15 09:57:58 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ void paint_fc(t_main *datos)
 		j++;
 	}
 }
+
+double max_and_min_angles(double player_angle)
+{
+	//el angulo del jugador solo puede estar entre 0-360.
+
+	if (player_angle < 0)
+		player_angle += 2 * M_PI;
+	if (player_angle > 2 * M_PI)
+		player_angle -= 2 * M_PI;
+	return (player_angle);
+}
+
 void	load_screen(t_main *datos)
 {
 	int	i;
@@ -43,6 +55,8 @@ void	load_screen(t_main *datos)
 	paint_fc(datos);
 	while (i < SCREENWIDTH)
 	{
+		datos->pa = max_and_min_angles(datos->pa);
+		printf("->%f\n", datos->pa);
 		i++;
 	}
 }
