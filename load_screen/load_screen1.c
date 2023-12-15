@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/15 10:48:14 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:13:40 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int obtener_color(int red, int green, int blue)
 
 void paint_fc(t_main *datos)
 {
-	int i, j;
+	int i;
+	int j;
+
 	j = 0;
 	while (j < SCREENHEIGHT)
 	{
