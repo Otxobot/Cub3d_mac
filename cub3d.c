@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/14 16:33:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:48:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,35 @@ int key_hook(int keycode, t_main *datos)
 		mlx_destroy_window(datos->mlx, datos->window);
 		return (0);
 	}
-	else if (keycode == 123)//left arrow key
-		datos->pa -= 0.10472;
-	else if (keycode == 124)//right arrow key
+	else if (keycode == 123) //left arrow key
+	{
+		datos->pa = max_and_min_angles(datos->pa);
 		datos->pa += 0.10472;
+	}
+	else if (keycode == 124)//right arrow key
+	{
+		datos->pa = max_and_min_angles(datos->pa);
+		datos->pa -= 0.10472;
+	}
 	else if (keycode == 2)//D
 	{
-        datos->px -= cos(datos->pa + 1.5708) * 0.25;
-        datos->py -= sin(datos->pa + 1.5708) * 0.25;
+        datos->px -= cos(datos->pa + 1.57079632679) * 0.25;
+        datos->py -= sin(datos->pa + 1.57079632679) * 0.25;
     }
 	else if (keycode == 0)//A
 	{
-        datos->px += cos(datos->pa + 1.5708) * 0.25;
-        datos->py += sin(datos->pa + 1.5708) * 0.25;
+        datos->px += cos(datos->pa + 1.57079632679) * 0.25;
+        datos->py += sin(datos->pa + 1.57079632679) * 0.25;
     }
 	else if (keycode == 13)//W
 	{
-        datos->px -= sin(datos->pa + 1.5708) * 0.25;
-        datos->py += cos(datos->pa + 1.5708) * 0.25;
+        datos->px -= sin(datos->pa + 1.57079632679) * 0.25;
+        datos->py += cos(datos->pa + 1.57079632679) * 0.25;
     }
 	else if (keycode == 1) //S
-    {
-        datos->px += sin(datos->pa + 1.5708) * 0.25;
-        datos->py -= cos(datos->pa + 1.5708) * 0.25;
+	{
+        datos->px += sin(datos->pa + 1.57079632679) * 0.25;
+        datos->py -= cos(datos->pa + 1.57079632679) * 0.25;
     }
 	printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
 	printf("->%.2f\n", datos->pa * (180/M_PI));
@@ -71,7 +77,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		raycast(&datos); 
+		load_screen(&datos); 
 		//mlx_clear_window(datos.mlx, datos.window);
 		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);

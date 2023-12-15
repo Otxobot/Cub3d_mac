@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/14 11:39:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/15 10:48:14 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,19 @@ void paint_fc(t_main *datos)
 		j++;
 	}
 }
-void	raycast(t_main *datos)
+
+double max_and_min_angles(double player_angle)
+{
+	//el angulo del jugador solo puede estar entre 0-360.
+
+	if (player_angle < 0)
+		player_angle += 2 * M_PI;
+	if (player_angle > 2 * M_PI)
+		player_angle -= 2 * M_PI;
+	return (player_angle);
+}
+
+void	load_screen(t_main *datos)
 {
 	int	i;
 
