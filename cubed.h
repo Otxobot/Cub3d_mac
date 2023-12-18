@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/15 09:59:04 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:14:07 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,15 @@ typedef struct s_main
 	double			py;
 	struct s_info	info;
 }	t_main;
+
+typedef struct s_colision {
+	double		startx;
+	double		starty;
+	double		endx;
+	double		endy;
+	double		dist;
+}				t_colision;
+
 
 //=============PARSE_ELEMENTS:======================
 int		parse(char **elements_without_empty_lines, t_main *datos, char *argument);
@@ -119,5 +128,8 @@ double	max_and_min_angles(double player_angle);
 //-----------init_values:---------------------------
 void	p_ori(t_main *datos);
 void	init_values(t_main *datos);
+
+t_colision	colision (double fov_angle, int px, int py, t_main *datos);
+t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
 
 #endif
