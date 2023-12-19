@@ -13,7 +13,7 @@
 #ifndef	CUBED_H
 # define CUBED_H
 
-#include "mlx/mlx.h"
+#include "mlx_linux/mlx.h"
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>

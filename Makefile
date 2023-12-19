@@ -28,7 +28,7 @@ SRC = cub3d.c \
 
 INCLUDES = -I./libft
 
-LIBS = -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -37,7 +37,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 all: $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	@$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 $(NAME): $(OBJ)
 	make -C libft
