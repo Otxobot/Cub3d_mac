@@ -64,6 +64,7 @@ void	player_and_map_in_info(char **map, t_info *info)
 	int 		j;
 	char	player;
 
+	player = '\0';
 	i = 0;
 	j = 0;
 	info->map = map;

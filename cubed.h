@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 15:58:51 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:14:07 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
+#include <math.h>
 
 #define TRUE 1
 #define FALSE 0
 #define TAB_SIZE 4
+#define SCREENWIDTH 1080
+#define SCREENHEIGHT 640
 
 typedef struct s_info 
 {
@@ -38,17 +41,30 @@ typedef struct s_info
 
 typedef struct s_main
 {
-	void		*mlx;
-	void		*window;
-	void		*image;
-	char		*addr;
-	int			bits_per_pixel;
+	void			*mlx;
+	void			*window;
+	void			*image;
+	char			*addr;
+	int				bits_per_pixel;
 	int				size;
 	int				endian;
+	double			pa;
+	double			px;
+	double			py;
 	struct s_info	info;
 }	t_main;
 
+typedef struct s_colision {
+	double		startx;
+	double		starty;
+	double		endx;
+	double		endy;
+	double		dist;
+}				t_colision;
+
+
 //=============PARSE_ELEMENTS:======================
+int		parse(char **elements_without_empty_lines, t_main *datos, char *argument);
 char	**extract_elements(char *file_path);
 int		is_cub(char *string);
 int		empty_line(char *line);
@@ -101,6 +117,19 @@ char **create_map_for_flood_fill(char **map, int longest_line_size, int amount_o
 char	**allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill);
 void	sorround_border(char **map_for_flood_fill, int longest_line_size, int amount_of_lines);
 void	map_inside_mffl(char **map, char **map_for_flood_fill);
-int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);	
+int		check_if_closed(char **map, int longest_line_size, int amount_of_lines);
+
+//-----------load_screen1:---------------------------
+int		obtener_color(int red, int green, int blue);
+void	paint_fc(t_main *datos);
+void	load_screen(t_main *datos);
+double	max_and_min_angles(double player_angle);
+
+//-----------init_values:---------------------------
+void	p_ori(t_main *datos);
+void	init_values(t_main *datos);
+
+t_colision	colision (double fov_angle, int px, int py, t_main *datos);
+t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
 
 #endif

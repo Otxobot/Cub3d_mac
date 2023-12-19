@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/11 11:17:35 by mikferna         ###   ########.fr        #
+#    Updated: 2023/12/14 18:47:46 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cubed
+NAME = cub3d
 
 CC = gcc
 
@@ -25,6 +25,9 @@ SRC = cub3d.c \
 	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
+	parse.c \
+	load_screen/load_screen1.c \
+	init_values.c \
 
 INCLUDES = -I./libft
 
