@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/20 17:32:00 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/20 18:03:11 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
-    printf ("keycode: %d\n", keycode);
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
@@ -47,13 +46,13 @@ int key_hook(int keycode, t_main *datos)
         datos->px += cos(datos->pa) * 0.25;
         datos->py += sin(datos->pa) * 0.25;
     }
-    else if (keycode == 1) //S
+    else if (keycode == 1)//S
     {
         datos->px -= cos(datos->pa) * 0.25;
         datos->py -= sin(datos->pa) * 0.25;
     }
     printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
-    printf("->%.2f\n", datos->pa * (180/M_PI));
+    printf("angulo->%.2f\n", datos->pa * (180/M_PI));
     return (0);
 }
 

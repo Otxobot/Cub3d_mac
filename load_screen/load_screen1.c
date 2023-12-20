@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/20 17:04:51 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:56:12 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ t_colision	col_h(double fov_angle, t_main *datos, t_colision *c)
 		printf("-->ya:%f\n", ya);
 		if (ya == 0)
 			ya = 1;
-		
 	}
 	return(*c);
 }
