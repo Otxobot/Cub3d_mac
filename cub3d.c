@@ -20,37 +20,37 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
-	if (keycode == 53)
+	if (keycode == 9)
 	{
 		mlx_destroy_window(datos->mlx, datos->window);
 		//free
 		//exit(0);
 		return (1);
 	}
-	else if (keycode == 123) //left arrow key
+	else if (keycode == 65361) //left arrow key
 		datos->pa = max_and_min_angles(datos->pa + 0.10472);
-	else if (keycode == 124)//right arrow key
+	else if (keycode == 65363)//right arrow key
 		datos->pa = max_and_min_angles(datos->pa - 0.10472);
-	else if (keycode == 2)//D
-	{
-        datos->px -= cos(datos->pa + 1.57079632679) * 0.25;
-        datos->py -= sin(datos->pa + 1.57079632679) * 0.25;
-    }
-	else if (keycode == 0)//A
-	{
-        datos->px += cos(datos->pa + 1.57079632679) * 0.25;
-        datos->py += sin(datos->pa + 1.57079632679) * 0.25;
-    }
-	else if (keycode == 13)//W
-	{
-        datos->px -= sin(datos->pa + 1.57079632679) * 0.25;
-        datos->py += cos(datos->pa + 1.57079632679) * 0.25;
-    }
-	else if (keycode == 1) //S
-	{
-        datos->px += sin(datos->pa + 1.57079632679) * 0.25;
-        datos->py -= cos(datos->pa + 1.57079632679) * 0.25;
-    }
+else if (keycode == 100)//D - strafe right
+{
+    datos->px -= cos(datos->pa + M_PI_2) * 0.25;
+    datos->py -= sin(datos->pa + M_PI_2) * 0.25;
+}
+else if (keycode == 97)//A - strafe left
+{
+    datos->px += cos(datos->pa + M_PI_2) * 0.25;
+    datos->py += sin(datos->pa + M_PI_2) * 0.25;
+}
+else if (keycode == 119)//W - move forward
+{
+    datos->px += cos(datos->pa) * 0.25;
+    datos->py += sin(datos->pa) * 0.25;
+}
+else if (keycode == 115) //S - move backward
+{
+    datos->px -= cos(datos->pa) * 0.25;
+    datos->py -= sin(datos->pa) * 0.25;
+}
 	printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
 	printf("->%.2f\n", datos->pa * (180/M_PI));
 	return (0);
@@ -77,7 +77,7 @@ int main(int ac, char **av)
 		load_screen(&datos);
 		//mlx_clear_window(datos.mlx, datos.window);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
-		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
+		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);

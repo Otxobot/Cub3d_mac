@@ -52,12 +52,11 @@ double max_and_min_angles(double player_angle)
 void	load_screen(t_main *datos)
 {
 	int			i;
-	t_colision	co;
-	double 		fov_angle;
+	//double 		fov_angle;
 
-	i = 0;
 	paint_fc(datos);
-	fov_angle = M_PI / 3;
+	//fov_angle = M_PI / 3;
+	i = 0;
 	int x = 0;
 	int j = 0;
 	while (datos->info.map[x])
@@ -73,7 +72,7 @@ void	load_screen(t_main *datos)
 	while (i < 1)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
-		co = colision(datos->pa, datos->px, datos->py, datos);
+		colision(datos->pa, datos->px, datos->py, datos);
 		//printf ("distancia: %f\n", co.dist);
 		i++;
 	}
@@ -84,10 +83,10 @@ t_colision	colision (double fov_angle, int px, int py, t_main *datos)
 	t_colision co_v;
 	//t_colision co_h;
 
+	//co_h = colision_horizontal(fov_angle, px, py, datos);
 	co_v = colision_vertical(fov_angle, px, py, datos);
 	printf ("distancia vertical: %f\n", co_v.dist);
 	return (co_v);
-	//co_h = colision_horizontal(fov_angle, px, py, datos);
 
 	//calcular colisiones horizontales
 	//calcular colisiones verticales
@@ -121,7 +120,9 @@ t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 	return (co);
 }
 
-//t_colision colision_horizontal(double fov_angle, int px, int py, t_main *datos)
-//{
-//	t_colision	co;
-//}
+// t_colision colision_horizontal(double fov_angle, int px, int py, t_main *datos)
+// {
+// 	t_colision	co;
+
+
+// }
