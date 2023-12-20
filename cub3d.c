@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/20 14:08:12 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:32:00 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int key_hook(int keycode, t_main *datos)
         datos->px -= cos(datos->pa) * 0.25;
         datos->py -= sin(datos->pa) * 0.25;
     }
-	printf("========================================\n");
-	load_screen(datos);
     printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
     printf("->%.2f\n", datos->pa * (180/M_PI));
     return (0);

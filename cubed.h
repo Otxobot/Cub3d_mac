@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/20 14:05:22 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:06:10 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_main
 }	t_main;
 
 typedef struct s_colision {
+	double		first_impact;
+	double		rest_of_impacts;
 	double		startx;
 	double		starty;
 	double		endx;
