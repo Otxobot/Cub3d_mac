@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/18 18:52:13 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:55:27 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	load_screen(t_main *datos)
 	//double 		fov_angle;
 
 	paint_fc(datos);
+<<<<<<< HEAD
 	//fov_angle = M_PI / 3;
 	i = 0;
 	int x = 0;
@@ -69,6 +70,9 @@ void	load_screen(t_main *datos)
 		j = 0;
 		x++;
 	}
+=======
+	fov_angle = M_PI / 3;
+>>>>>>> maik
 	while (i < 1)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
@@ -94,17 +98,29 @@ t_colision	colision (double fov_angle, int px, int py, t_main *datos)
 	//pintar paredes
 }
 
+t_colision	col_v(double fov_angle, t_main *datos, t_colision *c)
+{
+	
+	while (TRUE)
+	{
+		c->endx += cos(fov_angle) * 0.1;
+        c->endy += sin(fov_angle) * 0.1;
+		if ()
+	}
+}
+
 t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 {
 	t_colision	co;
 
-	// if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
-	// {
-	// 	co.dist = __DBL_MAX__;
-	// 	return (co);
-	// }
+	if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
+	{
+		co.dist = __DBL_MAX__;
+		return (co);
+	}
 	co.endx = px;
 	co.endy = py;
+	col_v(fov_angle, datos, &co);
 	while (TRUE)
 	{
 		co.endx += cos(fov_angle) * 0.1;
