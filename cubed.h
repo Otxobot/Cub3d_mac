@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/18 13:14:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:05:22 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	CUBED_H
 # define CUBED_H
 
-#include "mlx_linux/mlx.h"
+#include "mlx/mlx.h"
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -131,5 +131,6 @@ void	init_values(t_main *datos);
 
 t_colision	colision (double fov_angle, int px, int py, t_main *datos);
 t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
+t_colision	colision_horizontal(double fov_angle, int px, int py, t_main *datos);
 
 #endif
