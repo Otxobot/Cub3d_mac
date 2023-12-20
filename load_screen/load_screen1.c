@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/18 14:37:05 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:52:13 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,17 @@ t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 {
 	t_colision	co;
 
-	//if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
-	//{
-	//	co.dist = __DBL_MAX__;
-	//	return (co);
-	//}
+	// if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
+	// {
+	// 	co.dist = __DBL_MAX__;
+	// 	return (co);
+	// }
 	co.endx = px;
 	co.endy = py;
 	while (TRUE)
 	{
 		co.endx += cos(fov_angle) * 0.1;
-        co.endy += sin(fov_angle) * 0.1; 
+        co.endy += sin(fov_angle) * 0.1;
 		if (!datos->info.map[(int)co.endy][(int)co.endx])
 			return (co.dist = __DBL_MAX__, co);
 		if (datos->info.map[(int)co.endy][(int)co.endx] == '1')
