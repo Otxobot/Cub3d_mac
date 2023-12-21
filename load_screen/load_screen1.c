@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/20 17:56:12 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:56:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,38 +82,39 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 
 t_colision	col_v(double fov_angle, t_main *datos, t_colision *c)
 {
-	datos = NULL;
-	(void)fov_angle;
-	return (*c);
-	// while (TRUE)
-	// {
-	// 	c->endx += cos(fov_angle) * 0.1;
-    //     c->endy += sin(fov_angle) * 0.1;
-	// 	//if ()
-	// }
+	double xa;
+	printf("fov_angle: %f\n", fov_angle);
+	if (fov_angle > M_PI / 2 && fov_angle < (3 * M_PI) / 2)
+	{
+		//eso quiere decir que estamos en los cuadrantes de arriba, y que tenemos que ir restando la y. Como la y mas pequeña esta arriba, hay que ir restando.
+		xa = fmod(datos->px, 1);
+		if (xa == 0)
+			xa = 1;
+		c->first_impact = fabs(xa / (cos(fabs(fov_angle - M_PI))));
+		c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - M_PI))));
+	}
+	else
+	{
+		xa = 1 - fmod(datos->px, 1);
+		if (xa == 0)
+			xa = 1;
+		c->first_impact = fabs(xa / (cos(fabs(fov_angle - M_PI))));
+		c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - M_PI))));
+	}
+	printf("first impact: %f\n", c->first_impact);
+	printf("rest of impacts: %f\n", c->rest_of_impacts);
+	return(*c);
 }
 
 t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 {
 	t_colision	co;
-	
+
+	px = 0;
+	py = 0;
 	if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
 		return (co.dist = __DBL_MAX__, co);
-	co.endx = px;
-	co.endy = py;
 	col_v(fov_angle, datos, &co);
-	while (TRUE)
-	{
-		co.endx += cos(fov_angle) * 0.1;
-        co.endy += sin(fov_angle) * 0.1;
-		if (!datos->info.map[(int)co.endy][(int)co.endx])
-			return (co.dist = __DBL_MAX__, co);
-		if (datos->info.map[(int)co.endy][(int)co.endx] == '1')
-		{
-			co.dist = sqrt(pow(co.endx - px, 2) + pow(co.endy - py, 2));
-			break;
-		}
-	}
 	return (co);
 }
 
@@ -124,9 +125,18 @@ t_colision	col_h(double fov_angle, t_main *datos, t_colision *c)
 	{
 		//eso quiere decir que estamos en los cuadrantes de arriba, y que tenemos que ir restando la y. Como la y mas pequeña esta arriba, hay que ir restando.
 		ya = fmod(datos->py, 1);
-		printf("-->ya:%f\n", ya);
 		if (ya == 0)
 			ya = 1;
+		c->first_impact = fabs(ya / (cos(fabs(fov_angle - (M_PI / 2)))));
+		c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - (M_PI / 2)))));
+	}
+	else
+	{
+		ya = 1 - fmod(datos->py, 1);
+		if (ya == 0)
+			ya = 1;
+		c->first_impact = fabs(ya / (cos(fabs(fov_angle - (M_PI / 2)))));
+		c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - (M_PI / 2)))));
 	}
 	return(*c);
 }
