@@ -20,6 +20,7 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
+	printf("keycode: %d\n", keycode);
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
@@ -27,30 +28,30 @@ int key_hook(int keycode, t_main *datos)
         //exit(0);
         return (1);
     }
-    else if (keycode == 124) //right arrow key
+    else if (keycode == 65363) //right arrow key
         datos->pa = max_and_min_angles(datos->pa + 0.10472);
-    else if (keycode == 123)//left arrow key
+    else if (keycode == 65361)//left arrow key
         datos->pa = max_and_min_angles(datos->pa - 0.10472);
-    else if (keycode == 0)//A
-    {
-        datos->px -= cos(datos->pa + M_PI_2) * 0.25;
-        datos->py -= sin(datos->pa + M_PI_2) * 0.25;
-    }
-    else if (keycode == 2)//D
-    {
-        datos->px += cos(datos->pa + M_PI_2) * 0.25;
-        datos->py += sin(datos->pa + M_PI_2) * 0.25;
-    }
-    else if (keycode == 13)//W
-    {
-        datos->px += cos(datos->pa) * 0.25;
-        datos->py += sin(datos->pa) * 0.25;
-    }
-    else if (keycode == 1)//S
-    {
-        datos->px -= cos(datos->pa) * 0.25;
-        datos->py -= sin(datos->pa) * 0.25;
-    }
+	else if (keycode == 97)//A
+	{
+		datos->px -= cos(datos->pa + M_PI_2) * 0.25;
+		datos->py -= sin(datos->pa + M_PI_2) * 0.25;
+	}
+	else if (keycode == 100)//D
+	{
+		datos->px += cos(datos->pa + M_PI_2) * 0.25;
+		datos->py += sin(datos->pa + M_PI_2) * 0.25;
+	}
+	else if (keycode == 119)//W
+	{
+		datos->px += cos(datos->pa) * 0.25;
+		datos->py -= sin(datos->pa) * 0.25;
+	}
+	else if (keycode == 115)//S
+	{
+		datos->px -= cos(datos->pa) * 0.25;
+		datos->py += sin(datos->pa) * 0.25;
+	}
     printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
     printf("angulo->%.2f\n", datos->pa * (180/M_PI));
     return (0);
