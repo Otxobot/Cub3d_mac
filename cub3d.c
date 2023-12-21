@@ -34,13 +34,13 @@ int key_hook(int keycode, t_main *datos)
         datos->pa = max_and_min_angles(datos->pa - 0.10472);
 	else if (keycode == 97)//A
 	{
-		datos->px -= cos(datos->pa + M_PI_2) * 0.25;
-		datos->py -= sin(datos->pa + M_PI_2) * 0.25;
+		datos->px -= sin(datos->pa) * 0.25;
+		datos->py -= cos(datos->pa) * 0.25;
 	}
 	else if (keycode == 100)//D
 	{
-		datos->px += cos(datos->pa + M_PI_2) * 0.25;
-		datos->py += sin(datos->pa + M_PI_2) * 0.25;
+		datos->px += sin(datos->pa) * 0.25;
+		datos->py += cos(datos->pa) * 0.25;
 	}
 	else if (keycode == 119)//W
 	{
