@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/18 13:14:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:06:10 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_main
 }	t_main;
 
 typedef struct s_colision {
+	double		first_impact;
+	double		rest_of_impacts;
 	double		startx;
 	double		starty;
 	double		endx;
@@ -131,5 +133,6 @@ void	init_values(t_main *datos);
 
 t_colision	colision (double fov_angle, int px, int py, t_main *datos);
 t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
+t_colision	colision_horizontal(double fov_angle, int px, int py, t_main *datos);
 
 #endif

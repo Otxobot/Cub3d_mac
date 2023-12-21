@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/20 12:42:17 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:46:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,14 @@ int key_hook(int keycode, t_main *datos)
         datos->px -= cos(datos->pa) * 0.25;
         datos->py -= sin(datos->pa) * 0.25;
     }
-	printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
-	printf("->%.2f\n", datos->pa * (180/M_PI));
-	return (0);
+    else if (keycode == 1)//S
+    {
+        datos->px -= cos(datos->pa) * 0.25;
+        datos->py -= sin(datos->pa) * 0.25;
+    }
+    printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
+    printf("angulo->%.2f\n", datos->pa * (180/M_PI));
+    return (0);
 }
 
 int main(int ac, char **av)
@@ -75,12 +80,12 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		load_screen(&datos); 
+		load_screen(&datos);
 		//mlx_clear_window(datos.mlx, datos.window);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
-		//mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
+		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		//mlx_hook(datos.window, 2, 0, &movements, &datos);
-		mlx_loop(datos.mlx);	
+		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
 		printf("Exiting the program successfully!\n");
