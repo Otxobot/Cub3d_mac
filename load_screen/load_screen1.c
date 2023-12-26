@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/26 11:22:15 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:03:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,35 @@ double max_and_min_angles(double player_angle)
 	return (player_angle);
 }
 
+
+int	leave_map(t_main *data, t_colision	*c)
+{
+	int	line_len;
+
+	if (c->cy < 0 || c->cy > data->t_map->map_h - 1)
+		return (1);
+	line_len = (int)ft_strlen(data->t_map->map[(int)c->cy]);
+	if (c->cx < 0 || c->cx > line_len - 1)
+		return (1);
+	return (0);
+}
+
 void	load_screen(t_main *datos)
 {
-	int			i = 540;
+	int			i = 0;
 	double 		fov_angle;
 	double		angle;
 	t_colision	co;
 
 	paint_fc(datos);
 	fov_angle = M_PI / 3;
-	while (i < 541)
+	while (i < SCREENWIDTH)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
-		co = colision(datos->pa, datos->px, datos->py, datos);
-		printf ("distancia: %f\n", co.dist);
-		draw_ray(datos, co, i, co.dist / 32 * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
+		co = colision(angle, datos->px, datos->py, datos);
+		//printf ("distancia: %f\n", co.dist);
+		draw_ray(datos, co, i, co.dist / 25 * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
 		//printf ("distancia: %f\n", co.dist);
 		i++;
 	}
@@ -77,8 +90,8 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 
 	co_h = colision_horizontal(fov_angle, px, py, datos);
 	co_v = colision_vertical(fov_angle, px, py, datos);
-	printf("co_h: %f\n", co_h.dist);
-	printf("co_v: %f\n", co_v.dist);
+	//printf("co_h: %f\n", co_h.dist);
+	//printf("co_v: %f\n", co_v.dist);
 	if (co_h.dist < co_v.dist)
 		return (co_h);
 	else
@@ -88,20 +101,25 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 
 t_colision	col_v(double fov_angle, t_main *datos, t_colision *c)
 {
+	
 	if (fov_angle > M_PI / 2 && fov_angle < (3 * M_PI) / 2)
+	{
 		c->startx = fmod(datos->px, 1);
+		fov_angle = fabs(M_PI - fov_angle);
+	}
 	else
+	{
 		c->startx = 1 - fmod(datos->px, 1);
-	if (fov_angle < M_PI)
-		c->startx = fmod(datos->py, 1);
-	else
-		c->startx = 1 - fmod(datos->py, 1);
+		if (fov_angle > (M_PI))
+			fov_angle = fabs(fov_angle - (2 * M_PI));
+	}
 	if (c->startx == 0)
 		c->startx = 1;
 	c->first_impact = fabs(c->startx / (cos(fabs(fov_angle - M_PI))));
 	c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - M_PI))));
+	c->starty = c->first_impact * sin(fov_angle);
+	c->endy = c->rest_of_impacts * sin(fov_angle);
 	c->endx = 1;
-	c->endy = 1;
 	return(*c);
 }
 
@@ -110,43 +128,42 @@ t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 	t_colision	co;
 	int times;
 
-	px = 0;
-	py = 0;
 	if (fov_angle == M_PI/2 || fov_angle == (3 * M_PI)/2)
 		return (co.dist = __DBL_MAX__, co);
 	col_v(fov_angle, datos, &co);
 	px += co.startx;
 	py += co.starty;
 	times = 0;
-	while (TRUE)
+	while (px >= 0 && px < ft_strlen(datos->info.map[py]) && py >= 0 && py < 14)
 	{
-		if (px + 1 > ft_strlen(datos->info.map[py + 1]) || py + 1 > 14 || px + 1 < 0 || py + 1 < 0)
-			return (co.dist = __DBL_MAX__, co);
-		//puede que este if falle, si no esta colisionando contra una pered pero al comprobar el +1 si, devolveria la posicion incorrecta
-		if (datos->info.map[py + 1][px + 1] == '1')
-			return (co.dist = co.first_impact + (co.rest_of_impacts * times), co);
+		if (datos->info.map[py][px] == '1')
+			return (co.dist = co.first_impact + (co.rest_of_impacts * (times - 1)), co);
 		px += co.endx;
 		py += co.endy;
 		times++;
 	}
-	return (co);
+	return (co.dist = __DBL_MAX__, co);
 }
 
 t_colision	col_h(double fov_angle, t_main *datos, t_colision *c)
 {
 	if (fov_angle < M_PI)
+	{
 		c->starty = fmod(datos->py, 1);
+		fov_angle = fabs(M_PI / 2 - fov_angle);
+	}
 	else
+	{
 		c->starty = 1 - fmod(datos->py, 1);
-	if (fov_angle > M_PI / 2 && fov_angle < (3 * M_PI) / 2)
-		c->startx = fmod(datos->px, 1);
-	else
-		c->startx = 1 - fmod(datos->px, 1);
+		if (fov_angle > (M_PI))
+			fov_angle = fabs(fov_angle - ((3 * M_PI) / 2));
+	}
 	if (c->starty == 0)
 		c->starty = 1;
-	c->first_impact = fabs(c->starty / (cos(fabs(fov_angle - (M_PI / 2)))));
-	c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - (M_PI / 2)))));
-	c->endx = 1;
+	c->first_impact = fabs(c->starty / (cos(fov_angle)));
+	c->rest_of_impacts = fabs(1 / (cos(fov_angle)));
+	c->startx = c->first_impact * sin(fov_angle);
+	c->endx = c->rest_of_impacts * sin(fov_angle);
 	c->endy = 1;
 	return(*c);
 }
@@ -162,15 +179,13 @@ t_colision colision_horizontal(double fov_angle, int px, int py, t_main *datos)
 	px += co.startx;
 	py += co.starty;
 	times = 0;
-	while (TRUE)
+	while (px >= 0 && px < ft_strlen(datos->info.map[py]) && py >= 0 && py < 14)
 	{
-		if (px + 1 > ft_strlen(datos->info.map[py]) || py + 1 > 14 || px + 1 < 0 || py + 1 < 0)
-			return (co.dist = __DBL_MAX__, co);
-		if (datos->info.map[py + 1][px + 1] == '1')
-			return (co.dist = co.first_impact + (co.rest_of_impacts * times), co);
+		if (datos->info.map[py][px] == '1')
+			return (co.dist = co.first_impact + (co.rest_of_impacts * (times - 1)), co);
 		px += co.endx;
 		py += co.endy;
 		times++;
-	}	
-	return (co);
+	}
+	return (co.dist = __DBL_MAX__, co);
 }

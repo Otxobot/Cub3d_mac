@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:16:49 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/22 12:55:22 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/26 13:38:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	draw_ray(t_main *datos, t_colision co, int x, int h)
 	(void)co;
 
 	j = 0;
-	printf("h: %d\n", h);
-	printf("64 / h = %d\n", 64 / h);
 	while (j < SCREENWIDTH)
 	{
 		if (j > (SCREENHEIGHT / 2) - (h / 2) && j < (SCREENHEIGHT / 2) + (h / 2))
