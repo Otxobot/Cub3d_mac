@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
+#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/20 14:04:56 by abasante         ###   ########.fr        #
+#    Updated: 2023/12/22 12:38:34 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC = cub3d.c \
 	free.c \
 	parse.c \
 	load_screen/load_screen1.c \
+	load_screen/load_screen2.c \
 	init_values.c \
 
 INCLUDES = -I./libft
