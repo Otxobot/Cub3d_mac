@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/28 13:38:17 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/28 15:03:24 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,21 @@ double max_and_min_angles(double player_angle)
 
 void	load_screen(t_main *datos)
 {
-	int			i = 0;
+	int			i = 540;
 	double 		fov_angle;
 	double		angle;
 	t_colision	co;
 
 	paint_fc(datos);
 	fov_angle = M_PI / 3;
-	while (i < SCREENWIDTH)
+	while (i < 541)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
 		co = colision(angle, datos->px, datos->py, datos);
-		//printf ("distancia: %f\n", co.dist);
-		draw_ray(datos, co, i, co.dist / 25 * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
-		//printf ("distancia: %f\n", co.dist);
+		if (i == 540)
+			printf("co.dist: %f\n", co.dist);
+		draw_ray(datos, co, i, (int)(64 / co.dist));
 		i++;
 	}
 }
@@ -136,6 +136,7 @@ t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 	times = 0;
 	while (px >= 0 && px < ft_strlen(datos->info.map[py]) && py >= 0 && py < 14)
 	{
+		printf("times: %d\n", times);
 		if (datos->info.map[py][px] == '1')
 			return (co.dist = co.first_impact + (co.rest_of_impacts * (times - 1)), co);
 		px += co.endx;
