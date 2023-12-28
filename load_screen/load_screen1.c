@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/26 11:22:15 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/12/28 13:37:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,6 @@ t_colision	col_h(double fov_angle, t_main *datos, t_colision *c)
 		c->startx = fmod(datos->px, 1);
 	else
 		c->startx = 1 - fmod(datos->px, 1);
-	if (c->starty == 0)
-		c->starty = 1;
 	c->first_impact = fabs(c->starty / (cos(fabs(fov_angle - (M_PI / 2)))));
 	c->rest_of_impacts = fabs(1 / (cos(fabs(fov_angle - (M_PI / 2)))));
 	c->endx = 1;
