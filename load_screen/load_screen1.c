@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/26 14:03:24 by abasante         ###   ########.fr       */
+/*   Updated: 2023/12/26 14:24:04 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ double max_and_min_angles(double player_angle)
 }
 
 
-int	leave_map(t_main *data, t_colision	*c)
-{
-	int	line_len;
-
-	if (c->cy < 0 || c->cy > data->t_map->map_h - 1)
-		return (1);
-	line_len = (int)ft_strlen(data->t_map->map[(int)c->cy]);
-	if (c->cx < 0 || c->cx > line_len - 1)
-		return (1);
-	return (0);
-}
+//int	leave_map(t_main *data, t_colision	*c)
+//{
+//	int	line_len;
+//
+//	if (c->cy < 0 || c->cy > data->t_map->map_h - 1)
+//		return (1);
+//	line_len = (int)ft_strlen(data->t_map->map[(int)c->cy]);
+//	if (c->cx < 0 || c->cx > line_len - 1)
+//		return (1);
+//	return (0);
+//}
 
 void	load_screen(t_main *datos)
 {
@@ -76,7 +76,8 @@ void	load_screen(t_main *datos)
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
 		co = colision(angle, datos->px, datos->py, datos);
-		//printf ("distancia: %f\n", co.dist);
+		if (i == 540)
+			printf ("distancia: %f\n", co.dist);
 		draw_ray(datos, co, i, co.dist / 25 * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
 		//printf ("distancia: %f\n", co.dist);
 		i++;
