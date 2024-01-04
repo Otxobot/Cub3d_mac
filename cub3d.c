@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/26 12:15:19 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:11:00 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ int main(int ac, char **av)
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
 		load_screen(&datos);
-		//mlx_clear_window(datos.mlx, datos.window);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
-		//mlx_hook(datos.window, 2, 0, &movements, &datos);
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
