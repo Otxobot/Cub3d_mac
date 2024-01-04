@@ -50,14 +50,14 @@ double max_and_min_angles(double player_angle)
 }
 
 
-int	leave_map(t_main *data, t_colision	*c)
+int	leave_map(t_main *datos, t_colision	*c)
 {
 	int	line_len;
 
-	if (c->cy < 0 || c->cy > data->t_map->map_h - 1)
+	if (c->starty < 0 || c->starty > 5 - 1)
 		return (1);
-	line_len = (int)ft_strlen(data->t_map->map[(int)c->cy]);
-	if (c->cx < 0 || c->cx > line_len - 1)
+	line_len = (int)ft_strlen(datos->info.map[(int)c->starty]);
+	if (c->startx < 0 || c->startx > line_len - 1)
 		return (1);
 	return (0);
 }
