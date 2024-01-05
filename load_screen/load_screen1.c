@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/04 16:46:19 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/05 12:30:44 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ t_colision colision_vertical(double fov_angle, int px, int py, t_main *datos)
 	{
 		if (leave_map(datos, &co) == 1)
 			return (co.dist = __DBL_MAX__, co);
-		if (datos->info.map[(int)co.starty][(int)co.startx] == '1' && times > 0)
+		if (datos->info.map[(int)co.starty][(int)co.startx] == '1' && times > 0 && fmod(co.startx, 1) != 0 && fmod(co.starty, 1) != 0)
 			return (co.dist = sqrt(pow(fabs(px - co.startx), 2) + pow(fabs(py - co.starty), 2)), co);
 		if (datos->info.map[(int)co.starty][(int)co.startx] == '1')
 			return (co.dist = sqrt(pow(fabs(px - co.startx), 2) + pow(fabs(py - co.starty), 2)), co);
@@ -235,7 +235,7 @@ t_colision colision_horizontal(double fov_angle, int px, int py, t_main *datos)
 	{
 		if (leave_map(datos, &co) == 1)
 			return (co.dist = __DBL_MAX__, co);
-		if (datos->info.map[(int)co.starty][(int)co.startx] == '1' && times > 0)
+		if (datos->info.map[(int)co.starty][(int)co.startx] == '1' && times > 0 && fmod(co.startx, 1) != 0 && fmod(co.starty, 1) != 0)
 			return (co.dist = sqrt(pow(fabs(px - co.startx), 2) + pow(fabs(py - co.starty), 2)), co);
 		if (datos->info.map[(int)co.starty][(int)co.startx] == '1')
 			return (co.dist = sqrt(pow(fabs(px - co.startx), 2) + pow(fabs(py - co.starty), 2)), co);
