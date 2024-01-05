@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/03 12:19:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:52:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_colision {
 	double		endx;
 	double		endy;
 	double		dist;
+	int			color[3];
 }				t_colision;
 
 
