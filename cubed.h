@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/03 13:52:54 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/05 12:57:34 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define TAB_SIZE 4
 #define SCREENWIDTH 1080
 #define SCREENHEIGHT 640
+
+#define MOVE_SPEED 0.25
 
 typedef struct s_info 
 {
@@ -136,5 +138,11 @@ t_colision	colision (double fov_angle, int px, int py, t_main *datos);
 t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
 t_colision	colision_horizontal(double fov_angle, int px, int py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
+
+int	move(char **map, double angle, t_main *game);
+int	move_forward(t_main *game);
+int	move_left(t_main *game);
+int	move_back(t_main *game);
+int	move_right(t_main *game);
 
 #endif

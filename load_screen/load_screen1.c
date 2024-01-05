@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:23:23 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/05 12:30:44 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:41:19 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	load_screen(t_main *datos)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
-		printf ("angle = %f\n", angle * (180/M_PI));
+		//printf ("angle = %f\n", angle * (180/M_PI));
 		co = colision(angle, datos->px, datos->py, datos);
 		//printf  ("co.dist = %f\n", co.dist);
 		draw_ray(datos, co, i, (1 / co.dist) * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
@@ -100,8 +100,8 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 
 	co_h = colision_horizontal(fov_angle, px, py, datos);
 	co_v = colision_vertical(fov_angle, px, py, datos);
-	printf ("co_h.dist = %f\n", co_h.dist);
-	printf ("co_v.dist = %f\n", co_v.dist);
+	//printf ("co_h.dist = %f\n", co_h.dist);
+	//printf ("co_v.dist = %f\n", co_v.dist);
 	if (co_h.dist < co_v.dist)
 	{
 		if (fov_angle < M_PI)
@@ -116,7 +116,7 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 			co_h.color[1] = 155;
 			co_h.color[2] = 5;
 		}
-		printf ("co_h\n");
+		//printf ("co_h\n");
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
@@ -134,7 +134,7 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 			co_v.color[1] = 205;
 			co_v.color[2] = 255;
 		}
-		printf ("co_v\n");
+		//printf ("co_v\n");
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}

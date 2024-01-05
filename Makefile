@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/22 12:38:34 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/05 12:14:09 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = cub3d.c \
 	parse.c \
 	load_screen/load_screen1.c \
 	load_screen/load_screen2.c \
+	movement/events.c \
 	init_values.c \
 
 INCLUDES = -I./libft
@@ -55,7 +56,7 @@ clean:
 fclean: clean
 	@make fclean -C libft
 	@rm -rf $(NAME)
-	@rm -rf cubed.dSYM
+	@rm -rf cub3d.dSYM
 
 re: fclean all
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/04 12:11:00 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:44:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
-	printf("keycode: %d\n", keycode);
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
@@ -29,32 +28,40 @@ int key_hook(int keycode, t_main *datos)
         return (1);
     }
     else if (keycode == 124) //right arrow key
+	{
         datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
+	}
     else if (keycode == 123)//left arrow key
+	{
         datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
+	}
 	else if (keycode == 0)//A
 	{
-		datos->px -= sin(datos->pa) * 0.25;
-		datos->py -= cos(datos->pa) * 0.25;
+		move_left(datos);
+		// datos->px -= sin(datos->pa) * 0.25;
+		// datos->py -= cos(datos->pa) * 0.25;
 	}
 	else if (keycode == 2)//D
 	{
-		datos->px += sin(datos->pa) * 0.25;
-		datos->py += cos(datos->pa) * 0.25;
+		move_right(datos);
+		// datos->px += sin(datos->pa) * 0.25;
+		// datos->py += cos(datos->pa) * 0.25;
 	}
 	else if (keycode == 13)//W
 	{
-		datos->px += cos(datos->pa) * 0.25;
-		datos->py -= sin(datos->pa) * 0.25;
+		move_forward(datos);
+		// datos->px += cos(datos->pa) * 0.25;
+		// datos->py -= sin(datos->pa) * 0.25;
 	}
 	else if (keycode == 1)//S
 	{
-		datos->px -= cos(datos->pa) * 0.25;
-		datos->py += sin(datos->pa) * 0.25;
+		move_back(datos);
+		// datos->px -= cos(datos->pa) * 0.25;
+		// datos->py += sin(datos->pa) * 0.25;
 	}
     printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
     printf("angulo->%.2f\n", datos->pa * (180/M_PI));
-	load_screen(datos);
+	//load_screen(datos);
     return (0);
 }
 
@@ -78,6 +85,8 @@ int main(int ac, char **av)
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
 		load_screen(&datos);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
+		//mlx_hook(datos.window, 2, 1L<<0, &keypress, &datos);
+		//mlx_hook(datos.window, 3, 1L<<1, &keyrealease, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
