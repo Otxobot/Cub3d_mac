@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/05 12:57:34 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/06 12:19:42 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,9 @@ double	max_and_min_angles(double player_angle);
 void	p_ori(t_main *datos);
 void	init_values(t_main *datos);
 
-t_colision	colision (double fov_angle, int px, int py, t_main *datos);
-t_colision	colision_vertical(double fov_angle, int px, int py, t_main *datos);
-t_colision	colision_horizontal(double fov_angle, int px, int py, t_main *datos);
+t_colision	colision(double fov_angle, double px, double py, t_main *datos);
+t_colision colision_vertical(double fov_angle, double px, double py, t_main *datos);
+t_colision colision_horizontal(double fov_angle, double px, double py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
 
 int	move(char **map, double angle, t_main *game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/05 13:44:47 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/06 12:08:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int key_hook(int keycode, t_main *datos)
 	}
     printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
     printf("angulo->%.2f\n", datos->pa * (180/M_PI));
-	//load_screen(datos);
+	load_screen(datos);
     return (0);
 }
 
