@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/06 14:58:06 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/06 15:38:11 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	leave_map(t_main *data, t_colision	*c)
 	int	line_len;
 
 	if (c->starty / UNIT < 0 || \
-		c->starty / UNIT > 29 - 1)
+		c->starty / UNIT > 12 - 1)
 		return (1);
 	line_len = (int)ft_strlen(data->info.map[(int)c->starty / UNIT]);
 	if (c->startx / UNIT < 0 || \
@@ -112,36 +112,18 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	printf ("co_v.dist = %f\n", co_v.dist);
 	if (co_h.dist < co_v.dist)
 	{
-		if (fov_angle < M_PI)
-		{
-			co_h.color[0] = 0;
-			co_h.color[1] = 255;
-			co_h.color[2] = 0;
-		}
-		else
-		{
-			co_h.color[0] = 0;
-			co_h.color[1] = 155;
-			co_h.color[2] = 5;
-		}
+		co_h.color[0] = 0;
+		co_h.color[1] = 155;
+		co_h.color[2] = 5;
 		//printf ("co_h\n");
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
 	else
 	{
-		if (fov_angle > M_PI / 2 && fov_angle < 3 * M_PI / 2)
-		{
-			co_v.color[0] = 0;
-			co_v.color[1] = 120;
-			co_v.color[2] = 150;
-		}
-		else
-		{
-			co_v.color[0] = 0;
-			co_v.color[1] = 205;
-			co_v.color[2] = 255;
-		}
+		co_v.color[0] = 0;
+		co_v.color[1] = 205;
+		co_v.color[2] = 255;
 		//printf ("co_v\n");
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
