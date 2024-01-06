@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2023/12/22 12:38:34 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/03 10:39:57 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ clean:
 fclean: clean
 	@make fclean -C libft
 	@rm -rf $(NAME)
-	@rm -rf cubed.dSYM
+	@rm -rf cub3d.dSYM
 
 re: fclean all
 
