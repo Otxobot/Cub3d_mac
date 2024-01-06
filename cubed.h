@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/06 12:19:42 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/06 14:30:42 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #define SCREENHEIGHT 640
 
 #define MOVE_SPEED 0.25
+#define UNIT 64
 
 typedef struct s_info 
 {
@@ -66,6 +67,15 @@ typedef struct s_colision {
 	double		dist;
 	int			color[3];
 }				t_colision;
+
+typedef struct s_texture
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				size;
+	int				endian;
+}				t_texture;
 
 
 //=============PARSE_ELEMENTS:======================
@@ -135,8 +145,8 @@ void	p_ori(t_main *datos);
 void	init_values(t_main *datos);
 
 t_colision	colision(double fov_angle, double px, double py, t_main *datos);
-t_colision colision_vertical(double fov_angle, double px, double py, t_main *datos);
-t_colision colision_horizontal(double fov_angle, double px, double py, t_main *datos);
+//t_colision colision_vertical(double fov_angle, double px, double py, t_main *datos);
+//t_colision colision_horizontal(double fov_angle, double px, double py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
 
 int	move(char **map, double angle, t_main *game);
@@ -144,5 +154,10 @@ int	move_forward(t_main *game);
 int	move_left(t_main *game);
 int	move_back(t_main *game);
 int	move_right(t_main *game);
+
+int	calc_col_v_data(double ra, int px, int py, t_colision *c);
+t_colision	col_v(double ra, int px, int py, t_main *data);
+int	calc_col_h_data(double ra, int px, int py, t_colision *c);
+t_colision	col_h(double ra, int px, int py, t_main *data);
 
 #endif
