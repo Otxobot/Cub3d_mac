@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/06 14:58:06 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/06 15:05:16 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ t_colision	col_v(double ra, int px, int py, t_main *data)
 	t_colision	c;
 
 	if (ra == (2 * M_PI) || ra == M_PI || ra == 0)
-		return (c.dist = 1e30, c);
+		return (c.dist = __DBL_MAX__, c);
 	printf ("px = %d\n", px);
 	printf ("py = %d\n", py);
 	calc_col_v_data(ra, px, py, &c);
@@ -192,7 +192,7 @@ t_colision	col_v(double ra, int px, int py, t_main *data)
 		if (leave_map(data, &c) == 1)
 		{
 			printf("salgo del mapa\n");
-			return (c.dist = 1e30, c);
+			return (c.dist = __DBL_MAX__, c);
 		}
 		if (data->info.map[(int)(c.starty / UNIT)][(int)(c.startx / UNIT)] == '1')
 			return (c.dist = distance(data->px, data->py, c.startx, c.starty), c);
@@ -233,12 +233,12 @@ t_colision	col_h(double ra, int px, int py, t_main *data)
 	t_colision	c;
 
 	if (ra == M_PI / 2 || ra == 3 * M_PI / 2)
-		return (c.dist = 1e30, c);
+		return (c.dist = __DBL_MAX__, c);
 	calc_col_h_data(ra, px, py, &c);
 	while (1)
 	{
 		if (leave_map(data, &c) == 1)
-			return (c.dist = 1e30, c);
+			return (c.dist = __DBL_MAX__, c);
 		if (data->info.map[(int)(c.starty / UNIT)][(int)(c.startx / UNIT)] == '1')
 			return (c.dist = distance(data->px, data->py, c.startx, c.starty), c);
 		c.startx += c.endx;
