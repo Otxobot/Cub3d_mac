@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:31 by mikferna          #+#    #+#             */
-/*   Updated: 2023/12/14 16:14:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/06 13:58:06 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void	init_values(t_main *datos)
 		{
 			if (datos->info.map[j][i] == datos->info.player)
 			{
-				datos->px = i + 0.5;
-				datos->py = j + 0.5;
+				datos->px = i * UNIT + UNIT / 2;
+				datos->py = j * UNIT + UNIT / 2;
+				datos->info.map[j][i] = '0';
 			}
 		}
 	}
