@@ -20,6 +20,7 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
+	//printf("keycode: %d\n", keycode);
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
@@ -27,33 +28,33 @@ int key_hook(int keycode, t_main *datos)
         //exit(0);
         return (1);
     }
-    else if (keycode == 124) //right arrow key
+    else if (keycode == 65363) //right arrow key65363
 	{
         datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
 	}
-    else if (keycode == 123)//left arrow key
+    else if (keycode == 65361)//left arrow key65361
 	{
         datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
 	}
-	else if (keycode == 0)//A
+	else if (keycode == 97)//A97
 	{
 		move_left(datos);
 		// datos->px -= sin(datos->pa) * 0.25;
 		// datos->py -= cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 2)//D
+	else if (keycode == 100)//D100
 	{
 		move_right(datos);
 		// datos->px += sin(datos->pa) * 0.25;
 		// datos->py += cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 13)//W
+	else if (keycode == 119)//W119
 	{
 		move_forward(datos);
 		// datos->px += cos(datos->pa) * 0.25;
 		// datos->py -= sin(datos->pa) * 0.25;
 	}
-	else if (keycode == 1)//S
+	else if (keycode == 115)//S115
 	{
 		move_back(datos);
 		// datos->px -= cos(datos->pa) * 0.25;

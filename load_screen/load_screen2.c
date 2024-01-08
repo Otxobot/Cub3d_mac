@@ -48,7 +48,7 @@ void	draw_ray(t_main *datos, t_colision co, int x, int h)
 //	{
 //		if (SCREENHEIGHT / 2 - h / 2 + i >= 0 && SCREENHEIGHT / 2 - h / 2 + i < SCREENHEIGHT)
 //		{
-//			if ((c.startx - ((int)c.startx / UNIT * UNIT)) == 0 || \
+//			if ((c.startx - ((int)c.startx / UNIT * UNIT)) == 0 ||
 //			(c.startx - ((int)c.startx / UNIT * UNIT)) == 63)
 //				draw_pixel(data, x, SCREENHEIGHT / 2 - h / 2 + i, obtener_color(c.color[0], c.color[1], c.color[2]));
 //			else

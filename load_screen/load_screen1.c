@@ -108,16 +108,17 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	if (co_h.dist < co_v.dist)
 	{
 		//horizontal
-		co_h.color[0] = 0;
-		co_h.color[1] = 155;
-		co_h.color[2] = 5;
+		// co_h.color[0] = 0;
+		// co_h.color[1] = 155;
+		// co_h.color[2] = 5;
+		co_h.texture = datos->we_texture;
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
 	else
 	{
 		//vertical
-		co_v.texture = 
+		co_v.texture = datos->no_texture;
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}
