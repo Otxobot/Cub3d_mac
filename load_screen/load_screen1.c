@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/06 15:38:11 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:50:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int	leave_map(t_main *data, t_colision	*c)
 	int	line_len;
 
 	if (c->starty / UNIT < 0 || \
-		c->starty / UNIT > 12 - 1)
+		c->starty / UNIT > 14 - 1)
 		return (1);
 	line_len = (int)ft_strlen(data->info.map[(int)c->starty / UNIT]);
-	if (c->startx / UNIT < 0 || \
-		c->startx / UNIT > line_len - 1)
+	if ((c->startx / UNIT < 0) || \
+		(c->startx / UNIT) > line_len - 1)
 		return (1);
 	return (0);
 }
