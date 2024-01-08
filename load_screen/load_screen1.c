@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/08 13:11:57 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:46:50 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int	leave_map(t_main *data, t_colision	*c)
 	int	line_len;
 
 	if (c->starty / UNIT < 0 || \
-		c->starty / UNIT > 12 - 1)
+		c->starty / UNIT > calc_amount_of_lines(data->info.map) - 1)
 		return (1);
 	line_len = (int)ft_strlen(data->info.map[(int)c->starty / UNIT]);
-	if (c->startx / UNIT < 0 || \
-		c->startx / UNIT > line_len - 1)
+	if ((c->startx / UNIT < 0) || \
+		(c->startx / UNIT) > line_len - 1)
 		return (1);
 	return (0);
 }
@@ -93,7 +93,6 @@ void	load_screen(t_main *datos)
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
 		co = colision(angle, datos->px, datos->py, datos);
-		//printf  ("co.dist = %f\n", co.dist);
 		draw_ray(datos, co, i, (UNIT / co.dist) * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
 		i++;
 	}
@@ -104,18 +103,13 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	t_colision co_v;
 	t_colision co_h;
 
-	printf("px = %f\n", px);
-	printf("py = %f\n", py);
 	co_h = col_h(fov_angle, px, py, datos);
 	co_v = col_v(fov_angle, px, py, datos);
-	printf ("co_h.dist = %f\n", co_h.dist);
-	printf ("co_v.dist = %f\n", co_v.dist);
 	if (co_h.dist < co_v.dist)
 	{
 		co_h.color[0] = 0;
 		co_h.color[1] = 155;
 		co_h.color[2] = 5;
-		//printf ("co_h\n");
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
@@ -124,11 +118,9 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 		co_v.color[0] = 0;
 		co_v.color[1] = 205;
 		co_v.color[2] = 255;
-		//printf ("co_v\n");
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}
-	//pintar paredes
 }
 
 int	calc_col_v_data(double ra, int px, int py, t_colision *c)
@@ -164,11 +156,7 @@ t_colision	col_v(double ra, int px, int py, t_main *data)
 
 	if (ra == (2 * M_PI) || ra == M_PI || ra == 0)
 		return (c.dist = 1e30, c);
-	printf ("px = %d\n", px);
-	printf ("py = %d\n", py);
 	calc_col_v_data(ra, px, py, &c);
-	printf("c.startx = %f\n", c.startx);
-	printf("c.starty = %f\n", c.starty);
 	while (1)
 	{
 		if (leave_map(data, &c) == 1)
