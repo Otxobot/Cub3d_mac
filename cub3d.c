@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 13:25:39 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:00:33 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int main(int ac, char **av)
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
 		load_screen(&datos);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
-		//mlx_hook(datos.window, 2, 1L<<0, &keypress, &datos);
-		//mlx_hook(datos.window, 3, 1L<<1, &keyrealease, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
