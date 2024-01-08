@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:00:33 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:07:53 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
+		init_textures(&datos);
 		load_screen(&datos);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/08 14:10:32 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:28:50 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	co_v = col_v(fov_angle, px, py, datos);
 	if (co_h.dist < co_v.dist)
 	{
+		//horizontal
 		co_h.color[0] = 0;
 		co_h.color[1] = 155;
 		co_h.color[2] = 5;
@@ -115,9 +116,8 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	}
 	else
 	{
-		co_v.color[0] = 0;
-		co_v.color[1] = 205;
-		co_v.color[2] = 255;
+		//vertical
+		co_v.texture = 
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}

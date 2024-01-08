@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:09:01 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:17:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,6 @@ typedef struct s_main
 	double			py;
 	struct s_info	info;
 }	t_main;
-
-typedef struct s_colision {
-	double		first_impact;
-	double		rest_of_impacts;
-	double		startx;
-	double		starty;
-	double		endx;
-	double		endy;
-	double		dist;
-	int			color[3];
-}				t_colision;
-
 typedef struct s_texture
 {
 	void			*img;
@@ -77,6 +65,18 @@ typedef struct s_texture
 	int				size;
 	int				endian;
 }				t_texture;
+
+typedef struct s_colision {
+	double				first_impact;
+	double				rest_of_impacts;
+	double				startx;
+	double				starty;
+	double				endx;
+	double				endy;
+	double				dist;
+	struct s_texture	texture;
+}				t_colision;
+
 
 
 //=============PARSE_ELEMENTS:======================

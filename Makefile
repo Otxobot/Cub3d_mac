@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/08 13:53:20 by abasante         ###   ########.fr        #
+#    Updated: 2024/01/08 16:07:17 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = cub3d.c \
 	load_screen/load_screen2.c \
 	movement/events.c \
 	init_values.c \
+	textures/init_textures.c 
 
 INCLUDES = -I./libft
 
