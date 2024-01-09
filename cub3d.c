@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/09 12:28:23 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:28:46 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ int key_hook(int keycode, t_main *datos)
     printf("angulo->%.2f\n", datos->pa * (180/M_PI));
 	load_screen(datos);
     return (0);
-}
-
-void	get_textures(t_main *datos)
-{
-	north_texture()
 }
 
 int main(int ac, char **av)
