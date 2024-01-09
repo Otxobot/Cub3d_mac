@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/09 12:55:26 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:47:22 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int		RGB_atois(char identifier, char **nums, t_info *info);
 int		termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
 void	free_things_inside_info_struct(t_info info);
+void	free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================
 int		parse_map(char **elements_with_map_maybe, t_info *info);

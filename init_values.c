@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:31 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 12:44:30 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:40:12 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void	init_values(t_main *datos)
 		}
 	}
 	p_ori(datos);
+	datos->no_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->so_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->we_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->ea_texture = (t_texture *)malloc(sizeof(t_texture));
 	printf("->%f\n", datos->pa);
 }
