@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:16:49 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 12:17:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:02:06 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	draw_ray(t_main *datos, t_colision co, int x, int h)
 
 	scale = (double)UNIT / h;
 	j = 0;
-	// printf("h: %d\n", h);
-	// printf("co.texture = %d\n", co.texture->bpp);
-	// printf("co.texture = %d\n", co.texture->size);
+	printf("h: %d\n", h);
+	printf("co.texture = %d\n", co.texture->bpp);
+	printf("co.texture = %d\n", co.texture->size);
 	while (j < h)
 	{
 		if (320 - h / 2 + j >= 0 && 320 - h / 2 + j < SCREENHEIGHT)

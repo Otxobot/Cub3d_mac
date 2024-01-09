@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:17:21 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:55:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,10 +169,10 @@ t_colision	col_h(double ra, int px, int py, t_main *data);
 
 
 void	init_textures(t_main *datos);
-void	init_no_texture(t_main *datos, t_texture *no_texture);
-void	init_so_texture(t_main *datos, t_texture *so_texture);
-void	init_we_texture(t_main *datos, t_texture *we_texture);
-void	init_ea_texture(t_main *datos, t_texture *ea_texture);
+void	init_no_texture(t_main *datos);
+void	init_so_texture(t_main *datos);
+void	init_we_texture(t_main *datos);
+void	init_ea_texture(t_main *datos);
 
 
 #endif

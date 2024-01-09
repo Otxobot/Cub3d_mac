@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 12:18:55 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:59:59 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	load_screen(t_main *datos)
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
 		co = colision(angle, datos->px, datos->py, datos);
+		//printf("co.dist = %f\n", co.dist);
 		draw_ray(datos, co, i, (UNIT / co.dist) * ((SCREENWIDTH / 2) / tan(fov_angle / 2)));
 		i++;
 	}
