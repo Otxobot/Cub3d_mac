@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 16:07:53 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 10:39:16 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,33 @@ int key_hook(int keycode, t_main *datos)
         //exit(0);
         return (1);
     }
-    else if (keycode == 65363) //right arrow key65363
+    else if (keycode == 124) //right arrow key65363/124
 	{
         datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
 	}
-    else if (keycode == 65361)//left arrow key65361
+    else if (keycode == 123)//left arrow key65361/123
 	{
         datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
 	}
-	else if (keycode == 97)//A97
+	else if (keycode == 0)//A97/0
 	{
 		move_left(datos);
 		// datos->px -= sin(datos->pa) * 0.25;
 		// datos->py -= cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 100)//D100
+	else if (keycode == 2)//D100/2
 	{
 		move_right(datos);
 		// datos->px += sin(datos->pa) * 0.25;
 		// datos->py += cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 119)//W119
+	else if (keycode == 13)//W119/13
 	{
 		move_forward(datos);
 		// datos->px += cos(datos->pa) * 0.25;
 		// datos->py -= sin(datos->pa) * 0.25;
 	}
-	else if (keycode == 115)//S115
+	else if (keycode == 1)//S115/1
 	{
 		move_back(datos);
 		// datos->px -= cos(datos->pa) * 0.25;
