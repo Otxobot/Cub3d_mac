@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 12:29:03 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:53:03 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	load_screen(t_main *datos)
 	paint_fc(datos);
 	fov_angle = M_PI / 2;
 	i = 0;
+	
 	while (i < SCREENWIDTH)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
@@ -109,18 +110,32 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	if (co_h.dist < co_v.dist)
 	{
 		if (fov_angle > M_PI / 2 && fov_angle < 3 * M_PI / 2)
+		{
 			co_h.texture = datos->we_texture;
+		}
 		else
+		{
 			co_h.texture = datos->ea_texture;
+		}
+		co_h.color[0] = 255;
+		co_h.color[1] = 0;
+		co_h.color[2] = 0;
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
 	else
 	{
 		if (fov_angle < M_PI)
+		{
 			co_v.texture = datos->no_texture;
+		}
 		else
+		{
 			co_v.texture = datos->so_texture;
+		}
+		co_v.color[0] = 0;
+		co_v.color[1] = 255;
+		co_v.color[2] = 0;
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}
@@ -163,10 +178,7 @@ t_colision	col_v(double ra, int px, int py, t_main *data)
 	while (1)
 	{
 		if (leave_map(data, &c) == 1)
-		{
-			printf("salgo del mapa\n");
 			return (c.dist = 1e30, c);
-		}
 		if (data->info.map[(int)(c.starty / UNIT)][(int)(c.startx / UNIT)] == '1')
 			return (c.dist = distance(data->px, data->py, c.startx, c.starty), c);
 		c.startx += c.endx;

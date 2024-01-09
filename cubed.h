@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:17:21 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:33:07 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_info
 	char				**map;
 	int					map_height;
 }			t_info;
+
 typedef struct s_texture
 {
 	void			*img;
@@ -69,7 +70,6 @@ typedef struct s_main
 	t_texture	*we_texture;
 	t_texture	*ea_texture;
 }	t_main;
-
 
 typedef struct s_colision {
 	double				first_impact;
@@ -169,10 +169,10 @@ t_colision	col_h(double ra, int px, int py, t_main *data);
 
 
 void	init_textures(t_main *datos);
-void	init_no_texture(t_main *datos, t_texture *no_texture);
-void	init_so_texture(t_main *datos, t_texture *so_texture);
-void	init_we_texture(t_main *datos, t_texture *we_texture);
-void	init_ea_texture(t_main *datos, t_texture *ea_texture);
+void	init_no_texture(t_main *datos);
+void	init_so_texture(t_main *datos);
+void	init_we_texture(t_main *datos);
+void	init_ea_texture(t_main *datos);
 
 
 #endif

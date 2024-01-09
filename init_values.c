@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:31 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/06 13:58:06 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:42:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	init_values(t_main *datos)
 		}
 	}
 	p_ori(datos);
-	printf("->%f\n", datos->pa);
+	datos->ea_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->we_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->no_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->so_texture = (t_texture *)malloc(sizeof(t_texture));
 }
