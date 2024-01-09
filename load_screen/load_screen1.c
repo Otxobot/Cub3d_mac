@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/08 14:46:50 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:29:03 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,15 @@ int	leave_map(t_main *data, t_colision	*c)
 
 void	load_screen(t_main *datos)
 {
-	int			i = 0;
+	int			i;
 	double 		fov_angle;
 	double		angle;
 	t_colision	co;
 
 	paint_fc(datos);
 	fov_angle = M_PI / 2;
-	while (i < 1080)
+	i = 0;
+	while (i < SCREENWIDTH)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
 		angle = max_and_min_angles(datos->pa + (fov_angle / 2) - (fov_angle / SCREENWIDTH * i));
@@ -107,17 +108,19 @@ t_colision	colision(double fov_angle, double px, double py, t_main *datos)
 	co_v = col_v(fov_angle, px, py, datos);
 	if (co_h.dist < co_v.dist)
 	{
-		co_h.color[0] = 0;
-		co_h.color[1] = 155;
-		co_h.color[2] = 5;
+		if (fov_angle > M_PI / 2 && fov_angle < 3 * M_PI / 2)
+			co_h.texture = datos->we_texture;
+		else
+			co_h.texture = datos->ea_texture;
 		co_h.dist = co_h.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_h);
 	}
 	else
 	{
-		co_v.color[0] = 0;
-		co_v.color[1] = 205;
-		co_v.color[2] = 255;
+		if (fov_angle < M_PI)
+			co_v.texture = datos->no_texture;
+		else
+			co_v.texture = datos->so_texture;
 		co_v.dist = co_v.dist * cos(fabs(fov_angle - datos->pa));
 		return (co_v);
 	}

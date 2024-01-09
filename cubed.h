@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:09:01 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:17:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,24 @@
 
 typedef struct s_info 
 {
-	char	*no_texture;
-	char	*so_texture;
-	char	*we_texture;
-	char	*ea_texture;
-	int		f_color[3];
-	int		c_color[3];
-	char	player;
-	char	**map;
-	int     map_height;
+	char				*no_texture;
+	char				*so_texture;
+	char				*we_texture;
+	char				*ea_texture;
+	int					f_color[3];
+	int					c_color[3];
+	char				player;
+	char				**map;
+	int					map_height;
 }			t_info;
+typedef struct s_texture
+{
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				size;
+	int				endian;
+}				t_texture;
 
 typedef struct s_main
 {
@@ -56,27 +64,25 @@ typedef struct s_main
 	double			px;
 	double			py;
 	struct s_info	info;
+	t_texture	*no_texture;
+	t_texture	*so_texture;
+	t_texture	*we_texture;
+	t_texture	*ea_texture;
 }	t_main;
 
+
 typedef struct s_colision {
-	double		first_impact;
-	double		rest_of_impacts;
-	double		startx;
-	double		starty;
-	double		endx;
-	double		endy;
-	double		dist;
-	int			color[3];
+	double				first_impact;
+	double				rest_of_impacts;
+	double				startx;
+	double				starty;
+	double				endx;
+	double				endy;
+	double				dist;
+	int					color[3];
+	t_texture			*texture;
 }				t_colision;
 
-typedef struct s_texture
-{
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				size;
-	int				endian;
-}				t_texture;
 
 
 //=============PARSE_ELEMENTS:======================
@@ -160,5 +166,13 @@ int	calc_col_v_data(double ra, int px, int py, t_colision *c);
 t_colision	col_v(double ra, int px, int py, t_main *data);
 int	calc_col_h_data(double ra, int px, int py, t_colision *c);
 t_colision	col_h(double ra, int px, int py, t_main *data);
+
+
+void	init_textures(t_main *datos);
+void	init_no_texture(t_main *datos, t_texture *no_texture);
+void	init_so_texture(t_main *datos, t_texture *so_texture);
+void	init_we_texture(t_main *datos, t_texture *we_texture);
+void	init_ea_texture(t_main *datos, t_texture *ea_texture);
+
 
 #endif

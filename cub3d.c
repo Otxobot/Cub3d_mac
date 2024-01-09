@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:54:55 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:28:23 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	handle_destroy(t_main *datos)
 
 int key_hook(int keycode, t_main *datos)
 {
+	//printf("keycode: %d\n", keycode);
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
@@ -27,33 +28,33 @@ int key_hook(int keycode, t_main *datos)
         //exit(0);
         return (1);
     }
-    else if (keycode == 124) //right arrow key
+    else if (keycode == 124) //right arrow key65363/124
 	{
         datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
 	}
-    else if (keycode == 123)//left arrow key
+    else if (keycode == 123)//left arrow key65361/123
 	{
         datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
 	}
-	else if (keycode == 0)//A
+	else if (keycode == 0)//A97/0
 	{
 		move_left(datos);
 		// datos->px -= sin(datos->pa) * 0.25;
 		// datos->py -= cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 2)//D
+	else if (keycode == 2)//D100/2
 	{
 		move_right(datos);
 		// datos->px += sin(datos->pa) * 0.25;
 		// datos->py += cos(datos->pa) * 0.25;
 	}
-	else if (keycode == 13)//W
+	else if (keycode == 13)//W119/13
 	{
 		move_forward(datos);
 		// datos->px += cos(datos->pa) * 0.25;
 		// datos->py -= sin(datos->pa) * 0.25;
 	}
-	else if (keycode == 1)//S
+	else if (keycode == 1)//S115/1
 	{
 		move_back(datos);
 		// datos->px -= cos(datos->pa) * 0.25;
@@ -88,7 +89,7 @@ int main(int ac, char **av)
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
-		get_textures(&datos);
+		init_textures(&datos);
 		load_screen(&datos);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
