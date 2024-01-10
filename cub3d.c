@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:04:27 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:14:50 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	key_hook(int keycode, t_main *datos)
 	if (keycode == 53)
 	{
 		mlx_destroy_window(datos->mlx, datos->window);
-		return (1);
+		free_things_inside_info_struct(datos->info);
+		exit (1);
 	}
 	else if (keycode == 124)
 		datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
@@ -45,7 +46,6 @@ int	main(int ac, char **av)
 {
 	t_main	datos;
 	char	**elements_without_empty_lines;
-	int		exiting;
 
 	elements_without_empty_lines = NULL;
 	if (ac < 2)
@@ -56,21 +56,19 @@ int	main(int ac, char **av)
 			return (1);
 		init_values(&datos);
 		datos.mlx = mlx_init();
-		datos.addr = mlx_new_window(datos.mlx, SCREENWIDTH, \
+		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, \
 		SCREENHEIGHT, "cub3d");
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, \
 		&datos.bits_per_pixel, &datos.size, &datos.endian);
 		init_textures(&datos);
 		load_screen(&datos);
-		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
+		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
 		printf("exiting the program succesfully!\n");
-		if (exiting == 1)
-			exit (0);
 		return (0);
 	}
 }

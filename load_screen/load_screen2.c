@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:16:49 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 14:47:55 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:16:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,6 @@ int	get_pixel(t_texture *t, int x, int y)
 	pos = t->addr + (y * t->size + x * (t->bpp / 8));
 	return (*(unsigned int *)pos);
 }
-
-// void    draw_pixel(t_main *data, int x, int y, int color)
-// {
-//    char *pos;
-
-//    if (x >= 0 && y >= 0 && x < SCREENWIDTH && y < SCREENHEIGHT)
-//    {
-//        pos = data->addr + (y * data->size + x * (data->bits_per_pixel / 8));
-//        *(unsigned int *)pos = color;
-//    }
-// }
-
 
 void	draw_ray(t_main *datos, t_colision co, int x, int h)
 {
