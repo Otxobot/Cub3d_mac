@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:02:09 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:48:38 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,4 +178,8 @@ void		init_ea_texture(t_main *datos);
 
 void		init_mlx(t_main *datos);
 int			check_for_texture(char *texture, t_main *datos, int flag);
+
+char		**double_pointer_map(char **map_with_tabs);
+void		haz_peque(char **map_without_tabs, int a, int *c);
+char		**get_to_map(char **elements_with_map, int *ph);
 #endif
