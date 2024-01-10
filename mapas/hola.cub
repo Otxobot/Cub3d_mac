@@ -3,7 +3,7 @@ NO ./texture/PLANT_WALL.xpm
 WE ./texture/STONE_WALL.xpm
 EA ./texture/WOOD_WALL.xpm
 
-C 45,8,0
+C 45,8,150
 F 255,123,56
 
 

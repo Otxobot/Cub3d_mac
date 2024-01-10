@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/10 12:26:08 by abasante         ###   ########.fr        #
+#    Updated: 2024/01/10 14:29:14 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = cub3d.c \
 	map/map_utils1.c \
 	map/map_utils2.c \
 	map/map_utils3.c \
+	map/map_utils_utils.c \
 	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
