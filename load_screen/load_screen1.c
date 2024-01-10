@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 12:59:59 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:17:02 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void paint_fc(t_main *datos)
 
 double max_and_min_angles(double player_angle)
 {
-	//el angulo del jugador solo puede estar entre 0-360.
 	if (player_angle < 0)
 		player_angle += 2 * M_PI;
 	if (player_angle > 2 * M_PI)

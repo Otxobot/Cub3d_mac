@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 11:56:41 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:06:51 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ int	main(int ac, char **av)
 		if (parse(elements_without_empty_lines, &datos, av[1]))
 			return (1);
 		init_values(&datos);
-		datos.mlx = mlx_init();
-		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, SCREENHEIGHT, "cub3d");
-		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
-		datos.addr = mlx_get_data_addr(datos.image, &datos.bits_per_pixel, &datos.size, &datos.endian);
+		init_mlx(&datos);
 		init_textures(&datos);
 		load_screen(&datos);
 		exiting = mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
@@ -66,6 +63,7 @@ int	main(int ac, char **av)
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
+		printf("exiting the program succesfully!\n");
 		if (exiting == 1)
 			exit (0);
 		return (0);

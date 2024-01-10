@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:09:47 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:39:09 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int parse_map(char **elements_with_map_maybe, t_info *info)
 		map_without_tabs = check_if_map_correct(map);
 		if (map_without_tabs == NULL)
 		{
-			if (!check_if_walls_closed(map))
+			if (!check_if_walls_closed(map, 0))
 				return (ft_double_free(map), FALSE);
 			return (player_and_map_in_info(map, info), TRUE);
 		}
 		else
 		{
-			if (!check_if_walls_closed(map_without_tabs))
+			if (!check_if_walls_closed(map_without_tabs, 0))
 				return (ft_double_free(map_without_tabs), FALSE);
 			return (player_and_map_in_info(map_without_tabs, info), TRUE);
 		}
