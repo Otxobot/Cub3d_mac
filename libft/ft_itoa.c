@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 11:59:47 by abasante          #+#    #+#             */
-/*   Updated: 2022/09/26 12:42:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:19:19 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	{
 		strnum[counter] = '-';
 		nb = nb * -1;
-	}	
+	}
 	if (nb == 0)
 		strnum[0] = '0';
 	while (nb > 0)
