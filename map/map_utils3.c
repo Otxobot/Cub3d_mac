@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:52:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 14:16:18 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:40:07 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,27 +103,28 @@ void	map_inside_mffl(char **map, char **map_for_flood_fill)
 	}
 }
 
-int check_if_closed(char **map, int lls, int aml)
+int	check_if_closed(char **map, int lls, int aml)
 {
-    int i = 0;
-    int j = 0;
+	int		i;
+	int		j;
+	t_size	size;
 
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == '*' &&
-                ((i + 1 < aml && map[i + 1][j] && map[i + 1][j] != '*' && map[i + 1][j] != '1') ||
-                 (i - 1 >= 0 && map[i - 1][j] && map[i - 1][j] != '*' && map[i - 1][j] != '1') ||
-                 (j + 1 < lls && map[i][j + 1] && map[i][j + 1] != '*' && map[i][j + 1] != '1') ||
-                 (j - 1 >= 0 && map[i][j - 1] && map[i][j - 1] != '*' && map[i][j - 1] != '1')))
-            {
-                return 0;
-            }
-            j++;
-        }
-        i++;
-    }
-    return 1;
+	size.longest_line_size_h = lls;
+	size.amount_of_lines_h = aml;
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if_func(map, i, j, &size);
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

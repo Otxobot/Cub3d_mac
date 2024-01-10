@@ -6,7 +6,7 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/10 14:29:14 by abasante         ###   ########.fr        #
+#    Updated: 2024/01/10 15:17:12 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,7 @@ SRC = cub3d.c \
 	movement/events.c \
 	init_values.c \
 	textures/init_textures.c \
-	textures/init_textures1.c \
-	mlx.c
+	textures/init_textures1.c 
 
 INCLUDES = -I./libft
 

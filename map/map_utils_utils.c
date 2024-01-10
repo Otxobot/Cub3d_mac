@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:43:23 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:45:08 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:40:57 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,21 @@ char	**get_to_map(char **elements_with_map, int *ph)
 	}
 	map = malloc(sizeof(char *) * (j + 1));
 	return (map);
+}
+
+int	if_func(char **map, int i, int j, t_size *size)
+{
+	if (map[i][j] == '*' &&
+	((i + 1 < size->amount_of_lines_h && map[i + 1][j] \
+	&& map[i + 1][j] != '*' && map[i + 1][j] != '1') ||
+	(i - 1 >= 0 && map[i - 1][j] && map[i - 1][j] != '*' \
+	&& map[i - 1][j] != '1') ||
+	(j + 1 < size->longest_line_size_h && map[i][j + 1] \
+	&& map[i][j + 1] != '*' && map[i][j + 1] != '1') ||
+	(j - 1 >= 0 && map[i][j - 1] && map[i][j - 1] != '*' \
+	&& map[i][j - 1] != '1')))
+	{
+		return (1);
+	}
+	return (0);
 }

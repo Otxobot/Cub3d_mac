@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 14:11:16 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:39:44 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,12 @@ typedef struct s_colision
 	t_texture			*texture;
 }				t_colision;
 
+typedef struct s_size
+{
+	int		longest_line_size_h;
+	int		amount_of_lines_h;
+}			t_size;
+
 //=============PARSE_ELEMENTS:======================
 int			parse(char **elements_without_empty_lines, \
 t_main *datos, char *argument);
@@ -125,7 +131,8 @@ void		player_and_map_in_info(char **map, t_info *info);
 char		**check_for_map(char **elements_with_map);
 int			check_characters(char **map, int a, int b, int player_is_there);
 int			check_how_many_tabs(char **map);
-char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b);
+char		**replace_tabs_with_spaces(char **map_with_tabs, \
+int i, int a, int b);
 int			check_how_many_tabs_in_a_line(char *line);
 
 //-----------map_utils2:---------------------------
@@ -142,7 +149,7 @@ char		**allocate_and_initialize(int longest_line_size, \
 int amount_of_lines, char **map_for_flood_fill);
 void		sorround_border(char **map_for_flood_fill, \
 int longest_line_size, int amount_of_lines);
-void	sorround_border2(char **map_for_flood_fill, int longest_line_size, \
+void		sorround_border2(char **map_for_flood_fill, int longest_line_size, \
 int amount_of_lines);
 void		map_inside_mffl(char **map, char **map_for_flood_fill);
 int			check_if_closed(char **map, int longest_line_size, \
@@ -184,4 +191,6 @@ int			check_for_texture(char *texture, t_main *datos, int flag);
 char		**double_pointer_map(char **map_with_tabs);
 void		haz_peque(char **map_without_tabs, int a, int *c);
 char		**get_to_map(char **elements_with_map, int *ph);
+
+int			if_func(char **map, int i, int j, t_size *size);
 #endif
