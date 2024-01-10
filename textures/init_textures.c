@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:07:18 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:50:00 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:18:51 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,10 @@ void	init_so_texture(t_main *datos)
 	if (datos->so_texture == NULL)
 		printf("Error, allocation textures\n");
 	if (check_for_texture(datos->info.so_texture, datos, flag) == 0)
-	&datos->so_texture->endian;
+		printf("Error, invalid texture\n");
+	datos->so_texture->img = mlx_xpm_file_to_image(datos->mlx, \
+	datos->info.so_texture, &width, &height);
+	datos->so_texture->addr = mlx_get_data_addr(datos->so_texture->img, \
+	&datos->so_texture->bpp, &datos->so_texture->size, \
+	&datos->so_texture->endian);
 }

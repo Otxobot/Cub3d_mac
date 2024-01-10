@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:48:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:39:27 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,6 @@ void		init_so_texture(t_main *datos);
 void		init_we_texture(t_main *datos);
 void		init_ea_texture(t_main *datos);
 
-void		init_mlx(t_main *datos);
+void		init_mlx(t_main *datos, int *exiting);
 int			check_for_texture(char *texture, t_main *datos, int flag);
 #endif
