@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:39:44 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:53:04 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,12 @@ void		init_values(t_main *datos);
 
 t_colision	colision(double fov_angle, double px, double py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
+
+//-----------load_screen_utils:---------------------
+double		normalize(double angle);
+double		distance(double px, double py, double startx, double cy);
+int			leave_map(t_main *data, t_colision	*c);
+void		paint_fc(t_main *datos);
 
 int			move(char **map, double angle, t_main *game);
 int			move_forward(t_main *game);
