@@ -6,16 +6,16 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:01:48 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:20:35 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-int parse_map(char **elements_with_map_maybe, t_info *info)
+int	parse_map(char **elements_with_map_maybe, t_info *info)
 {
-	char **map;
-	char **map_without_tabs;
+	char	**map;
+	char	**map_without_tabs;
 
 	map = check_for_map(elements_with_map_maybe);
 	if (map == NULL)
@@ -41,7 +41,7 @@ int parse_map(char **elements_with_map_maybe, t_info *info)
 	}
 }
 
-char  **check_if_map_correct(char **map)
+char	**check_if_map_correct(char **map)
 {
 	int		tab_count;
 	char	**map_without_tabs;
@@ -60,8 +60,8 @@ char  **check_if_map_correct(char **map)
 
 void	player_and_map_in_info(char **map, t_info *info)
 {
-	int 		i;
-	int 		j;
+	int		i;
+	int		j;
 	char	player;
 
 	player = '\0';
@@ -73,10 +73,11 @@ void	player_and_map_in_info(char **map, t_info *info)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'N')
+			if (map[i][j] == 'S' || map[i][j] == 'W' || \
+			map[i][j] == 'E' || map[i][j] == 'N')
 			{
 				player = map[i][j];
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -84,21 +85,3 @@ void	player_and_map_in_info(char **map, t_info *info)
 	}
 	info->player = player;
 }
-
-// char **set_null_terminator(char **map)
-// {
-// 	int a = 0;
-// 	int b = 0;
-// 	while (map[a])
-// 	{
-// 		b = 0;
-// 		while (map[a][b])
-// 		{
-// 			if (map[a][b] == '\n')
-// 				map[a][b] = '\0';
-// 			b++;
-// 		}
-// 		a++;
-// 	}
-// 	return (map);
-// }

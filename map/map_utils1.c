@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:45:19 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:50:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	check_how_many_tabs_in_a_line(char *line)
 	}
 	return (tab_count);
 }
-
 
 char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b)
 {

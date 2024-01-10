@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:48:38 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 14:11:16 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ char		**allocate_and_initialize(int longest_line_size, \
 int amount_of_lines, char **map_for_flood_fill);
 void		sorround_border(char **map_for_flood_fill, \
 int longest_line_size, int amount_of_lines);
+void	sorround_border2(char **map_for_flood_fill, int longest_line_size, \
+int amount_of_lines);
 void		map_inside_mffl(char **map, char **map_for_flood_fill);
 int			check_if_closed(char **map, int longest_line_size, \
 int amount_of_lines);
