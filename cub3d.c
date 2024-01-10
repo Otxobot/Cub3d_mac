@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/09 14:48:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:56:41 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,59 +18,34 @@ int	handle_destroy(t_main *datos)
 	return (0);
 }
 
-int key_hook(int keycode, t_main *datos)
+int	key_hook(int keycode, t_main *datos)
 {
-	//printf("keycode: %d\n", keycode);
-    if (keycode == 53)
-    {
-        mlx_destroy_window(datos->mlx, datos->window);
-        //free
-        //exit(0);
-        return (1);
-    }
-    else if (keycode == 124) //right arrow key65363/124
+	if (keycode == 53)
 	{
-        datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
+		mlx_destroy_window(datos->mlx, datos->window);
+		return (1);
 	}
-    else if (keycode == 123)//left arrow key65361/123
-	{
-        datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
-	}
-	else if (keycode == 0)//A97/0
-	{
+	else if (keycode == 124)
+		datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
+	else if (keycode == 123)
+		datos->pa = max_and_min_angles(datos->pa + 0.10471975512);
+	else if (keycode == 0)
 		move_left(datos);
-		// datos->px -= sin(datos->pa) * 0.25;
-		// datos->py -= cos(datos->pa) * 0.25;
-	}
-	else if (keycode == 2)//D100/2
-	{
+	else if (keycode == 2)
 		move_right(datos);
-		// datos->px += sin(datos->pa) * 0.25;
-		// datos->py += cos(datos->pa) * 0.25;
-	}
-	else if (keycode == 13)//W119/13
-	{
+	else if (keycode == 13)
 		move_forward(datos);
-		// datos->px += cos(datos->pa) * 0.25;
-		// datos->py -= sin(datos->pa) * 0.25;
-	}
-	else if (keycode == 1)//S115/1
-	{
+	else if (keycode == 1)
 		move_back(datos);
-		// datos->px -= cos(datos->pa) * 0.25;
-		// datos->py += sin(datos->pa) * 0.25;
-	}
-    printf("Posición actual: (x: %.2f, y: %.2f)\n", datos->px, datos->py);
-    printf("angulo->%.2f\n", datos->pa * (180/M_PI));
 	load_screen(datos);
-    return (0);
+	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_main	datos;
 	char	**elements_without_empty_lines;
-	int 	exiting;
+	int		exiting;
 
 	elements_without_empty_lines = NULL;
 	if (ac < 2)
@@ -91,7 +66,6 @@ int main(int ac, char **av)
 		mlx_loop(datos.mlx);
 		free_things_inside_info_struct(datos.info);
 		ft_double_free (elements_without_empty_lines);
-		printf("Exiting the program successfully!\n");
 		if (exiting == 1)
 			exit (0);
 		return (0);
