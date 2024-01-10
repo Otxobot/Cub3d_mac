@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 12:39:09 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:01:48 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int parse_map(char **elements_with_map_maybe, t_info *info)
 	map = check_for_map(elements_with_map_maybe);
 	if (map == NULL)
 		return (FALSE);
-	if (!check_characters(map))
+	if (!check_characters(map, 0, 0, 0))
 		return (ft_double_free(map), FALSE);
 	else
 	{
@@ -50,7 +50,7 @@ char  **check_if_map_correct(char **map)
 	tab_count = check_how_many_tabs(map);
 	if (tab_count > 0)
 	{
-		map_without_tabs = replace_tabs_with_spaces(map);
+		map_without_tabs = replace_tabs_with_spaces(map, 0, 0, 0);
 		ft_double_free(map);
 		return (map_without_tabs);
 	}

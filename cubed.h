@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 12:39:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:02:09 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ void		player_and_map_in_info(char **map, t_info *info);
 
 //-----------map_utils1:---------------------------
 char		**check_for_map(char **elements_with_map);
-int			check_characters(char **map);
+int			check_characters(char **map, int a, int b, int player_is_there);
 int			check_how_many_tabs(char **map);
-char		**replace_tabs_with_spaces(char **map_with_tabs);
+char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b);
 int			check_how_many_tabs_in_a_line(char *line);
 
 //-----------map_utils2:---------------------------

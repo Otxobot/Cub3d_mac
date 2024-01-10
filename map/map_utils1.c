@@ -6,40 +6,49 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 10:52:36 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:24:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-char **check_for_map(char **elements_with_map)
+char	**get_to_map(char **elements_with_map, int *ph)
 {
-	int i;
-	int j;
-	int a;
-	int ph;
-	char **map;
+	int		i;
+	int		j;
+	char	**map;
 
-	j = 0;
 	i = 0;
-	a = 0;
+	j = 0;
 	while (i < 6)
 		i++;
 	while (empty_line(elements_with_map[i]))
 		i++;
-	ph = i;
+	*ph = i;
 	while (elements_with_map[i])
 	{
 		j++;
 		i++;
 	}
 	map = malloc(sizeof(char *) * (j + 1));
+	return (map);
+}
+
+char	**check_for_map(char **elements_with_map)
+{
+	int		ph;
+	int		a;
+	char	**map;
+
+	a = 0;
+	ph = 0;
+	map = get_to_map(elements_with_map, &ph);
 	while (elements_with_map[ph])
 	{
 		if (empty_line(elements_with_map[ph]))
 		{
 			if (see_if_there_is_no_more_map(&elements_with_map[ph]))
-				break;
+				break ;
 			else
 			{
 				map[a] = NULL;
@@ -54,15 +63,8 @@ char **check_for_map(char **elements_with_map)
 	return (map);
 }
 
-int check_characters(char **map)
+int	check_characters(char **map, int a, int b, int player_is_there)
 {
-	int a;
-	int b;
-	int player_is_there;
-
-	a = 0;
-	b = 0;
-	player_is_there = 0;
 	while (map[a])
 	{
 		b = 0;
@@ -88,11 +90,11 @@ int check_characters(char **map)
 	return (TRUE);
 }
 
-int check_how_many_tabs(char **map)
+int	check_how_many_tabs(char **map)
 {
-	int tab_count;
-	int a;
-	int b;
+	int	tab_count;
+	int	a;
+	int	b;
 
 	tab_count = 0;
 	a = 0;
@@ -103,7 +105,7 @@ int check_how_many_tabs(char **map)
 		{
 			if (map[a][b] == 9)
 				tab_count++;
-			b++;	
+			b++;
 		}
 		a++;
 	}
@@ -112,11 +114,11 @@ int check_how_many_tabs(char **map)
 
 int	check_how_many_tabs_in_a_line(char *line)
 {
-	int tab_count;
-	int i;
-	
+	int	tab_count;
+	int	i;
+
 	tab_count = 0;
-	i = 0;	
+	i = 0;
 	while (line[i])
 	{
 		if (line[i] == 9)
@@ -126,46 +128,51 @@ int	check_how_many_tabs_in_a_line(char *line)
 	return (tab_count);
 }
 
-char **replace_tabs_with_spaces(char **map_with_tabs)
+char	**double_pointer_map(char **map_with_tabs)
+{
+	int		i;
+	char	**map_without_tabs;
+
+	i = 0;
+	while (map_with_tabs[i])
+		i++;
+	map_without_tabs = malloc(sizeof(char *) * (i + 1));
+	return (map_without_tabs);
+}
+
+void	haz_peque(char **map_without_tabs, int a, int *c)
+{
+	map_without_tabs[a][*c] = ' ';
+	map_without_tabs[a][*c + 1] = ' ';
+	map_without_tabs[a][*c + 2] = ' ';
+	map_without_tabs[a][*c + 3] = ' ';
+	*c += 3;
+}
+
+char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b)
 {
 	char	**map_without_tabs;
 	int		tabs_in_line;
-	int 	i;
-	int		a;
-	int		b;
 	int		c;
 
-	i = 0;
-	a = 0;
-	b = 0;
 	c = 0;
 	tabs_in_line = 0;
-	while (map_with_tabs[i])
-	{
-		i++;
-	}
-	map_without_tabs = malloc(sizeof(char *) * (i + 1));
-	i = 0;
+	map_without_tabs = double_pointer_map(map_with_tabs);
 	while (map_with_tabs[i])
 	{
 		tabs_in_line = check_how_many_tabs_in_a_line(map_with_tabs[i]);
 		if (tabs_in_line > 0)
 		{
-			map_without_tabs[a] = malloc(sizeof(char) * (ft_strlen(map_with_tabs[i]) + (tabs_in_line*3) + 1));
+			map_without_tabs[a] = malloc(sizeof(char) * \
+			(ft_strlen(map_with_tabs[i]) + (tabs_in_line * 3) + 1));
 			while (map_with_tabs[i][b])
 			{
 				if (map_with_tabs[i][b] != 9)
 					map_without_tabs[a][c] = map_with_tabs[i][b];
 				else
-				{
-					map_without_tabs[a][c] = ' ';
-					map_without_tabs[a][c+1] = ' ';
-					map_without_tabs[a][c+2] = ' ';
-					map_without_tabs[a][c+3] = ' ';
-					c += 3;
-				}
+					haz_peque(map_without_tabs, a, &c);
 				c++;
-				b++;	
+				b++;
 			}
 			map_without_tabs[a][c] = '\0';
 			c = 0;
