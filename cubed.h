@@ -92,20 +92,20 @@ typedef struct s_size
 //=============PARSE_ELEMENTS:======================
 int			parse(char **elements_without_empty_lines, \
 t_main *datos, char *argument);
-char		**extract_elements(char *file_path);
+char		**extract_elements(char *file_path, int a, int nada, int elements);
 int			is_cub(char *string);
 int			empty_line(char *line);
 char		**no_empty_lines(char *file_path, char **lines_ws);
+char		**maloc_lines_ws(char **lines_ws, int a, char *file_path, int fd);
 
 //------------checks:----------------------
 int			check_if_all_elements(char **elements);
-int			check_for_NOSOWEEAFC(char *string);
-int			check_for_NOSOWEEAFC_no_repeats(char *string);
+int			check_for_elements(char *string);
 
 //------------categorizing elements:-------
 int			categorize_elements(char **elements, t_info *info);
 int			check_for_correct_path(char *element, t_info *info);
-int			check_for_correct_RGB(char *element, t_info *info, char identifier);
+int			check_for_correct_rgb(char *element, t_info *info, char identifier);
 
 //-----------------utils:------------------------
 void		put_each_route_in_place_in_struct(char identifier, \
@@ -115,7 +115,7 @@ int *real_ints, t_info *info);
 int			check_if_numbers_are_correct_size1(char *start);
 int			check_if_numbers_are_correct_size2(char *start);
 char		check_identifier(char *element);
-int			RGB_atois(char identifier, char **nums, t_info *info);
+int			rgb_atois(char identifier, char **nums, t_info *info);
 int			termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
 void		free_things_inside_info_struct(t_main *datos);

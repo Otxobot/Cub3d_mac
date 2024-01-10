@@ -16,7 +16,7 @@ int	parse(char **elements_without_empty_lines, t_main *datos, char *argument)
 {
 	if (is_cub(argument))
 		return (printf("No es un archivo cub\n"), 1);
-	elements_without_empty_lines = extract_elements(argument);
+	elements_without_empty_lines = extract_elements(argument, 0, 0, 0);
 	if (elements_without_empty_lines == NULL)
 		return (printf("Esta vacio1\n"), 1);
 	if (elements_without_empty_lines[0] == NULL)

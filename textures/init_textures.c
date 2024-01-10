@@ -43,9 +43,7 @@ int	init_no_texture(t_main *datos)
 {
 	int	width;
 	int	height;
-	int	flag;
 
-	flag = 1;
 	if (datos->no_texture == NULL)
 		printf("Error, one texture allocation is not correct\n");
 	if (check_for_texture(datos->info.no_texture))
@@ -62,9 +60,7 @@ int	init_so_texture(t_main *datos)
 {
 	int	width;
 	int	height;
-	int	flag;
 
-	flag = 2;
 	if (datos->so_texture == NULL)
 		printf("Error, one texture allocation is not correct\n");
 	if (check_for_texture(datos->info.so_texture))

@@ -16,9 +16,7 @@ int	init_we_texture(t_main *datos)
 {
 	int	width;
 	int	height;
-	int	flag;
 
-	flag = 3;
 	if (datos->we_texture == NULL)
 		printf("Error, one texture allocation is not correct\n");
 	if (check_for_texture(datos->info.we_texture))
@@ -35,9 +33,7 @@ int	init_ea_texture(t_main *datos)
 {
 	int	width;
 	int	height;
-	int	flag;
 
-	flag = 4;
 	if (datos->ea_texture == NULL)
 		printf("Error, one texture allocation is not correct\n");
 	if (check_for_texture(datos->info.ea_texture))

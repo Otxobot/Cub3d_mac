@@ -17,6 +17,7 @@ CC = gcc
 SRC = cub3d.c \
 	elements/utils_parse1_elem.c \
 	elements/utils_parse2_elem.c \
+	elements/utils_parse3_elem.c \
 	elements/parse_elements.c \
 	map/parse_map.c \
 	map/map_utils1.c \
@@ -38,8 +39,8 @@ SRC = cub3d.c \
 
 INCLUDES = -I./libft
 
-LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
-#LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+#LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 OBJ = $(SRC:%.c=%.o)
 
