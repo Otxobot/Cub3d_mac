@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:14:50 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:33:57 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	key_hook(int keycode, t_main *datos)
 	if (keycode == 53)
 	{
 		mlx_destroy_window(datos->mlx, datos->window);
-		free_things_inside_info_struct(datos->info);
+		free_things_inside_info_struct(datos);
 		exit (1);
 	}
 	else if (keycode == 124)
@@ -61,12 +61,14 @@ int	main(int ac, char **av)
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, \
 		&datos.bits_per_pixel, &datos.size, &datos.endian);
-		init_textures(&datos);
-		load_screen(&datos);
+		if (init_textures(&datos))
+			return (printf("Error, textures not loaded\n"), 1);
+		else
+			load_screen(&datos);
 		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		mlx_loop(datos.mlx);
-		free_things_inside_info_struct(datos.info);
+		free_things_inside_info_struct(&datos);
 		ft_double_free (elements_without_empty_lines);
 		printf("exiting the program succesfully!\n");
 		return (0);

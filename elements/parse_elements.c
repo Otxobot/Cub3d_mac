@@ -6,52 +6,49 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2023/12/12 10:01:37 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:40:06 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-char **no_empty_lines(char *file_path, char **lines_ws)
+char	**no_empty_lines(char *file_path, char **lines_ws)
 {
-	int fd1;
-	int i;
-	int elements;
-	int nada;
-	char *line;
+	int		fd1;
+	int		i;
+	int		elements;
+	int		nada;
+	char	*line;
 
 	nada = 0;
 	fd1 = open(file_path, O_RDONLY);
 	i = 0;
 	elements = 0;
-	while ((line = get_next_line(fd1)) != NULL)
+	line = get_next_line(fd1);
+	while (line)
 	{
 		if (check_for_NOSOWEEAFC(line))
 			elements++;
 		if (elements != 6)
-		{
 			nada++;
-		}
 		if (elements != 6 && empty_line(line))
 			nada++;
 		else
-		{
 			lines_ws[i++] = line;
-			//free (line);
-		}
+		line = get_next_line(fd1);
 	}
 	lines_ws[i] = NULL;
-	return(lines_ws);
+	return (lines_ws);
 }
 
-char **extract_elements(char *file_path)
+char	**extract_elements(char *file_path)
 {
-	int fd;
-	int a;
-	int nada;
-	int elements;
-	char **lines_ws;
-	char *line;
+	int		fd;
+	int		a;
+	int		nada;
+	int		elements;
+	char	**lines_ws;
+	char	*line;
 
 	fd = open(file_path, O_RDONLY);
 	if (fd <= 0)

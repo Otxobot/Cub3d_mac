@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:53:04 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:32:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char		check_identifier(char *element);
 int			RGB_atois(char identifier, char **nums, t_info *info);
 int			termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
-void		free_things_inside_info_struct(t_info info);
+void		free_things_inside_info_struct(t_main *datos);
 void		free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================
@@ -185,14 +185,14 @@ t_colision	col_v(double ra, int px, int py, t_main *data);
 int			calc_col_h_data(double ra, int px, int py, t_colision *c);
 t_colision	col_h(double ra, int px, int py, t_main *data);
 
-void		init_textures(t_main *datos);
-void		init_no_texture(t_main *datos);
-void		init_so_texture(t_main *datos);
-void		init_we_texture(t_main *datos);
-void		init_ea_texture(t_main *datos);
+int			init_textures(t_main *datos);
+int			init_no_texture(t_main *datos);
+int			init_so_texture(t_main *datos);
+int			init_we_texture(t_main *datos);
+int			init_ea_texture(t_main *datos);
 
 void		init_mlx(t_main *datos);
-int			check_for_texture(char *texture, t_main *datos, int flag);
+int			check_for_texture(char *texture);
 
 char		**double_pointer_map(char **map_with_tabs);
 void		haz_peque(char **map_without_tabs, int a, int *c);
