@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:52:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:40:07 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:13:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	check_if_closed(char **map, int lls, int aml)
 		j = 0;
 		while (map[i][j])
 		{
-			if_func(map, i, j, &size);
+			if (if_func(map, i, j, &size))
 			{
 				return (0);
 			}
