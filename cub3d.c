@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/09 12:28:46 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:13:50 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int key_hook(int keycode, t_main *datos)
     if (keycode == 53)
     {
         mlx_destroy_window(datos->mlx, datos->window);
-        //free
-        //exit(0);
         return (1);
     }
     else if (keycode == 124) //right arrow key65363/124
