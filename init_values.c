@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:31 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/09 13:42:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:48:42 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	init_values(t_main *datos)
 		{
 			if (datos->info.map[j][i] == datos->info.player)
 			{
-				datos->px = i * UNIT + UNIT / 2;
-				datos->py = j * UNIT + UNIT / 2;
+				datos->px = i * UNIT + (UNIT / 2);
+				datos->py = j * UNIT + (UNIT / 2);
 				datos->info.map[j][i] = '0';
 			}
 		}
 	}
 	p_ori(datos);
-	datos->ea_texture = (t_texture *)malloc(sizeof(t_texture));
-	datos->we_texture = (t_texture *)malloc(sizeof(t_texture));
 	datos->no_texture = (t_texture *)malloc(sizeof(t_texture));
 	datos->so_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->we_texture = (t_texture *)malloc(sizeof(t_texture));
+	datos->ea_texture = (t_texture *)malloc(sizeof(t_texture));
 }

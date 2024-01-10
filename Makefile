@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/09 12:28:52 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/10 13:49:19 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRC = cub3d.c \
 	load_screen/load_screen2.c \
 	movement/events.c \
 	init_values.c \
-	textures/init_textures.c 
+	textures/init_textures.c \
+	textures/init_textures1.c \
+	mlx.c
 
 INCLUDES = -I./libft
 

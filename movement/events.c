@@ -6,12 +6,12 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:07:10 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/08 14:01:26 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:29:51 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
-# define BASEBOARD			0.25
+#define BASEBOARD	0.25
 
 int	move(char **map, double angle, t_main *game)
 {
@@ -20,11 +20,15 @@ int	move(char **map, double angle, t_main *game)
 
 	new_x = (game->px + cos(angle) * UNIT);
 	new_y = (game->py - sin(angle) * UNIT);
-	if (map[(int)floor(game->py) / 64][(int)floor(((new_x + BASEBOARD) / 64))] == '0' &&
-		map[(int)floor(game->py) / 64][(int)floor(((new_x - BASEBOARD) / 64))] == '0')
+	if (map[(int)floor(game->py) / 64] \
+	[(int)floor(((new_x + BASEBOARD) / 64))] == '0' \
+	&& map[(int)floor(game->py) / 64]
+		[(int)floor(((new_x - BASEBOARD) / 64))] == '0')
 		game->px = new_x;
-	if (map[(int)floor(((new_y + BASEBOARD) / 64))][(int)floor(game->px) / 64] == '0' &&
-		map[(int)floor(((new_y - BASEBOARD) / 64))][(int)floor(game->px) / 64] == '0')
+	if (map[(int)floor(((new_y + BASEBOARD) / 64))] \
+	[(int)floor(game->px) / 64] == '0' \
+	&& map[(int)floor(((new_y - BASEBOARD) / 64))] \
+	[(int)floor(game->px) / 64] == '0')
 		game->py = new_y;
 	return (0);
 }
