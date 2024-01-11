@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils3.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 13:52:41 by abasante          #+#    #+#             */
+/*   Updated: 2024/01/10 16:13:21 by abasante         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cubed.h"
 
-char **allocate_and_initialize(int longest_line_size, int amount_of_lines, char **map_for_flood_fill)
+char	**allocate_and_initialize(int longest_line_size, int amount_of_lines, \
+char **map_for_flood_fill)
 {
-	int i;
+	int	i;
 
 	map_for_flood_fill = malloc(sizeof(char *) * (amount_of_lines + 3));
 	i = 0;
@@ -14,31 +27,15 @@ char **allocate_and_initialize(int longest_line_size, int amount_of_lines, char 
 		i++;
 	}
 	map_for_flood_fill[i] = NULL;
-    return (map_for_flood_fill);
+	return (map_for_flood_fill);
 }
 
-void sorround_border(char **map_for_flood_fill, int longest_line_size, int amount_of_lines)
+void	sorround_border2(char **map_for_flood_fill, int longest_line_size, \
+int amount_of_lines)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i][j])
-	{
-		if (map_for_flood_fill[i][j] == '\n')
-			j++;
-		else
-			map_for_flood_fill[i][j++] = '*';
-	}
-	i = 0;
-	j = 0;
-	while (map_for_flood_fill[i])
-	{
-		if (map_for_flood_fill[i][0])
-			map_for_flood_fill[i][0] = '*';
-		i++;
-	}
 	i = 0;
 	j = 0;
 	while (map_for_flood_fill[i])
@@ -61,10 +58,36 @@ void sorround_border(char **map_for_flood_fill, int longest_line_size, int amoun
 	}
 }
 
-void map_inside_mffl(char **map, char **map_for_flood_fill)
+void	sorround_border(char **map_for_flood_fill, int longest_line_size, \
+int amount_of_lines)
 {
-	int x;
-	int y;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map_for_flood_fill[i][j])
+	{
+		if (map_for_flood_fill[i][j] == '\n')
+			j++;
+		else
+			map_for_flood_fill[i][j++] = '*';
+	}
+	i = 0;
+	j = 0;
+	while (map_for_flood_fill[i])
+	{
+		if (map_for_flood_fill[i][0])
+			map_for_flood_fill[i][0] = '*';
+		i++;
+	}
+	sorround_border2(map_for_flood_fill, longest_line_size, amount_of_lines);
+}
+
+void	map_inside_mffl(char **map, char **map_for_flood_fill)
+{
+	int	x;
+	int	y;
 
 	x = 0;
 	while (map[x])
@@ -80,28 +103,28 @@ void map_inside_mffl(char **map, char **map_for_flood_fill)
 	}
 }
 
-int check_if_closed(char **map, int longest_line_size, int amount_of_lines)
+int	check_if_closed(char **map, int lls, int aml)
 {
-    int i = 0;
-    int j = 0;
+	int		i;
+	int		j;
+	t_size	size;
 
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == '*' &&
-                ((i + 1 < amount_of_lines && map[i + 1][j] && map[i + 1][j] != '*' && map[i + 1][j] != '1') ||
-                 (i - 1 >= 0 && map[i - 1][j] && map[i - 1][j] != '*' && map[i - 1][j] != '1') ||
-                 (j + 1 < longest_line_size && map[i][j + 1] && map[i][j + 1] != '*' && map[i][j + 1] != '1') ||
-                 (j - 1 >= 0 && map[i][j - 1] && map[i][j - 1] != '*' && map[i][j - 1] != '1')))
-            {
-                printf("entra aqui at i=%d, j=%d\n", i, j);
-                return 0; // Return 0 for FALSE
-            }
-            j++;
-        }
-        i++;
-    }
-    return 1; // Return 1 for TRUE
+	size.longest_line_size_h = lls;
+	size.amount_of_lines_h = aml;
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (if_func(map, i, j, &size))
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

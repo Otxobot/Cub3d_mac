@@ -6,33 +6,11 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:24:01 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:50:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
-
-char	**get_to_map(char **elements_with_map, int *ph)
-{
-	int		i;
-	int		j;
-	char	**map;
-
-	i = 0;
-	j = 0;
-	while (i < 6)
-		i++;
-	while (empty_line(elements_with_map[i]))
-		i++;
-	*ph = i;
-	while (elements_with_map[i])
-	{
-		j++;
-		i++;
-	}
-	map = malloc(sizeof(char *) * (j + 1));
-	return (map);
-}
 
 char	**check_for_map(char **elements_with_map)
 {
@@ -61,33 +39,6 @@ char	**check_for_map(char **elements_with_map)
 	}
 	map[a] = NULL;
 	return (map);
-}
-
-int	check_characters(char **map, int a, int b, int player_is_there)
-{
-	while (map[a])
-	{
-		b = 0;
-		while (map[a][b])
-		{
-			if (map[a][b] == '1' || map[a][b] == '0' \
-			|| map[a][b] == 'N' || map[a][b] == 'S' \
-			|| map[a][b] == 'E' || map[a][b] == 'W' \
-			|| map[a][b] == '	' || map[a][b] == ' ' || map[a][b] == '\n')
-			{
-				if (map[a][b] == 'N' || map[a][b] == 'S' || \
-				map[a][b] == 'E' || map[a][b] == 'W')
-					player_is_there += 1;
-				b++;
-			}
-			else
-				return (FALSE);
-		}
-		a++;
-	}
-	if (player_is_there > 1 || player_is_there < 1)
-		return (FALSE);
-	return (TRUE);
 }
 
 int	check_how_many_tabs(char **map)
@@ -126,27 +77,6 @@ int	check_how_many_tabs_in_a_line(char *line)
 		i++;
 	}
 	return (tab_count);
-}
-
-char	**double_pointer_map(char **map_with_tabs)
-{
-	int		i;
-	char	**map_without_tabs;
-
-	i = 0;
-	while (map_with_tabs[i])
-		i++;
-	map_without_tabs = malloc(sizeof(char *) * (i + 1));
-	return (map_without_tabs);
-}
-
-void	haz_peque(char **map_without_tabs, int a, int *c)
-{
-	map_without_tabs[a][*c] = ' ';
-	map_without_tabs[a][*c + 1] = ' ';
-	map_without_tabs[a][*c + 2] = ' ';
-	map_without_tabs[a][*c + 3] = ' ';
-	*c += 3;
 }
 
 char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b)

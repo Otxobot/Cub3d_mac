@@ -6,11 +6,11 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/10 13:49:19 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/10 17:05:41 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 
@@ -22,17 +22,19 @@ SRC = cub3d.c \
 	map/map_utils1.c \
 	map/map_utils2.c \
 	map/map_utils3.c \
+	map/map_utils_utils.c \
 	map/check_if_walls_closed.c \
 	libft/get_next_line.c \
 	free.c \
 	parse.c \
 	load_screen/load_screen1.c \
 	load_screen/load_screen2.c \
+	load_screen/load_screen_utils.c \
+	load_screen/paint_back.c \
 	movement/events.c \
 	init_values.c \
 	textures/init_textures.c \
-	textures/init_textures1.c \
-	mlx.c
+	textures/init_textures1.c 
 
 INCLUDES = -I./libft
 
