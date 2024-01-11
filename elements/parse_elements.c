@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:13:43 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:26:21 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ char	**no_empty_lines(char *file_path, char **lines_ws)
 			lines_ws[i++] = line;
 		line = get_next_line(fd1);
 	}
-	close(fd1);
 	lines_ws[i] = NULL;
-	return (lines_ws);
+	return ((close(fd1)), lines_ws);
 }
 
 char	**extract_elements(char *file_path, int a, int nada, int elements)
