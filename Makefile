@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/10 17:05:41 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/11 16:16:00 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME = cub3d
 
 CC = gcc
 
 SRC = cub3d.c \
 	elements/utils_parse1_elem.c \
 	elements/utils_parse2_elem.c \
+	elements/utils_parse3_elem.c \
 	elements/parse_elements.c \
 	map/parse_map.c \
 	map/map_utils1.c \

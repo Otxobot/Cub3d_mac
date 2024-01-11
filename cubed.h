@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 15:44:22 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:22:28 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,22 @@ typedef struct s_size
 //=============PARSE_ELEMENTS:======================
 int			parse(char **elements_without_empty_lines, \
 t_main *datos, char *argument);
-char		**extract_elements(char *file_path);
+char		**extract_elements(char *file_path, int a, int nada, int elements);
 int			is_cub(char *string);
 int			empty_line(char *line);
 char		**no_empty_lines(char *file_path, char **lines_ws);
+char		**maloc_lines_ws(char **lines_ws, int a, char *file_path, int fd);
+char		bucle_hasta_letra(char *element, int *i, char identifier);
 
 //------------checks:----------------------
 int			check_if_all_elements(char **elements);
-int			check_for_NOSOWEEAFC(char *string);
-int			check_for_NOSOWEEAFC_no_repeats(char *string);
+int			check_for_elements(char *string);
 
 //------------categorizing elements:-------
 int			categorize_elements(char **elements, t_info *info);
-int			check_for_correct_path(char *element, t_info *info);
-int			check_for_correct_RGB(char *element, t_info *info, char identifier);
+int			check_for_correct_path(char *element, \
+t_info *info, int i, size_t len);
+int			check_for_correct_rgb(char *element, t_info *info, char identifier);
 
 //-----------------utils:------------------------
 void		put_each_route_in_place_in_struct(char identifier, \
@@ -115,15 +117,15 @@ int *real_ints, t_info *info);
 int			check_if_numbers_are_correct_size1(char *start);
 int			check_if_numbers_are_correct_size2(char *start);
 char		check_identifier(char *element);
-int			RGB_atois(char identifier, char **nums, t_info *info);
+int			rgb_atois(char identifier, char **nums, t_info *info);
 int			termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
-void		free_things_inside_info_struct(t_info info);
+void		free_things_inside_info_struct(t_main *datos);
 void		free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================
 int			parse_map(char **elements_with_map_maybe, t_info *info);
-char		**check_if_map_correct(char **map);
+int			check_if_map_correct(char **map);
 char		**set_null_terminator(char **map);
 void		player_and_map_in_info(char **map, t_info *info);
 
@@ -185,14 +187,14 @@ t_colision	col_v(double ra, int px, int py, t_main *data);
 int			calc_col_h_data(double ra, int px, int py, t_colision *c);
 t_colision	col_h(double ra, int px, int py, t_main *data);
 
-void		init_textures(t_main *datos);
-void		init_no_texture(t_main *datos);
-void		init_so_texture(t_main *datos);
-void		init_we_texture(t_main *datos);
-void		init_ea_texture(t_main *datos);
+int			init_textures(t_main *datos);
+int			init_no_texture(t_main *datos);
+int			init_so_texture(t_main *datos);
+int			init_we_texture(t_main *datos);
+int			init_ea_texture(t_main *datos);
 
 void		init_mlx(t_main *datos);
-int			check_for_texture(char *texture, t_main *datos, int flag);
+int			check_for_texture(char *texture);
 
 char		**double_pointer_map(char **map_with_tabs);
 void		haz_peque(char **map_without_tabs, int a, int *c);

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:50:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:03:20 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,42 +77,4 @@ int	check_how_many_tabs_in_a_line(char *line)
 		i++;
 	}
 	return (tab_count);
-}
-
-char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b)
-{
-	char	**map_without_tabs;
-	int		tabs_in_line;
-	int		c;
-
-	c = 0;
-	tabs_in_line = 0;
-	map_without_tabs = double_pointer_map(map_with_tabs);
-	while (map_with_tabs[i])
-	{
-		tabs_in_line = check_how_many_tabs_in_a_line(map_with_tabs[i]);
-		if (tabs_in_line > 0)
-		{
-			map_without_tabs[a] = malloc(sizeof(char) * \
-			(ft_strlen(map_with_tabs[i]) + (tabs_in_line * 3) + 1));
-			while (map_with_tabs[i][b])
-			{
-				if (map_with_tabs[i][b] != 9)
-					map_without_tabs[a][c] = map_with_tabs[i][b];
-				else
-					haz_peque(map_without_tabs, a, &c);
-				c++;
-				b++;
-			}
-			map_without_tabs[a][c] = '\0';
-			c = 0;
-			b = 0;
-		}
-		else
-			map_without_tabs[a] = ft_strdup(map_with_tabs[i]);
-		i++;
-		a++;
-	}
-	map_without_tabs[a] = NULL;
-	return (map_without_tabs);
 }

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:43:41 by abasante          #+#    #+#             */
-/*   Updated: 2023/11/14 14:12:02 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:31:41 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct      s_list
+typedef struct s_list
 {
-    void            *content;
-    struct s_list   *next;
-}                   t_list;
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_back.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:51:42 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 15:37:18 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:19:40 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	paint_fc(t_main *datos)
 		}
 		j++;
 	}
-	printf ("hola\n");
 }
