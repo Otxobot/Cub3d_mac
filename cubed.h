@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 17:32:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:04:36 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ int amount_of_lines);
 //-----------load_screen1:---------------------------
 int			obtener_color(int red, int green, int blue);
 void		paint_fc(t_main *datos);
-void		load_screen(t_main *datos);
+int			load_screen(t_main *datos);
 double		max_and_min_angles(double player_angle);
 
 //-----------init_values:---------------------------

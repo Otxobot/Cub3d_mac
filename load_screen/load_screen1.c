@@ -6,13 +6,13 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/10 15:56:31 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:05:32 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-void	load_screen(t_main *datos)
+int	load_screen(t_main *datos)
 {
 	int			i;
 	double		fov_angle;
@@ -32,6 +32,7 @@ void	load_screen(t_main *datos)
 		tan(fov_angle / 2)));
 		i++;
 	}
+	return (0);
 }
 
 t_colision	colision(double fov_angle, double px, double py, t_main *datos)

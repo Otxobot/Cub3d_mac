@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 16:40:06 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 10:44:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ char	**extract_elements(char *file_path, int a, int nada, int elements)
 	fd = open(file_path, O_RDONLY);
 	if (fd <= 0)
 		return (NULL);
-	lines_ws = NULL;
 	line = get_next_line(fd);
+	lines_ws = NULL;
 	while (line)
 	{
 		if (check_for_elements(line))
@@ -67,8 +67,7 @@ char	**extract_elements(char *file_path, int a, int nada, int elements)
 			a++;
 		line = get_next_line(fd);
 	}
-	lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd);
-	return (lines_ws);
+	return ((lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd)), lines_ws);
 }
 
 int	categorize_elements(char **elements, t_info *info)
@@ -88,7 +87,7 @@ int	categorize_elements(char **elements, t_info *info)
 		|| identifier == 'S' || identifier == 'W')
 		{
 			if (!check_for_correct_path(elements[i], info))
-				return (printf("Error\nOne of the paths is incorrect!\n"), FALSE);
+				return (printf("Error\nOne path is incorrect!\n"), FALSE);
 		}
 		else if (identifier == 'F' || identifier == 'C')
 		{
@@ -112,7 +111,7 @@ int	check_for_correct_path(char *element, t_info *info)
 	i = 0;
 	len = 0;
 	while (element[i])
-	{	
+	{
 		while (element[i] != 'N' && element[i] != 'S' \
 		&& element[i] != 'W' && element[i] != 'E')
 			i++;
