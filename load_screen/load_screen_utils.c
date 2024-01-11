@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:48:48 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 15:51:10 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:23:10 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ double	normalize(double angle)
 		return (2 * M_PI - angle);
 }
 
-double	distance(double px, double py, double startx, double cy)
+double	distance(int px, int py, int startx, int cy)
 {
-	return (sqrt(pow(fabs(px - startx), 2) + pow(fabs(py - cy), 2)));
+	return (sqrt(pow(abs(px - startx), 2) + pow(abs(py - cy), 2)));
 }
 
 int	leave_map(t_main *data, t_colision	*c)

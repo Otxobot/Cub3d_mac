@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 14:01:30 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:22:28 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,12 +167,12 @@ double		max_and_min_angles(double player_angle);
 void		p_ori(t_main *datos);
 void		init_values(t_main *datos);
 
-t_colision	colision(double fov_angle, double px, double py, t_main *datos);
+t_colision	colision(double fov_angle, int px, int py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
 
 //-----------load_screen_utils:---------------------
 double		normalize(double angle);
-double		distance(double px, double py, double startx, double cy);
+double		distance(int px, int py, int startx, int cy);
 int			leave_map(t_main *data, t_colision	*c);
 void		paint_fc(t_main *datos);
 
@@ -201,4 +201,5 @@ void		haz_peque(char **map_without_tabs, int a, int *c);
 char		**get_to_map(char **elements_with_map, int *ph);
 
 int			if_func(char **map, int i, int j, t_size *size);
+void		draw_pixel(t_main *data, int x, int y, int color);
 #endif

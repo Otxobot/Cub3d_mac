@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:43:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/11 11:05:32 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:23:44 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	load_screen(t_main *datos)
 	double		angle;
 	t_colision	co;
 
-	paint_fc(datos);
-	fov_angle = M_PI / 2;
+	fov_angle = M_PI / 3;
 	i = 0;
+	paint_fc(datos);
+	//mlx_put_image_to_window(datos->mlx, datos->window, datos->image, 0, 0);
 	while (i < SCREENWIDTH)
 	{
 		datos->pa = max_and_min_angles(datos->pa);
@@ -32,10 +33,11 @@ int	load_screen(t_main *datos)
 		tan(fov_angle / 2)));
 		i++;
 	}
+	mlx_put_image_to_window(datos->mlx, datos->window, datos->image, 0, 0);
 	return (0);
 }
 
-t_colision	colision(double fov_angle, double px, double py, t_main *datos)
+t_colision	colision(double fov_angle, int px, int py, t_main *datos)
 {
 	t_colision	co_v;
 	t_colision	co_h;
@@ -99,9 +101,7 @@ t_colision	col_v(double ra, int px, int py, t_main *data)
 	while (1)
 	{
 		if (leave_map(data, &c) == 1)
-		{
 			return (c.dist = 1e30, c);
-		}
 		if (data->info.map[(int)(c.starty / UNIT)] \
 		[(int)(c.startx / UNIT)] == '1')
 		{

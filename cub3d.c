@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 11:31:33 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:24:01 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	key_hook(int keycode, t_main *datos)
 		move_forward(datos);
 	else if (keycode == 1)
 		move_back(datos);
-	printf("keycode:%d\n", keycode);
 	load_screen(datos);
 	return (0);
 }
