@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 18:25:43 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:44:05 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 		if (parse(elements_without_empty_lines, &datos, av[1]) == 1)
 			return (handle_destroy1(&datos), 1);
 		else if (parse(elements_without_empty_lines, &datos, av[1]) == 2)
-			return (printf("Error\nEsta vacio"), 0);
+			return (ft_double_free (elements_without_empty_lines), printf("Error\nEsta vacio"), 1);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, \
 		SCREENHEIGHT, "cub3d");
@@ -80,7 +80,7 @@ int	main(int ac, char **av)
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
 		mlx_loop(datos.mlx);
 		mlx_loop_hook(datos.mlx, &load_screen, &datos);
-		free_things_inside_info_struct(&datos);
+		// free_things_inside_info_struct(&datos);
 		ft_double_free (elements_without_empty_lines);
 		return (0);
 	}
