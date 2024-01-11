@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_back.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:51:42 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:19:40 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:36:20 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	paint_fc(t_main *datos)
 			if (j < SCREENHEIGHT / 2)
 			{
 				draw_pixel(datos, i, j, \
-				obtener_color(datos->info.c_color[0], datos->info.c_color[1], \
+				get_color(datos->info.c_color[0], datos->info.c_color[1], \
 				datos->info.c_color[2]));
 			}
 			else
 			{
 				draw_pixel(datos, i, j, \
-				obtener_color(datos->info.f_color[0], datos->info.f_color[1], \
+				get_color(datos->info.f_color[0], datos->info.f_color[1], \
 				datos->info.f_color[2]));
 			}
 			i++;

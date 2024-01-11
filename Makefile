@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
+#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/11 16:16:00 by abasante         ###   ########.fr        #
+#    Updated: 2024/01/11 17:17:26 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = cub3d.c \
 	load_screen/load_screen1.c \
 	load_screen/load_screen2.c \
 	load_screen/load_screen_utils.c \
+	load_screen/col_ext.c \
 	load_screen/paint_back.c \
 	movement/events.c \
 	init_values.c \
