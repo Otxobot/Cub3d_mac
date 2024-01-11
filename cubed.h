@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 11:04:36 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:54:58 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int			is_cub(char *string);
 int			empty_line(char *line);
 char		**no_empty_lines(char *file_path, char **lines_ws);
 char		**maloc_lines_ws(char **lines_ws, int a, char *file_path, int fd);
+char		bucle_hasta_letra(char *element, int *i, char identifier);
 
 //------------checks:----------------------
 int			check_if_all_elements(char **elements);
@@ -104,7 +105,7 @@ int			check_for_elements(char *string);
 
 //------------categorizing elements:-------
 int			categorize_elements(char **elements, t_info *info);
-int			check_for_correct_path(char *element, t_info *info);
+int			check_for_correct_path(char *element, t_info *info, int i, size_t len);
 int			check_for_correct_rgb(char *element, t_info *info, char identifier);
 
 //-----------------utils:------------------------

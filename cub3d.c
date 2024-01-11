@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 11:07:21 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:31:33 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	key_hook(int keycode, t_main *datos)
 		move_forward(datos);
 	else if (keycode == 1)
 		move_back(datos);
+	printf("keycode:%d\n", keycode);
 	load_screen(datos);
 	return (0);
 }
@@ -54,18 +55,19 @@ int	main(int ac, char **av)
 	{
 		if (parse(elements_without_empty_lines, &datos, av[1]))
 			return (1);
-		init_values(&datos);
-		init_textures(&datos);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, \
 		SCREENHEIGHT, "cub3d");
+		init_values(&datos);
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, \
 		&datos.bits_per_pixel, &datos.size, &datos.endian);
-		mlx_hook(datos.window, 2, 1L<<0, key_hook, &datos);
+		init_textures(&datos);
+		load_screen(&datos);
+		mlx_hook(datos.window, 2, (1L << 0), &key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
-		mlx_loop_hook(datos.mlx, &load_screen, &datos);
 		mlx_loop(datos.mlx);
+		mlx_loop_hook(datos.mlx, &load_screen, &datos);
 		free_things_inside_info_struct(&datos);
 		ft_double_free (elements_without_empty_lines);
 		printf("exiting the program succesfully!\n");

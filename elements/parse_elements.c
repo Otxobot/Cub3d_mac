@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 10:44:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:56:58 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,38 +86,39 @@ int	categorize_elements(char **elements, t_info *info)
 		if (identifier == 'N' || identifier == 'E' \
 		|| identifier == 'S' || identifier == 'W')
 		{
-			if (!check_for_correct_path(elements[i], info))
+			if (!check_for_correct_path(elements[i], info, 0, 0))
 				return (printf("Error\nOne path is incorrect!\n"), FALSE);
 		}
 		else if (identifier == 'F' || identifier == 'C')
-		{
 			if (!check_for_correct_rgb(elements[i], info, identifier))
 				return (printf("Error\nOne of RGBs is incorrect!\n"), FALSE);
-		}
 		i++;
 		all_elements_done++;
 	}
 	return (TRUE);
 }
 
-int	check_for_correct_path(char *element, t_info *info)
+char	bucle_hasta_letra(char *element, int *i, char identifier)
 {
-	int		i;
+	while (element[*i] != 'N' && element[*i] != 'S' \
+		&& element[*i] != 'W' && element[*i] != 'E')
+		*i += 1;
+	identifier = element[*i];
+	while (element[*i] && element[*i] != '.')
+		*i += 1;
+	return (identifier);
+}
+
+int	check_for_correct_path(char *element, t_info *info, int i, size_t len)
+{
 	int		start;
-	size_t	len;
-	char	*path_to_save_in_struct;
+	char	*ptsis;
 	char	identifier;
 
-	i = 0;
-	len = 0;
+	identifier = 0;
 	while (element[i])
 	{
-		while (element[i] != 'N' && element[i] != 'S' \
-		&& element[i] != 'W' && element[i] != 'E')
-			i++;
-		identifier = element[i];
-		while (element[i] && element[i] != '.')
-			i++;
+		identifier = bucle_hasta_letra(element, &i, identifier);
 		if (element[i] && element[i] != '.' && element[i + 1] != '/')
 			return (FALSE);
 		start = i;
@@ -126,16 +127,13 @@ int	check_for_correct_path(char *element, t_info *info)
 			i++;
 			len++;
 		}
-		path_to_save_in_struct = ft_substr(element, start, len);
-		if (!termina_con_xpm(path_to_save_in_struct))
+		ptsis = ft_substr(element, start, len);
+		if (!termina_con_xpm(ptsis))
 			return (FALSE);
-		if (path_to_save_in_struct[2] == 32 || path_to_save_in_struct[2] == 9 \
-		|| path_to_save_in_struct[2] == '\0')
+		if (ptsis[2] == 32 || ptsis[2] == 9 || ptsis[2] == '\0')
 			return (FALSE);
-		put_each_route_in_place_in_struct(identifier, \
-		path_to_save_in_struct, info);
-		free (path_to_save_in_struct);
-		return (TRUE);
+		put_each_route_in_place_in_struct(identifier, ptsis, info);
+		return (free(ptsis), TRUE);
 	}
 	return (FALSE);
 }

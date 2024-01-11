@@ -4,7 +4,7 @@ WE ./texture/STONE_WALL.xpm
 EA ./texture/WOOD_WALL.xpm
 
 C 45,8,150
-F 255,123,123
+F 255,123,13
 
 
 1111111111
