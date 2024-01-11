@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:48:53 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:33:59 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
 	free_things_inside_info_struct(datos);
+	ft_double_free(datos->elements_without_empty_liness);
+	exit (0);
+}
+
+int	handle_destroy1(t_main *datos)
+{
+	free_things_inside_info_struct1(datos);
+	ft_double_free(datos->elements_without_empty_liness);
 	exit (0);
 }
 
@@ -25,6 +33,7 @@ int	key_hook(int keycode, t_main *datos)
 	{
 		mlx_destroy_window(datos->mlx, datos->window);
 		free_things_inside_info_struct(datos);
+		ft_double_free(datos->elements_without_empty_liness);
 		exit (1);
 	}
 	else if (keycode == 124)
@@ -54,7 +63,7 @@ int	main(int ac, char **av)
 	else if (ac == 2)
 	{
 		if (parse(elements_without_empty_lines, &datos, av[1]))
-			return (1);
+			return (handle_destroy1(&datos), 1);
 		datos.mlx = mlx_init();
 		datos.window = mlx_new_window(datos.mlx, SCREENWIDTH, \
 		SCREENHEIGHT, "cub3d");

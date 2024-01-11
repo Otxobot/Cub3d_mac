@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:22:28 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:22:45 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_main
 	double			px;
 	double			py;
 	struct s_info	info;
+	char			**elements_without_empty_liness;
 	t_texture		*no_texture;
 	t_texture		*so_texture;
 	t_texture		*we_texture;
@@ -121,6 +122,7 @@ int			rgb_atois(char identifier, char **nums, t_info *info);
 int			termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
 void		free_things_inside_info_struct(t_main *datos);
+void		free_things_inside_info_struct1(t_main *datos);
 void		free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================

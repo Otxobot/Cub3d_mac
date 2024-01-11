@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:26:21 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:38:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**extract_elements(char *file_path, int a, int nada, int elements)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return ((lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd)), lines_ws);
+	return (lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd));
 }
 
 int	categorize_elements(char **elements, t_info *info)
