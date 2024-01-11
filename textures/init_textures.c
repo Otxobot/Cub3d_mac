@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:07:18 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 17:35:14 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:39:54 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	check_for_texture(char *texture)
 	fd = open(texture, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("pasa por aqui\n");
 		return (1);
 	}
 	close(fd);

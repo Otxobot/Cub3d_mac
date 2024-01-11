@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:24:01 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:48:53 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	handle_destroy(t_main *datos)
 {
 	mlx_destroy_window(datos->mlx, datos->window);
-	return (0);
+	free_things_inside_info_struct(datos);
+	exit (0);
 }
 
 int	key_hook(int keycode, t_main *datos)
@@ -61,7 +62,8 @@ int	main(int ac, char **av)
 		datos.image = mlx_new_image(datos.mlx, SCREENWIDTH, SCREENHEIGHT);
 		datos.addr = mlx_get_data_addr(datos.image, \
 		&datos.bits_per_pixel, &datos.size, &datos.endian);
-		init_textures(&datos);
+		if (init_textures(&datos))
+			return (handle_destroy(&datos), 1);
 		load_screen(&datos);
 		mlx_hook(datos.window, 2, (1L << 0), &key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);
