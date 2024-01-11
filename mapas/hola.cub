@@ -3,8 +3,9 @@ NO ./texture/PLANT_WALL.xpm
 WE ./texture/STONE_WALL.xpm
 EA ./texture/WOOD_WALL.xpm
 
-C 45,8,150
-F 255,123,13
+C  120, 161, 255 
+F  48, 205, 57
+
 
 
         1111111111111111111111111
