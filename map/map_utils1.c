@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 12:33:25 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:03:20 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,40 +77,4 @@ int	check_how_many_tabs_in_a_line(char *line)
 		i++;
 	}
 	return (tab_count);
-}
-
-char	**replace_tabs_with_spaces(char **mwt, int i, int a, int b)
-{
-	char	**mwot;
-	int		t;
-	int		c;
-
-	c = 0;
-	t = 0;
-	mwot = double_pointer_map(mwt);
-	while (mwt[i])
-	{
-		t = check_how_many_tabs_in_a_line(mwt[i]);
-		if (t > 0)
-		{
-			mwot[a] = malloc(sizeof(char) * (ft_strlen(mwt[i]) + (t * 3) + 1));
-			while (mwt[i][b])
-			{
-				if (mwt[i][b] != 9)
-					mwot[a][c] = mwt[i][b];
-				else
-					haz_peque(mwot, a, &c);
-				c++;
-				b++;
-			}
-			mwot[a][c] = '\0';
-			c = 0;
-			b = 0;
-		}
-		else
-			mwot[a] = ft_strdup(mwt[i]);
-		i++;
-		a++;
-	}
-	return ((mwot[a] = NULL), mwot);
 }

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 12:51:23 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:01:30 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void		free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================
 int			parse_map(char **elements_with_map_maybe, t_info *info);
-char		**check_if_map_correct(char **map);
+int			check_if_map_correct(char **map);
 char		**set_null_terminator(char **map);
 void		player_and_map_in_info(char **map, t_info *info);
 

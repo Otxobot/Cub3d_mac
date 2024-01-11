@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:08:41 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 14:20:35 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:01:47 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	parse_map(char **elements_with_map_maybe, t_info *info)
 {
 	char	**map;
-	char	**map_without_tabs;
+	int		tabs_or_not;
 
 	map = check_for_map(elements_with_map_maybe);
 	if (map == NULL)
@@ -24,38 +24,32 @@ int	parse_map(char **elements_with_map_maybe, t_info *info)
 		return (ft_double_free(map), FALSE);
 	else
 	{
-		map_without_tabs = check_if_map_correct(map);
-		if (map_without_tabs == NULL)
+		tabs_or_not = check_if_map_correct(map);
+		if (tabs_or_not == 1)
+			return (FALSE);
+		else
 		{
 			if (!check_if_walls_closed(map, 0))
 				return (ft_double_free(map), FALSE);
 			return (player_and_map_in_info(map, info), TRUE);
 		}
-		else
-		{
-			if (!check_if_walls_closed(map_without_tabs, 0))
-				return (ft_double_free(map_without_tabs), FALSE);
-			return (player_and_map_in_info(map_without_tabs, info), TRUE);
-		}
 		return (ft_double_free(map), TRUE);
 	}
 }
 
-char	**check_if_map_correct(char **map)
+int	check_if_map_correct(char **map)
 {
 	int		tab_count;
-	char	**map_without_tabs;
 
 	tab_count = 0;
 	tab_count = check_how_many_tabs(map);
 	if (tab_count > 0)
 	{
-		map_without_tabs = replace_tabs_with_spaces(map, 0, 0, 0);
 		ft_double_free(map);
-		return (map_without_tabs);
+		return (1);
 	}
 	else
-		return (NULL);
+		return (0);
 }
 
 void	player_and_map_in_info(char **map, t_info *info)
