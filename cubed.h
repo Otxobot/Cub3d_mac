@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 17:22:45 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:10:52 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,4 +204,6 @@ char		**get_to_map(char **elements_with_map, int *ph);
 
 int			if_func(char **map, int i, int j, t_size *size);
 void		draw_pixel(t_main *data, int x, int y, int color);
+
+
 #endif
