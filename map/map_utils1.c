@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:32:25 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/10 13:50:24 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:33:25 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,40 +79,38 @@ int	check_how_many_tabs_in_a_line(char *line)
 	return (tab_count);
 }
 
-char	**replace_tabs_with_spaces(char **map_with_tabs, int i, int a, int b)
+char	**replace_tabs_with_spaces(char **mwt, int i, int a, int b)
 {
-	char	**map_without_tabs;
-	int		tabs_in_line;
+	char	**mwot;
+	int		t;
 	int		c;
 
 	c = 0;
-	tabs_in_line = 0;
-	map_without_tabs = double_pointer_map(map_with_tabs);
-	while (map_with_tabs[i])
+	t = 0;
+	mwot = double_pointer_map(mwt);
+	while (mwt[i])
 	{
-		tabs_in_line = check_how_many_tabs_in_a_line(map_with_tabs[i]);
-		if (tabs_in_line > 0)
+		t = check_how_many_tabs_in_a_line(mwt[i]);
+		if (t > 0)
 		{
-			map_without_tabs[a] = malloc(sizeof(char) * \
-			(ft_strlen(map_with_tabs[i]) + (tabs_in_line * 3) + 1));
-			while (map_with_tabs[i][b])
+			mwot[a] = malloc(sizeof(char) * (ft_strlen(mwt[i]) + (t * 3) + 1));
+			while (mwt[i][b])
 			{
-				if (map_with_tabs[i][b] != 9)
-					map_without_tabs[a][c] = map_with_tabs[i][b];
+				if (mwt[i][b] != 9)
+					mwot[a][c] = mwt[i][b];
 				else
-					haz_peque(map_without_tabs, a, &c);
+					haz_peque(mwot, a, &c);
 				c++;
 				b++;
 			}
-			map_without_tabs[a][c] = '\0';
+			mwot[a][c] = '\0';
 			c = 0;
 			b = 0;
 		}
 		else
-			map_without_tabs[a] = ft_strdup(map_with_tabs[i]);
+			mwot[a] = ft_strdup(mwt[i]);
 		i++;
 		a++;
 	}
-	map_without_tabs[a] = NULL;
-	return (map_without_tabs);
+	return ((mwot[a] = NULL), mwot);
 }

@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 11:54:58 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:51:23 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ int			check_for_elements(char *string);
 
 //------------categorizing elements:-------
 int			categorize_elements(char **elements, t_info *info);
-int			check_for_correct_path(char *element, t_info *info, int i, size_t len);
+int			check_for_correct_path(char *element, \
+t_info *info, int i, size_t len);
 int			check_for_correct_rgb(char *element, t_info *info, char identifier);
 
 //-----------------utils:------------------------
