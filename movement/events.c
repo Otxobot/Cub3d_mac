@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:07:10 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/12 10:40:46 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:44:34 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	move(char **map, double angle, t_main *game)
 	double	new_x;
 	double	new_y;
 
-	new_x = (game->px + cos(angle) * (UNIT/2));
-	new_y = (game->py - sin(angle) * (UNIT/2));
+	new_x = (game->px + cos(angle) * (UNIT / 2));
+	new_y = (game->py - sin(angle) * (UNIT / 2));
 	if (map[(int)floor(game->py) / 64] \
 	[(int)floor(((new_x + BASEBOARD) / 64))] == '0' \
 	&& map[(int)floor(game->py) / 64]
