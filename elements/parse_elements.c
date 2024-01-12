@@ -86,11 +86,11 @@ int	categorize_elements(char **elements, t_info *info)
 		|| identifier == 'S' || identifier == 'W')
 		{
 			if (!check_for_correct_path(elements[i], info, 0, 0))
-				return (printf("Error\nOne path is incorrect!\n"), FALSE);
+				return (printf("One path is incorrect!\n"), FALSE);
 		}
 		else if (identifier == 'F' || identifier == 'C')
 			if (!check_for_correct_rgb(elements[i], info, identifier))
-				return (printf("Error\nOne of RGBs is incorrect!\n"), FALSE);
+				return (printf("One of RGBs is incorrect!\n"), FALSE);
 		i++;
 		all_elements_done++;
 	}

@@ -12,12 +12,13 @@
 
 #include "cubed.h"
 
-int	big_parse(char **elements_without_empty_lines, t_main *datos, char *arguments)
+int	big_parse(char **elements_without_empty_lines, \
+t_main *datos, char *arguments)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
-	ret = parse(elements_without_empty_lines, datos, arguments); 
+	ret = parse(elements_without_empty_lines, datos, arguments);
 	if (ret == 1)
 	{
 		handle_destroy_without_window(datos);
@@ -33,6 +34,8 @@ int	big_parse(char **elements_without_empty_lines, t_main *datos, char *argument
 	}
 	else if (ret == 4)
 		handle_destroy2();
+	else if (ret == 5)
+		handle_destroy3(datos);
 	return (0);
 }
 
@@ -47,13 +50,10 @@ int	parse(char **elements_without_empty_lines, t_main *datos, char *argument)
 	if (elements_without_empty_lines[0] == NULL)
 		return (3);
 	if (!check_if_all_elements(elements_without_empty_lines))
-		return (printf("Error\ncheck_if_all_elements\n"), 4);
+		return (printf("Error\nDidn't find one of the elements\n"), 4);
 	if (!categorize_elements(elements_without_empty_lines, &datos->info))
-		return (printf("Error\ncategorize elements\n"), 1);
+		return (printf("Error\ncategorize elements\n"), 5);
 	if (!parse_map(elements_without_empty_lines, &datos->info))
-	{
-		printf("pasamos por aqui\n");
-		return (printf("Error\nmap parse incorrect"), 1);
-	}
+		return (printf("Error\nmap parse incorrect\n"), 1);
 	return (0);
 }

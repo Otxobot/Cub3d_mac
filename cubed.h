@@ -211,6 +211,7 @@ void		draw_pixel(t_main *data, int x, int y, int color);
 int			handle_destroy(t_main *datos);
 int			handle_destroy1(t_main *datos);
 int			handle_destroy2(void);
+int			handle_destroy3(t_main *datos);
 int			handle_destroy_without_window(t_main *datos);
 
 #endif

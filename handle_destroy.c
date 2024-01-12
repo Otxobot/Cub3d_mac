@@ -19,6 +19,12 @@ int	handle_destroy2(void)
 	exit (0);
 }
 
+int	handle_destroy3(t_main *datos)
+{
+	ft_double_free(datos->elements_without_empty_liness);
+	exit (0);
+}
+
 int	handle_destroy_without_window(t_main *datos)
 {
 	free_things_inside_info_struct1(datos);

@@ -25,14 +25,16 @@ int	check_for_correct_rgb(char *element, t_info *info, char identifier)
 	while (letse[i])
 	{
 		if (ft_isalpha(letse[i]))
-			return (FALSE);
+		{
+			return (free(letse), FALSE);
+		}
 		i++;
 	}
 	nums = ft_split(letse, ',');
 	if (nums[0] == NULL || nums[1] == NULL || nums[2] == NULL)
-		return (FALSE);
+		return (free(letse), ft_double_free(nums), FALSE);
 	if (!rgb_atois(identifier, nums, info))
-		return (FALSE);
+		return (free(letse), ft_double_free(nums), FALSE);
 	free (letse);
 	ft_double_free(nums);
 	return (TRUE);
@@ -59,7 +61,6 @@ int	check_if_all_elements(char **elements)
 			break ;
 		if (!check_for_elements(elements[i]))
 		{
-			printf("Error\nDidn't find one of the elements\n");
 			ft_double_free (elements);
 			return (FALSE);
 		}
