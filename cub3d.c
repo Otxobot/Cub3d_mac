@@ -14,11 +14,8 @@
 
 int	key_hook(int keycode, t_main *datos)
 {
-	printf("keycode:%d\n", keycode);
 	if (keycode == 65307)
-	{
 		handle_destroy(datos);
-	}
 	else if (keycode == 124)
 		datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
 	else if (keycode == 123)
@@ -55,7 +52,6 @@ int	main(int ac, char **av)
 		&datos.bits_per_pixel, &datos.size, &datos.endian);
 		if (init_textures(&datos))
 			return (handle_destroy(&datos), 1);
-		printf("pasa por aqui\n");
 		load_screen(&datos);
 		mlx_hook(datos.window, 2, (1L << 0), &key_hook, &datos);
 		mlx_hook(datos.window, 17, 0, &handle_destroy, &datos);

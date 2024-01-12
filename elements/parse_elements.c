@@ -32,7 +32,7 @@ char	**no_empty_lines(char *file_path, char **lines_ws)
 		if (elements != 6)
 			nada++;
 		if (elements != 6 && empty_line(line))
-			nada++;
+			free(line);
 		else
 			lines_ws[i++] = line;
 		line = get_next_line(fd1);
