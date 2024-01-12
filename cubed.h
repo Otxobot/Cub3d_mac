@@ -91,6 +91,8 @@ typedef struct s_size
 }			t_size;
 
 //=============PARSE_ELEMENTS:======================
+int			big_parse(char **elements_without_empty_lines, \
+t_main *datos, char *arguments);
 int			parse(char **elements_without_empty_lines, \
 t_main *datos, char *argument);
 char		**extract_elements(char *file_path, int a, int nada, int elements);
@@ -205,5 +207,10 @@ char		**get_to_map(char **elements_with_map, int *ph);
 int			if_func(char **map, int i, int j, t_size *size);
 void		draw_pixel(t_main *data, int x, int y, int color);
 
+
+int			handle_destroy(t_main *datos);
+int			handle_destroy1(t_main *datos);
+int			handle_destroy2(void);
+int			handle_destroy_without_window(t_main *datos);
 
 #endif

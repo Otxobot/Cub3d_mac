@@ -35,16 +35,17 @@ SRC = cub3d.c \
 	movement/events.c \
 	init_values.c \
 	textures/init_textures.c \
-	textures/init_textures1.c 
+	textures/init_textures1.c \
+	handle_destroy.c
 
 INCLUDES = -I./libft
 
-LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
-#LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+#LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME)
 
