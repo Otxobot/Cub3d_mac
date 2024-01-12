@@ -128,9 +128,9 @@ int	check_for_correct_path(char *element, t_info *info, int i, size_t len)
 		}
 		ptsis = ft_substr(element, start, len);
 		if (!termina_con_xpm(ptsis))
-			return (FALSE);
+			return (free(ptsis), FALSE);
 		if (ptsis[2] == 32 || ptsis[2] == 9 || ptsis[2] == '\0')
-			return (FALSE);
+			return (free(ptsis), FALSE);
 		put_each_route_in_place_in_struct(identifier, ptsis, info);
 		return (free(ptsis), TRUE);
 	}
