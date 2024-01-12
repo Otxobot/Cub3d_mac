@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 16:23:09 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:26:21 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:38:24 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**no_empty_lines(char *file_path, char **lines_ws)
 		if (elements != 6)
 			nada++;
 		if (elements != 6 && empty_line(line))
-			nada++;
+			free(line);
 		else
 			lines_ws[i++] = line;
 		line = get_next_line(fd1);
@@ -66,7 +66,7 @@ char	**extract_elements(char *file_path, int a, int nada, int elements)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return ((lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd)), lines_ws);
+	return (lines_ws = maloc_lines_ws(lines_ws, a, file_path, fd));
 }
 
 int	categorize_elements(char **elements, t_info *info)
@@ -86,11 +86,11 @@ int	categorize_elements(char **elements, t_info *info)
 		|| identifier == 'S' || identifier == 'W')
 		{
 			if (!check_for_correct_path(elements[i], info, 0, 0))
-				return (printf("Error\nOne path is incorrect!\n"), FALSE);
+				return (printf("One path is incorrect!\n"), FALSE);
 		}
 		else if (identifier == 'F' || identifier == 'C')
 			if (!check_for_correct_rgb(elements[i], info, identifier))
-				return (printf("Error\nOne of RGBs is incorrect!\n"), FALSE);
+				return (printf("One of RGBs is incorrect!\n"), FALSE);
 		i++;
 		all_elements_done++;
 	}
@@ -128,9 +128,9 @@ int	check_for_correct_path(char *element, t_info *info, int i, size_t len)
 		}
 		ptsis = ft_substr(element, start, len);
 		if (!termina_con_xpm(ptsis))
-			return (FALSE);
+			return (free(ptsis), FALSE);
 		if (ptsis[2] == 32 || ptsis[2] == 9 || ptsis[2] == '\0')
-			return (FALSE);
+			return (free(ptsis), FALSE);
 		put_each_route_in_place_in_struct(identifier, ptsis, info);
 		return (free(ptsis), TRUE);
 	}

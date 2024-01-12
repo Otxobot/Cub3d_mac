@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/11 17:17:26 by mikferna         ###   ########.fr        #
+#    Updated: 2024/01/12 10:36:29 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 
-SRC = cub3d.c \
+SRC = cub3D.c \
 	elements/utils_parse1_elem.c \
 	elements/utils_parse2_elem.c \
 	elements/utils_parse3_elem.c \
@@ -31,12 +31,13 @@ SRC = cub3d.c \
 	load_screen/load_screen1.c \
 	load_screen/load_screen2.c \
 	load_screen/load_screen_utils.c \
-	load_screen/col_ext.c \
 	load_screen/paint_back.c \
+	load_screen/col_ext.c \
 	movement/events.c \
 	init_values.c \
 	textures/init_textures.c \
-	textures/init_textures1.c 
+	textures/init_textures1.c \
+	handle_destroy.c
 
 INCLUDES = -I./libft
 
@@ -45,7 +46,7 @@ LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:%.c=%.o)
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
 all: $(NAME)
 

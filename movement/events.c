@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:07:10 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:39:56 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:29:51 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	move(char **map, double angle, t_main *game)
 	double	new_x;
 	double	new_y;
 
-	new_x = (game->px + cos(angle) * 32);
-	new_y = (game->py - sin(angle) * 32);
+	new_x = (game->px + cos(angle) * UNIT);
+	new_y = (game->py - sin(angle) * UNIT);
 	if (map[(int)floor(game->py) / 64] \
 	[(int)floor(((new_x + BASEBOARD) / 64))] == '0' \
 	&& map[(int)floor(game->py) / 64]

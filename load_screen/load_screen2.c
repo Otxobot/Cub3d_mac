@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_screen2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:16:49 by mikferna          #+#    #+#             */
-/*   Updated: 2024/01/11 18:00:37 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:18:29 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_pixel(t_texture *t, int x, int y)
 	return (*(unsigned int *)pos);
 }
 
-void	 draw_ray(t_main *datos, t_colision co, int x, int h)
+void	draw_ray(t_main *datos, t_colision co, int x, int h)
 {
 	int		j;
 	double	scale;

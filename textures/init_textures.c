@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:07:18 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:46:49 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:54:08 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	check_for_texture(char *texture)
 
 	fd = open(texture, O_RDONLY);
 	if (fd == -1)
-	{
-		return (1);
-	}
+		return (printf("Error\nTextura incorrecta\n"), 1);
 	close(fd);
 	return (0);
 }

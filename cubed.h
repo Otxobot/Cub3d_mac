@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 17:36:20 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:12:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_main
 	double			px;
 	double			py;
 	struct s_info	info;
+	char			**elements_without_empty_liness;
 	t_texture		*no_texture;
 	t_texture		*so_texture;
 	t_texture		*we_texture;
@@ -90,6 +91,8 @@ typedef struct s_size
 }			t_size;
 
 //=============PARSE_ELEMENTS:======================
+int			big_parse(char **elements_without_empty_lines, \
+t_main *datos, char *arguments);
 int			parse(char **elements_without_empty_lines, \
 t_main *datos, char *argument);
 char		**extract_elements(char *file_path, int a, int nada, int elements);
@@ -121,6 +124,7 @@ int			rgb_atois(char identifier, char **nums, t_info *info);
 int			termina_con_xpm(const char *cadena);
 //----------------free:-----------------------
 void		free_things_inside_info_struct(t_main *datos);
+void		free_things_inside_info_struct1(t_main *datos);
 void		free_texture_structs(t_main *datos, int flag);
 
 //============PARSE_MAP:=============================
@@ -182,12 +186,14 @@ int			move_left(t_main *game);
 int			move_back(t_main *game);
 int			move_right(t_main *game);
 
-int			calc_v(double ra, int px, int py, t_colision *c);
+//int			calc_col_v_data(double ra, int px, int py, t_colision *c);
 t_colision	col_v(double ra, int px, int py, t_main *data);
-int			calc_h(double ra, int px, int py, t_colision *c);
+//int			calc_col_h_data(double ra, int px, int py, t_colision *c);
 t_colision	col_h(double ra, int px, int py, t_main *data);
+int			calc_h(double ra, int px, int py, t_colision *c);
+int			calc_v(double ra, int px, int py, t_colision *c);
 t_colision	texture_assignation(double fov_angle, t_main *datos, \
-	t_colision *ch, t_colision *cv);
+t_colision *ch, t_colision *cv);
 
 int			init_textures(t_main *datos);
 int			init_no_texture(t_main *datos);
@@ -204,4 +210,11 @@ char		**get_to_map(char **elements_with_map, int *ph);
 
 int			if_func(char **map, int i, int j, t_size *size);
 void		draw_pixel(t_main *data, int x, int y, int color);
+
+int			handle_destroy(t_main *datos);
+int			handle_destroy1(t_main *datos);
+int			handle_destroy2(void);
+int			handle_destroy3(t_main *datos);
+int			handle_destroy_without_window(t_main *datos);
+
 #endif
