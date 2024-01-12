@@ -6,13 +6,13 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:48:48 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 16:23:10 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:12:16 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cubed.h"
 
-int	obtener_color(int red, int green, int blue)
+int	get_color(int red, int green, int blue)
 {
 	return ((red << 16) | (green << 8) | blue);
 }
@@ -26,7 +26,7 @@ double	max_and_min_angles(double player_angle)
 	return (player_angle);
 }
 
-double	normalize(double angle)
+double	relative_angle(double angle)
 {
 	if (angle <= M_PI / 2)
 		return (angle);
@@ -38,12 +38,12 @@ double	normalize(double angle)
 		return (2 * M_PI - angle);
 }
 
-double	distance(int px, int py, int startx, int cy)
+double	pitagoras(int px, int py, int startx, int cy)
 {
 	return (sqrt(pow(abs(px - startx), 2) + pow(abs(py - cy), 2)));
 }
 
-int	leave_map(t_main *data, t_colision	*c)
+int	check_pos(t_main *data, t_colision	*c)
 {
 	int	line_len;
 

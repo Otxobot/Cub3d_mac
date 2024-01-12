@@ -6,15 +6,15 @@
 #    By: abasante <abasante@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 17:08:47 by abasante          #+#    #+#              #
-#    Updated: 2024/01/11 17:54:40 by abasante         ###   ########.fr        #
+#    Updated: 2024/01/12 10:07:10 by abasante         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 
-SRC = cub3d.c \
+SRC = cub3D.c \
 	elements/utils_parse1_elem.c \
 	elements/utils_parse2_elem.c \
 	elements/utils_parse3_elem.c \
@@ -32,6 +32,7 @@ SRC = cub3d.c \
 	load_screen/load_screen2.c \
 	load_screen/load_screen_utils.c \
 	load_screen/paint_back.c \
+	load_screen/col_ext.c \
 	movement/events.c \
 	init_values.c \
 	textures/init_textures.c \
@@ -40,8 +41,8 @@ SRC = cub3d.c \
 
 INCLUDES = -I./libft
 
-#LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
-LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+LIBS =  -L./libft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+#LIBS = -L./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 OBJ = $(SRC:%.c=%.o)
 

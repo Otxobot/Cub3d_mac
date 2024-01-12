@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:56:08 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 18:10:52 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:12:26 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int			check_if_closed(char **map, int longest_line_size, \
 int amount_of_lines);
 
 //-----------load_screen1:---------------------------
-int			obtener_color(int red, int green, int blue);
+int			get_color(int red, int green, int blue);
 void		paint_fc(t_main *datos);
 int			load_screen(t_main *datos);
 double		max_and_min_angles(double player_angle);
@@ -175,9 +175,9 @@ t_colision	colision(double fov_angle, int px, int py, t_main *datos);
 void		draw_ray(t_main *datos, t_colision co, int x, int h);
 
 //-----------load_screen_utils:---------------------
-double		normalize(double angle);
-double		distance(int px, int py, int startx, int cy);
-int			leave_map(t_main *data, t_colision	*c);
+double		relative_angle(double angle);
+double		pitagoras(int px, int py, int startx, int cy);
+int			check_pos(t_main *data, t_colision	*c);
 void		paint_fc(t_main *datos);
 
 int			move(char **map, double angle, t_main *game);
@@ -186,10 +186,14 @@ int			move_left(t_main *game);
 int			move_back(t_main *game);
 int			move_right(t_main *game);
 
-int			calc_col_v_data(double ra, int px, int py, t_colision *c);
+//int			calc_col_v_data(double ra, int px, int py, t_colision *c);
 t_colision	col_v(double ra, int px, int py, t_main *data);
-int			calc_col_h_data(double ra, int px, int py, t_colision *c);
+//int			calc_col_h_data(double ra, int px, int py, t_colision *c);
 t_colision	col_h(double ra, int px, int py, t_main *data);
+int			calc_h(double ra, int px, int py, t_colision *c);
+int			calc_v(double ra, int px, int py, t_colision *c);
+t_colision	texture_assignation(double fov_angle, t_main *datos, \
+t_colision *ch, t_colision *cv);
 
 int			init_textures(t_main *datos);
 int			init_no_texture(t_main *datos);
@@ -206,7 +210,6 @@ char		**get_to_map(char **elements_with_map, int *ph);
 
 int			if_func(char **map, int i, int j, t_size *size);
 void		draw_pixel(t_main *data, int x, int y, int color);
-
 
 int			handle_destroy(t_main *datos);
 int			handle_destroy1(t_main *datos);

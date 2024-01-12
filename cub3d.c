@@ -6,7 +6,7 @@
 /*   By: abasante <abasante@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:53:50 by abasante          #+#    #+#             */
-/*   Updated: 2024/01/11 18:44:05 by abasante         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:12:56 by abasante         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_hook(int keycode, t_main *datos)
 {
-	if (keycode == 65307)
+	if (keycode == 53)
 		handle_destroy(datos);
 	else if (keycode == 124)
 		datos->pa = max_and_min_angles(datos->pa - 0.10471975512);
